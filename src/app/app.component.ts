@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ListingsService} from './rest/listings/listings.service';
-import {ListingsDto} from './rest/listings/listings.dto';
-import {PaginationDto} from './rest/pagination/pagination.dto';
 import {SwiperConfigInterface} from 'ngx-swiper-wrapper';
+
+import {ListingsDto} from './rest/listings/listings.dto';
+import {ListingsService} from './rest/listings/listings.service';
 
 @Component({
   selector: 'app-root',
