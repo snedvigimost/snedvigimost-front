@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {PaginationDto} from '../pagination/pagination.dto';
-import {ListingsDto} from './listings.dto';
+import { Observable } from 'rxjs';
+
+import { PaginationDto } from '../pagination/pagination.dto';
+import { ListingsDto } from './listings.dto';
+import { HttpService } from '../http.service';
+import { PaginationParamsDto } from '../pagination/pagination.params.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +12,10 @@ import {ListingsDto} from './listings.dto';
 export class ListingsService {
   apiUrl = 'http://127.0.0.1:4222/api/v1';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
-  getListings(): Observable<PaginationDto<ListingsDto>> {
-    return this.http.get<PaginationDto<ListingsDto>>(`${this.apiUrl}/listings/`);
+  getListings(params?: PaginationParamsDto): Observable<PaginationDto<ListingsDto>> {
+    return this.http.getAllWithPagination<ListingsDto>(`${this.apiUrl}/listings/`, params, ListingsDto);
   }
 
 }
