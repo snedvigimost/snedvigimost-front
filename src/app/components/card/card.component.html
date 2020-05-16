@@ -2,22 +2,26 @@
   <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 w-2/5">
     <swiper [config]="config">
       <ng-container *ngFor="let image of listing.images">
-        <img [src]="image.photo" alt="">
+        <img
+          class="object-cover"
+          alt=""
+          [src]="image.photo"
+        >
       </ng-container>
     </swiper>
   </div>
   <div class="text-gray-700 bg-gray-400 px-4 py-2 m-2 w-3/5">
-    <div>
+    <div class="text-lg mb-2 text-gray-900">
       {{listing.title}}
     </div>
-    <div>
+    <div class="text-gray-600">
       {{listing.address}}
     </div>
     <div>
-      {{listing.price}}
+      {{price}}
     </div>
     <div>
-      {{listing.sqft}}
+      {{listing.totalArea}} / {{listing.livingArea}} / {{listing.kitchenArea}} м<sup>2</sup>
     </div>
     <div>
       {{listing.description}}
