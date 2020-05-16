@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 gap-4 mb-3">
   <ng-container *ngFor="let listing of listings | paginate: { itemsPerPage: 10, currentPage: page }">
     <app-card [listing]="listing"></app-card>
   </ng-container>

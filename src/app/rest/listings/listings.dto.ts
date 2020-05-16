@@ -5,6 +5,8 @@ export class ListingsDto {
   id: number;
   title: string;
   address: string;
+  year: number;
+  roomsCount: number;
   description: string;
   price: number;
   sqft: number;
@@ -20,6 +22,8 @@ export class ListingsDto {
     this.id = data.id;
     this.title = data.title;
     this.address = data.address;
+    this.year = data.year;
+    this.roomsCount = data.roomsCount;
     this.description = data.description;
     this.images = data?.images ? data.images?.map(image => new ImagesDto(image)) : [];
     this.price = data.price;
