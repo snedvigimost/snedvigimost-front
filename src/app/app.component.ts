@@ -8,15 +8,4 @@ import {ListingsService} from './rest/listings/listings.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  listings: ListingsDto[];
-
-  constructor(private listingsService: ListingsService) {}
-
-  ngOnInit(): void {
-    this.listingsService.getListings().subscribe(listings => {
-      this.listings = listings.results;
-    });
-  }
-
-}
+export class AppComponent {}

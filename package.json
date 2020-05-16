@@ -26,6 +26,7 @@
     "@uppy/core": "^1.10.4",
     "class-transformer": "^0.2.3",
     "cloudinary-core": "^2.8.2",
+    "ngx-pagination": "^5.0.0",
     "ngx-swiper-wrapper": "^9.0.1",
     "ngx-uploadcare-widget": "^2.0.2",
     "reflect-metadata": "^0.1.13",

@@ -15,6 +15,8 @@ import { Cloudinary } from 'cloudinary-core';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { CardComponent } from './components/card/card.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ListingListComponent } from './components/listing-list/listing-list.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -26,7 +28,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   declarations: [
     AppComponent,
     UploaderComponent,
-    CardComponent
+    CardComponent,
+    ListingListComponent
   ],
   imports: [
     SwiperModule,
@@ -36,6 +39,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AppRoutingModule,
     HttpClientModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
+    NgxPaginationModule,
     BrowserAnimationsModule
   ],
   providers: [
