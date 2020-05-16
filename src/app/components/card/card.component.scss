@@ -1,0 +1,20 @@
+//https://www.30secondsofcode.org/css/s/truncate-text-multiline
+
+.truncate-text-multiline {
+  overflow: hidden;
+  display: block;
+  height: 62px;
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.truncate-text-multiline:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 19px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), #f5f6f9 50%);
+}
