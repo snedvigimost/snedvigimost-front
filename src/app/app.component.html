@@ -1,16 +1,9 @@
-<ng-container *ngFor="let listing of listings">
-  <div class="flex flex-row bg-gray-200">
-    <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-      <swiper [config]="config">
-        <ng-container *ngFor="let image of listing.images">
-          <img [src]="image.photo" alt="">
-        </ng-container>
-      </swiper>
-    </div>
-    <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-      2
-    </div>
-  </div>
-</ng-container>
+<div class="grid grid-cols-2 gap-4">
+  <ng-container *ngFor="let listing of listings">
+    <app-card [listing]="listing"></app-card>
+  </ng-container>
+</div>
+
+<!--<app-uploader></app-uploader>-->
 
 <router-outlet></router-outlet>

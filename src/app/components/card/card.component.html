@@ -1,0 +1,26 @@
+<div class="flex flex-row bg-gray-200">
+  <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 w-2/5">
+    <swiper [config]="config">
+      <ng-container *ngFor="let image of listing.images">
+        <img [src]="image.photo" alt="">
+      </ng-container>
+    </swiper>
+  </div>
+  <div class="text-gray-700 bg-gray-400 px-4 py-2 m-2 w-3/5">
+    <div>
+      {{listing.title}}
+    </div>
+    <div>
+      {{listing.address}}
+    </div>
+    <div>
+      {{listing.price}}
+    </div>
+    <div>
+      {{listing.sqft}}
+    </div>
+    <div>
+      {{listing.description}}
+    </div>
+  </div>
+</div>
