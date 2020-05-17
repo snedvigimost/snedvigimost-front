@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import {ListingsDto} from '../../rest/listings/listings.dto';
 import {ListingsService} from '../../rest/listings/listings.service';
 
@@ -18,5 +19,4 @@ export class ListingListComponent implements OnInit {
       this.listings = listings.results;
     });
   }
-
 }

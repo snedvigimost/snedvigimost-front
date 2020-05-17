@@ -20,8 +20,15 @@ import { ListingListComponent } from './components/listing-list/listing-list.com
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
+import { NzCascaderModule } from 'ng-zorro-antd/cascader';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { MapComponent } from './components/map/map.component';
+import { registerLocaleData } from '@angular/common';
+import ru from '@angular/common/locales/ru';
+registerLocaleData(ru);
+import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
+import {FormsModule} from '@angular/forms';
+import { CascaderFilterComponent } from './components/cascader-filter/cascader-filter.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -32,20 +39,23 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    UploaderComponent,
+    MapComponent,
     CardComponent,
-    ListingListComponent,
+    AboutComponent,
     HeaderComponent,
     FooterComponent,
-    AboutComponent,
-    MapComponent
+    UploaderComponent,
+    ListingListComponent,
+    CascaderFilterComponent
   ],
   imports: [
+    FormsModule,
     SwiperModule,
     CommonModule,
     BrowserModule,
     UcWidgetModule,
     AppRoutingModule,
+    NzCascaderModule,
     GoogleMapsModule,
     HttpClientModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
@@ -58,6 +68,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG
+    },
+    {
+      provide: NZ_I18N,
+      useValue: ru_RU
     }
   ],
   bootstrap: [AppComponent]

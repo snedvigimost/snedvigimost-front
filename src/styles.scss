@@ -2,6 +2,12 @@
 
 @import "tailwind-styles.css";
 @import "~uppy/dist/uppy.css";
+@import "~ng-zorro-antd/src/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd/resizable/style/index.min.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.type-filter .ant-cascader-input.ant-input {
+  width: 500px;
+}

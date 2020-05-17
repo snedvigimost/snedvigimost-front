@@ -29,6 +29,7 @@
     "class-transformer": "^0.2.3",
     "cloudinary-core": "^2.8.2",
     "dinero.js": "^1.8.1",
+    "ng-zorro-antd": "^9.1.2",
     "ngx-pagination": "^5.0.0",
     "ngx-swiper-wrapper": "^9.0.1",
     "ngx-uploadcare-widget": "^2.0.2",
@@ -37,6 +38,7 @@
     "tslib": "^1.10.0",
     "uploadcare-widget": "^3.9.1",
     "uppy": "^1.14.1",
+    "redux": "^4.0.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
