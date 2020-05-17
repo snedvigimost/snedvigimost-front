@@ -19,6 +19,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ListingListComponent } from './components/listing-list/listing-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
+import {GoogleMapsModule} from '@angular/google-maps';
+import { MapComponent } from './components/map/map.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -33,7 +36,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     CardComponent,
     ListingListComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent,
+    MapComponent
   ],
   imports: [
     SwiperModule,
@@ -41,6 +46,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     BrowserModule,
     UcWidgetModule,
     AppRoutingModule,
+    GoogleMapsModule,
     HttpClientModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
     NgxPaginationModule,
