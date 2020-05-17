@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Dashboard, Dropbox, GoldenRetriever, GoogleDrive, Instagram } from 'uppy';
 
-import {Uppy} from '@uppy/core';
-import {Dropbox, GoldenRetriever, GoogleDrive, Instagram, Dashboard} from 'uppy';
-
-import {ImagesService} from '../../rest/images/images.service';
+import { ImagesService } from '../../rest/images/images.service';
+import { Uppy } from '@uppy/core';
 
 @Component({
   selector: 'app-uploader',
@@ -17,36 +16,36 @@ export class UploaderComponent implements OnInit {
 
   ngOnInit() {
     this.uppy = new Uppy({
-      debug        : true,
-      autoProceed  : false,
-      restrictions : {
-        allowedFileTypes : [ 'image/*', 'video/*' ]
+      debug: true,
+      autoProceed: false,
+      restrictions: {
+        allowedFileTypes: ['image/*', 'video/*']
       }
     })
       .use(Dashboard, {
-        trigger              : '.UppyModalOpenerBtn',
-        inline               : true,
-        target               : '.DashboardContainer',
-        replaceTargetContent : true,
-        note                 : 'Images and video only, 2–3 files, up to 1 MB',
-        maxHeight            : 450,
-        metaFields           : [
-          { id : 'license', name : 'License', placeholder : 'specify license' },
+        trigger: '.UppyModalOpenerBtn',
+        inline: true,
+        target: '.DashboardContainer',
+        replaceTargetContent: true,
+        note: 'Images and video only, 2–3 files, up to 1 MB',
+        maxHeight: 450,
+        metaFields: [
+          { id: 'license', name: 'License', placeholder: 'specify license' },
           {
-            id          : 'caption',
-            name        : 'Caption',
-            placeholder : 'describe what the image is about'
+            id: 'caption',
+            name: 'Caption',
+            placeholder: 'describe what the image is about'
           }
         ]
       })
-      .use(Dropbox, { target : Dashboard, companionUrl: 'http://localhost:4888' })
-      .use(GoogleDrive, { target : Dashboard, companionUrl: 'http://localhost:4888' })
-      .use(Instagram, { target : Dashboard, companionUrl: 'http://localhost:4888' })
+      .use(Dropbox, { target: Dashboard, companionUrl: 'http://localhost:4888' })
+      .use(GoogleDrive, { target: Dashboard, companionUrl: 'http://localhost:4888' })
+      .use(Instagram, { target: Dashboard, companionUrl: 'http://localhost:4888' })
       .use(GoldenRetriever, {
-        serviceWorker : true,
-        indexedDB     : {
-          maxFileSize  : 2 * 1024 * 1024 * 1024, // 2GB => Each file
-          maxTotalSize : 1024 * 1024 * 1024 * 1024 // 1 TB
+        serviceWorker: true,
+        indexedDB: {
+          maxFileSize: 2 * 1024 * 1024 * 1024, // 2GB => Each file
+          maxTotalSize: 1024 * 1024 * 1024 * 1024 // 1 TB
         }
       });
 
@@ -60,11 +59,11 @@ export class UploaderComponent implements OnInit {
       console.log('failed files:', result.failed);
     });
 
-    const isServiceWorkerControllerReady = new Promise( (resolve) => {
+    const isServiceWorkerControllerReady = new Promise((resolve) => {
       if (navigator.serviceWorker.controller) {
         return resolve();
       }
-      navigator.serviceWorker.addEventListener('controllerchange',  () => {
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
         return resolve();
       });
     });
@@ -77,8 +76,8 @@ export class UploaderComponent implements OnInit {
         })
         .then(() => {
         }).catch((error) => {
-        console.log('Registration failed with ' + error);
-      });
+          console.log('Registration failed with ' + error);
+        });
     }
   }
 

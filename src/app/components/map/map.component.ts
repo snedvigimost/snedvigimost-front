@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {MapInfoWindow, MapMarker} from '@angular/google-maps';
+import { Component, ViewChild } from '@angular/core';
+import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 
 @Component({
   selector: 'app-map',
@@ -7,13 +7,13 @@ import {MapInfoWindow, MapMarker} from '@angular/google-maps';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent {
-     @ViewChild(MapInfoWindow, {static: false}) infoWindow: MapInfoWindow;
+  @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
 
   center: google.maps.LatLngLiteral = {
     lat: 50.437665,
     lng: 30.5205651
   };
-  markerOptions = {draggable: false};
+  markerOptions = { draggable: false };
   markerPositions: google.maps.LatLngLiteral[] = [this.center];
   display?: google.maps.LatLngLiteral;
 

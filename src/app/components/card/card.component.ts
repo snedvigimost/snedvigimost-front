@@ -1,9 +1,9 @@
-import {Component, Input} from '@angular/core';
-
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import * as Dinero from 'dinero.js/build/amd/dinero.js';
 
-import {ListingsDto} from '../../rest/listings/listings.dto';
+import { Component, Input } from '@angular/core';
+
+import { ListingsDto } from '../../rest/listings/listings.dto';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
   selector: 'app-card',
@@ -25,7 +25,7 @@ export class CardComponent {
   };
 
   get price() {
-    return this.dinero({amount: this.listing.price, precision: 0}).setLocale('ru-RU').toFormat('$0,0')
+    return this.dinero({ amount: this.listing.price, precision: 0 }).setLocale('ru-RU').toFormat('$0,0');
   }
 
 }

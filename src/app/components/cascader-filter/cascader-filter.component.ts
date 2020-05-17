@@ -42,50 +42,50 @@ export class CascaderFilterComponent {
   ];
 
   commercial = [
-     {
+    {
       value: '3423432',
       label: 'Офис',
-        isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Здание',
-       isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Торговая площадь',
-       isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Помещение свободного назначения',
-       isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Производство',
-       isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Склад',
-       isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Гараж',
-       isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Готовый бизнес',
-       isLeaf: true
+      isLeaf: true
     },
     {
       value: '342342',
       label: 'Коммерческая земля',
-       isLeaf: true
+      isLeaf: true
     },
   ];
 
@@ -103,35 +103,35 @@ export class CascaderFilterComponent {
   ];
 
   options = [
-  {
-    value: 'zhejiang',
-    label: 'Аренда',
-    children: [
-      {
-        value: 'hangzhou',
-        label: 'Длительно',
-        children: this.typeOfNedv,
-      },
-      {
-        value: 'ningbo',
-        label: 'Несколько месяцев',
-       children: this.typeOfNedv,
-      },
+    {
+      value: 'zhejiang',
+      label: 'Аренда',
+      children: [
         {
-        value: '45',
-        label: 'Посуточно',
-       children: this.typeOfNedv,
-      }
-    ]
-  },
-  {
-    value: 'jiangsu',
-    label: 'Продажа',
-    children: this.typeOfNedv
-  }
-];
+          value: 'hangzhou',
+          label: 'Длительно',
+          children: this.typeOfNedv,
+        },
+        {
+          value: 'ningbo',
+          label: 'Несколько месяцев',
+          children: this.typeOfNedv,
+        },
+        {
+          value: '45',
+          label: 'Посуточно',
+          children: this.typeOfNedv,
+        }
+      ]
+    },
+    {
+      value: 'jiangsu',
+      label: 'Продажа',
+      children: this.typeOfNedv
+    }
+  ];
 
-   nzOptions = this.options;
+  nzOptions = this.options;
 
   onChanges(values) {
     console.log(values, this.values);
