@@ -1,5 +1,5 @@
 <div class="flex flex-row bg-gray-200 rounded-lg border-solid border-2 border-gray-400 shadow-md">
-  <div class="px-4 py-2 m-2 w-2/5">
+  <div class="m-4 mr-1 w-2/5">
     <swiper [config]="config">
       <ng-container *ngFor="let image of listing.images">
         <img
@@ -11,7 +11,7 @@
     </swiper>
   </div>
 
-  <div class="px-4 py-2 m-2 w-3/5">
+  <div class="m-4 w-3/5">
     <div class="text-lg mb-1 text-gray-900 ">
       {{listing.title}}
     </div>
