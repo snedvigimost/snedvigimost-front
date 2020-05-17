@@ -17,6 +17,8 @@ import { UploaderComponent } from './components/uploader/uploader.component';
 import { CardComponent } from './components/card/card.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ListingListComponent } from './components/listing-list/listing-list.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -29,7 +31,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AppComponent,
     UploaderComponent,
     CardComponent,
-    ListingListComponent
+    ListingListComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     SwiperModule,
