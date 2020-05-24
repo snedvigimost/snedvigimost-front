@@ -31,6 +31,10 @@ import {FormsModule} from '@angular/forms';
 import { CascaderFilterComponent } from './components/cascader-filter/cascader-filter.component';
 import {AgGridModule} from 'ag-grid-angular';
 import { DatabaseComponent } from './components/database/database.component';
+import { DialogComponent } from './components/database/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -49,7 +53,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     DatabaseComponent,
     UploaderComponent,
     ListingListComponent,
-    CascaderFilterComponent
+    CascaderFilterComponent,
+    DialogComponent
   ],
   imports: [
     FormsModule,
@@ -57,7 +62,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AgGridModule.withComponents([]),
     CommonModule,
     BrowserModule,
+    MatIconModule,
     UcWidgetModule,
+    MatDialogModule,
+    MatButtonModule,
     AppRoutingModule,
     NzCascaderModule,
     GoogleMapsModule,

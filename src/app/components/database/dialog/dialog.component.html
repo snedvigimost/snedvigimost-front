@@ -1,0 +1,52 @@
+<div class="flex flex-row">
+  <div>
+    <h1 mat-dialog-title>
+      {{listing.address}}
+    </h1>
+  </div>
+  <div class="self-center ml-auto">
+    <button
+      mat-button
+      (click)="onNoClick()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content class="pt-3">
+  <div class="mb-2">
+    <app-card
+      [listing]="listing"
+    >
+    </app-card>
+  </div>
+
+  <div  class="mb-2">
+    <button
+      class="mr-2"
+      color="primary"
+      mat-raised-button
+    >
+      <mat-icon>map</mat-icon>
+      На карте
+    </button>
+    <button
+      color="primary"
+      mat-raised-button
+    >
+      <mat-icon>publish</mat-icon>
+      Опубликовать
+    </button>
+  </div>
+</div>
+
+<!--<div mat-dialog-actions align="end">-->
+<!--  <button-->
+<!--    mat-button-->
+<!--    color="primary"-->
+<!--    (click)="onNoClick()"-->
+<!--  >-->
+<!--    Закрыть-->
+<!--  </button>-->
+<!--</div>-->

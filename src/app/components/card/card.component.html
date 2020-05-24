@@ -2,7 +2,7 @@
   class="card flex flex-row bg-gray-200 border-2 border-gray-400 border-solid rounded-lg">
   <div class="w-2/5 m-4 mr-1">
     <swiper [config]="config">
-      <ng-container *ngFor="let image of listing.images">
+      <ng-container *ngFor="let image of listing?.images">
         <img
           class="object-cover"
           alt=""
