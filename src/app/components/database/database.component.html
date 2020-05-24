@@ -1,7 +1,10 @@
 <ag-grid-angular
-  style="width: 500px; height: 500px;"
-  class="ag-theme-alpine"
-  [rowData]="rowData"
+  class="ag-theme-alpine listing-table"
+  [animateRows]="true"
+  [rowData]="listings"
+  [accentedSort]="true"
   [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  (firstDataRendered)="onFirstDataRendered($event)"
 >
 </ag-grid-angular>

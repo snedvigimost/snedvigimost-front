@@ -15,6 +15,8 @@ export class ListingsDto {
   kitchenArea: number;
   floor: number;
   floorInHouse: number;
+  phoneNumber: string;
+  publicationDate: string;
   images: ImagesDto[];
   type: HouseTypeDto;
 
@@ -28,8 +30,10 @@ export class ListingsDto {
     this.images = data?.images ? data.images?.map(image => new ImagesDto(image)) : [];
     this.price = data.price;
     this.sqft = data.sqft;
+    this.phoneNumber = data.phoneNumber;
     this.totalArea = data.totalArea;
     this.livingArea = data.livingArea;
+    this.publicationDate = data.publicationDate;
     this.kitchenArea = data.kitchenArea;
     this.floor = data.floor;
     this.floorInHouse = data.floorInHouse;
