@@ -29,6 +29,8 @@ registerLocaleData(ru);
 import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
 import {FormsModule} from '@angular/forms';
 import { CascaderFilterComponent } from './components/cascader-filter/cascader-filter.component';
+import {AgGridModule} from 'ag-grid-angular';
+import { DatabaseComponent } from './components/database/database.component';
 
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
@@ -44,6 +46,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     AboutComponent,
     HeaderComponent,
     FooterComponent,
+    DatabaseComponent,
     UploaderComponent,
     ListingListComponent,
     CascaderFilterComponent
@@ -51,6 +54,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   imports: [
     FormsModule,
     SwiperModule,
+    AgGridModule.withComponents([]),
     CommonModule,
     BrowserModule,
     UcWidgetModule,

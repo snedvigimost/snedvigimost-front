@@ -1,7 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-
-import {ListingsDto} from './rest/listings/listings.dto';
-import {ListingsService} from './rest/listings/listings.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
