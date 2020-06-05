@@ -10,8 +10,6 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import {HttpService} from './rest/http.service';
 import {CommonModule} from '@angular/common';
-import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
-import { Cloudinary } from 'cloudinary-core';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { CardComponent } from './components/card/card.component';
@@ -70,7 +68,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NzCascaderModule,
     GoogleMapsModule,
     HttpClientModule,
-    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'your_cloud_name' } as CloudinaryConfiguration),
     NgxPaginationModule,
     BrowserAnimationsModule
   ],
