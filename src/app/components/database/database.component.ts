@@ -8,6 +8,7 @@ import {ListingsService} from '../../rest/listings/listings.service';
 
 import {defaultColDef, columnDefs} from './column-def';
 import {DialogComponent} from './dialog/dialog.component';
+import {PaginationParamsDto} from '../../rest/pagination/pagination.params.dto';
 
 @Component({
   selector: 'app-database',
@@ -18,14 +19,17 @@ export class DatabaseComponent implements OnInit {
   listings: ListingsDto[];
   columnDefs: ColDef[] = columnDefs;
   defaultColDef: ColDef = defaultColDef;
+  paginationParamsDto = new PaginationParamsDto();
 
   constructor(
     private listingsService: ListingsService,
     public dialog: MatDialog
-    ) {}
+    ) {
+    this.paginationParamsDto.is_published = false;
+  }
 
   ngOnInit(): void {
-    this.listingsService.getListings().subscribe(listings => {
+    this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => {
       this.listings = listings.results;
     });
   }

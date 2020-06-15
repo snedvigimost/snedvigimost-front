@@ -16,6 +16,7 @@ export class CardComponent {
 
   public config: SwiperConfigInterface = {
     a11y: true,
+    lazy: true,
     direction: 'horizontal',
     keyboard: true,
     mousewheel: true,

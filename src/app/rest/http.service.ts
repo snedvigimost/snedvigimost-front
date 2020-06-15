@@ -67,7 +67,7 @@ export class HttpService extends HttpClient {
         for (const item of data[key]) {
           params = params.append(key, String(item));
         }
-      } else if (data[key] && !Array.isArray(data[key])) {
+      } else if ((data[key] || typeof data[key] === 'boolean') && !Array.isArray(data[key])) {
         params = params.append(key, String(data[key]));
       }
     });
