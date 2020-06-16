@@ -1,39 +1,50 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule} from '@angular/common/http';
-import { SwiperModule } from 'ngx-swiper-wrapper';
-import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import {HttpService} from './rest/http.service';
-import {CommonModule} from '@angular/common';
-import { UcWidgetModule } from 'ngx-uploadcare-widget';
-import { UploaderComponent } from './components/uploader/uploader.component';
-import { CardComponent } from './components/card/card.component';
-import {NgxPaginationModule} from 'ngx-pagination';
-import { ListingListComponent } from './components/listing-list/listing-list.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { AboutComponent } from './components/about/about.component';
-import { NzCascaderModule } from 'ng-zorro-antd/cascader';
-import {GoogleMapsModule} from '@angular/google-maps';
-import { MapComponent } from './components/map/map.component';
-import { registerLocaleData } from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 import ru from '@angular/common/locales/ru';
-registerLocaleData(ru);
-import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
 import {FormsModule} from '@angular/forms';
-import { CascaderFilterComponent } from './components/cascader-filter/cascader-filter.component';
-import {AgGridModule} from 'ag-grid-angular';
-import { DatabaseComponent } from './components/database/database.component';
-import { DialogComponent } from './components/database/dialog/dialog.component';
+import {CommonModule, registerLocaleData} from '@angular/common';
+
+import {GoogleMapsModule} from '@angular/google-maps';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 
+import {SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
+import {UcWidgetModule} from 'ngx-uploadcare-widget';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {AgGridModule} from 'ag-grid-angular';
+
+import {LottieModule} from 'ngx-lottie';
+import player from 'lottie-web';
+
+import {NzCascaderModule} from 'ng-zorro-antd/cascader';
+import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
+
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HttpService} from './rest/http.service';
+import {ListingListComponent} from './components/listing-list/listing-list.component';
+import {UploaderComponent} from './components/uploader/uploader.component';
+import {CardComponent} from './components/card/card.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {AboutComponent} from './components/about/about.component';
+import {MapComponent} from './components/map/map.component';
+import {DatabaseComponent} from './components/database/database.component';
+import {DialogComponent} from './components/database/dialog/dialog.component';
+import {LoaderComponent} from './components/loader/loader.component';
+import {SpinnerComponent} from './components/spinner/spinner.component';
+import {CascaderFilterComponent} from './components/cascader-filter/cascader-filter.component';
+
+registerLocaleData(ru);
+
+// Note we need a separate function as it's required
+// by the AOT compiler.
+export function playerFactory() {
+  return player;
+}
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -52,7 +63,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     UploaderComponent,
     ListingListComponent,
     CascaderFilterComponent,
-    DialogComponent
+    DialogComponent,
+    LoaderComponent,
+    SpinnerComponent
   ],
   imports: [
     FormsModule,
@@ -69,7 +82,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     GoogleMapsModule,
     HttpClientModule,
     NgxPaginationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LottieModule.forRoot({player: playerFactory})
   ],
   providers: [
     HttpService,
@@ -85,4 +99,5 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

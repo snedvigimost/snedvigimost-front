@@ -22,7 +22,7 @@
     </app-card>
   </div>
 
-  <div  class="mb-2">
+  <div class="mb-2">
     <button
       class="mr-2"
       color="primary"
@@ -34,9 +34,26 @@
     <button
       color="primary"
       mat-raised-button
+      (click)="publish()"
+      [disabled]="buttonIsDisabled"
     >
       <mat-icon>publish</mat-icon>
-      Опубликовать
+      {{!loaded ? 'Опубликовать' : 'Опубликовано'}}
+      <app-spinner
+        class="inline-flex"
+        *ngIf="loading"
+      >
+      </app-spinner>
+      <ng-lottie
+        class="inline-block"
+        width="35px"
+        height="35px"
+        *ngIf="loaded"
+        [options]="options"
+        (complete)="onComplete()"
+        (animationCreated)="animationCreated($event)"
+      >
+      </ng-lottie>
     </button>
   </div>
 </div>
