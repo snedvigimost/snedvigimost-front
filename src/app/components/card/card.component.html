@@ -42,5 +42,14 @@
     <p class="truncate-text-multiline">
       {{listing.description}}
     </p>
+    <ng-container *ngIf="!listing.isPublished">
+      <p class="">
+        Иисточник:
+        <a [href]="listing.url">{{listing.source}}</a>
+      </p>
+      <p class="">
+        Дата публикации: {{listing.publicationDate}}
+      </p>
+    </ng-container>
   </div>
 </div>

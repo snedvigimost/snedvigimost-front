@@ -17,12 +17,18 @@ export class ListingsDto {
   floorInHouse: number;
   phoneNumber: string;
   publicationDate: string;
+  isPublished: boolean;
   images: ImagesDto[];
   type: HouseTypeDto;
+  url: string;
+  source: string;
 
   constructor(data: ListingsDto) {
     this.id = data.id;
     this.title = data.title;
+    this.url = data.url;
+    this.source = data.source;
+    this.isPublished = data.isPublished;
     this.address = data.address;
     this.year = data.year;
     this.roomsCount = data.roomsCount;
