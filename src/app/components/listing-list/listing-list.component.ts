@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { ListingsDto } from '../../rest/listings/listings.dto';
-import { ListingsService } from '../../rest/listings/listings.service';
+import {ListingsService} from '../../rest/listings/listings.service';
+
+import {ListingsDto} from '../../rest/listings/listings.dto';
+import {PaginationDto} from '../../rest/pagination/pagination.dto';
 import {PaginationParamsDto} from '../../rest/pagination/pagination.params.dto';
 
 @Component({
@@ -10,8 +12,7 @@ import {PaginationParamsDto} from '../../rest/pagination/pagination.params.dto';
   styleUrls: ['./listing-list.component.scss']
 })
 export class ListingListComponent implements OnInit {
-  listings: ListingsDto[];
-  page = 1;
+  result: PaginationDto<ListingsDto>;
   paginationParamsDto = new PaginationParamsDto();
 
   constructor(private listingsService: ListingsService) {
@@ -19,8 +20,15 @@ export class ListingListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => {
-      this.listings = listings.results;
-    });
+    this.getListings();
+  }
+
+  getListings() {
+    this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => this.result = listings);
+  }
+
+  onPageChange($event: number) {
+    this.paginationParamsDto.page = $event;
+    this.getListings();
   }
 }

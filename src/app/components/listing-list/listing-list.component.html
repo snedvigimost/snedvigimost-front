@@ -3,9 +3,9 @@
 </div>
 
 <div class="grid grid-cols-2 gap-4 mb-3">
-  <ng-container *ngFor="let listing of listings | paginate: { itemsPerPage: 10, currentPage: page }">
+  <ng-container *ngFor="let listing of result.results | paginate: { itemsPerPage: paginationParamsDto.page_size, currentPage: paginationParamsDto.page, totalItems: result.count }">
     <app-card [listing]="listing"></app-card>
   </ng-container>
 </div>
 
-<pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+<pagination-controls class="text-center" (pageChange)="onPageChange($event)"></pagination-controls>

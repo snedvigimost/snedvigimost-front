@@ -1,6 +1,8 @@
 export class PaginationDto<T> {
   count: number;
   next?: number;
+  links: object;
+  totalPages: number;
   previous?: number;
   results: T[];
   DtoClass?: new (contentItem) => T;
