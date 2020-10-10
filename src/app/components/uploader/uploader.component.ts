@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Dashboard, Dropbox, GoldenRetriever, GoogleDrive, Instagram } from 'uppy';
+import { Core, Dashboard, Dropbox, GoldenRetriever, GoogleDrive, Instagram } from 'uppy';
 
 import { ImagesService } from '../../rest/images/images.service';
-import { Uppy } from '@uppy/core';
 
 @Component({
   selector: 'app-uploader',
@@ -15,7 +14,7 @@ export class UploaderComponent implements OnInit {
   constructor(private imagesService: ImagesService) { }
 
   ngOnInit() {
-    this.uppy = new Uppy({
+    this.uppy = new Core.Uppy({
       debug: true,
       autoProceed: false,
       restrictions: {
