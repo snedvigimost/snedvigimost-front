@@ -37,6 +37,9 @@ import {DialogComponent} from './components/database/dialog/dialog.component';
 import {LoaderComponent} from './components/loader/loader.component';
 import {SpinnerComponent} from './components/spinner/spinner.component';
 import {CascaderFilterComponent} from './components/cascader-filter/cascader-filter.component';
+import {GalleryModule} from '@ngx-gallery/core';
+import { LightboxModule } from '@ngx-gallery/lightbox';
+import {GallerizeModule} from '@ngx-gallery/gallerize';
 
 registerLocaleData(ru);
 
@@ -77,6 +80,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     UcWidgetModule,
     MatDialogModule,
     MatButtonModule,
+    GalleryModule,
+    LightboxModule,
+    GallerizeModule,
     AppRoutingModule,
     NzCascaderModule,
     GoogleMapsModule,

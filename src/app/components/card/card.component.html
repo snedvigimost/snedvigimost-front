@@ -1,15 +1,21 @@
 <div
   class="card flex flex-row bg-gray-200 border-2 border-gray-400 border-solid rounded-lg">
-  <div class="w-2/5 m-4 mr-1">
-    <swiper [config]="config">
-      <ng-container *ngFor="let image of listing?.images">
-        <img
-          class="object-cover"
-          alt=""
-          [src]="image.photo"
-        >
-      </ng-container>
-    </swiper>
+  <div class="picture m-4 mr-1">
+    <gallery
+      [id]="listing.id"
+      class="gallery"
+      gallerize
+      thumbPosition="left"
+      [thumb]="false"
+      [items]="cameraImages"
+      [imageSize]="contain"
+      [loadingStrategy]="'lazy'"
+    >
+    </gallery>
+<!--    <div class="swiper-counter">-->
+<!--       <a [href]="listing.url" target="_blank">{{listing.source}}</a>-->
+<!--      <div>{{index}}/{{listing.images.length}}</div>-->
+<!--    </div>-->
   </div>
 
   <div class="w-3/5 m-4">
