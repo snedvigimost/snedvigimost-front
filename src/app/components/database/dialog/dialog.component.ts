@@ -27,7 +27,8 @@ export class DialogComponent implements OnInit {
     public listingsService: ListingsService,
     private ngZone: NgZone,
     @Inject(MAT_DIALOG_DATA) public listing: ListingsDto
-  ) {}
+  ) {
+  }
 
   animationCreated(animationItem: AnimationItem) {
     this.animationItem = animationItem;
@@ -50,7 +51,9 @@ export class DialogComponent implements OnInit {
   }
 
   onComplete() {
-    this.ngZone.runOutsideAngular(() => this.animationItem.stop());
-    this.buttonIsDisabled = true;
+    this.ngZone.run(() => {
+      this.animationItem.stop();
+      this.buttonIsDisabled = true;
+    });
   }
 }
