@@ -30,6 +30,7 @@
     "@types/dinero.js": "^1.6.5",
     "ag-grid-angular": "^24.0.0",
     "ag-grid-community": "^24.0.0",
+    "cashify": "^2.4.4",
     "class-transformer": "^0.2.3",
     "dinero.js": "^1.8.1",
     "lottie-web": "^5.7.3",

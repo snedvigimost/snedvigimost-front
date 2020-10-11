@@ -21,6 +21,7 @@ import {LottieModule} from 'ngx-lottie';
 import player from 'lottie-web';
 
 import {NzCascaderModule} from 'ng-zorro-antd/cascader';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
@@ -88,6 +89,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NzSliderModule,
     GalleryModule,
     LightboxModule,
+    NzRadioModule,
     GallerizeModule,
     AppRoutingModule,
     NzCascaderModule,

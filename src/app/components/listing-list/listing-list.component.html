@@ -15,15 +15,23 @@
 
 </div>
 
-<div class="mb-5 w-3/12">
-  <div>
-    Цена
+<div class="mb-5 w-1/5">
+  <div class="flex justify-between">
+    <div class="mr-2">
+      Цена
+    </div>
+    <nz-radio-group [ngModel]="selectedCurrency" (ngModelChange)="onCurrencyChange($event)">
+      <label nz-radio [nzValue]="currencyEnum.UAH">₴</label>
+      <label nz-radio [nzValue]="currencyEnum.USD">$</label>
+      <label nz-radio [nzValue]="currencyEnum.EUR">€</label>
+    </nz-radio-group>
   </div>
+
   <div>
     <nz-slider
       nzRange
-      [nzMin]="defaultMinPrice"
-      [nzMax]="defaultMaxPrice"
+      [nzMin]="priceRange[0]"
+      [nzMax]="priceRange[1]"
       (ngModelChange)="onPriceChange($event)"
       [ngModel]="selectedPrice"
     >
@@ -35,19 +43,19 @@
       <nz-input-number
         class="mr-2"
         nzPlaceHolder="Min Price"
-        [nzMin]="defaultMinPrice"
+        [nzMin]="priceRange[0]"
         [(ngModel)]="selectedPrice[0]"
         (ngModelChange)="onPriceInputChange()"
       >
       </nz-input-number>
     </div>
-    <div>
-      <span class="mr-2">—</span>
+    <div class="mr-2 self-center">
+      —
     </div>
     <div>
       <nz-input-number
         nzPlaceHolder="Max Price"
-        [nzMax]="defaultMaxPrice"
+        [nzMax]="priceRange[1]"
         [(ngModel)]="selectedPrice[1]"
         (ngModelChange)="onPriceInputChange()"
       >
