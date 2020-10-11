@@ -11,12 +11,22 @@
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
 
 .ag-theme-alpine {
-    @include ag-theme-alpine();
+  @include ag-theme-alpine();
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .type-filter .ant-cascader-input.ant-input {
   width: 500px;
+}
+
+.mat-button-toggle-checked {
+  background-color: #feda00;
 }

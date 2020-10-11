@@ -10,6 +10,7 @@ import {GoogleMapsModule} from '@angular/google-maps';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import {SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 import {UcWidgetModule} from 'ngx-uploadcare-widget';
@@ -88,6 +89,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     GoogleMapsModule,
     HttpClientModule,
     NgxPaginationModule,
+    MatButtonToggleModule,
     BrowserAnimationsModule,
     LottieModule.forRoot({player: playerFactory})
   ],

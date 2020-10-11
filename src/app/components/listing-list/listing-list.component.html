@@ -1,9 +1,23 @@
-<div class="mb-5">
-  <app-cascader-filter></app-cascader-filter>
+<div class="flex mb-5">
+  <div class="mr-6">
+    <app-cascader-filter></app-cascader-filter>
+  </div>
+  <div class="">
+    <label class="mr-3">Количество комнат</label>
+    <mat-button-toggle-group name="roomsCount" aria-label="Rooms Count" multiple (change)="onRoomCountChange($event)">
+      <mat-button-toggle value="1">1</mat-button-toggle>
+      <mat-button-toggle value="2">2</mat-button-toggle>
+      <mat-button-toggle value="3">3</mat-button-toggle>
+      <mat-button-toggle value="4">4</mat-button-toggle>
+      <mat-button-toggle value="5">5</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
 </div>
 
+
 <div class="grid grid-cols-2 gap-4 mb-3">
-  <ng-container *ngFor="let listing of result.results | paginate: { itemsPerPage: paginationParamsDto.page_size, currentPage: paginationParamsDto.page, totalItems: result.count }">
+  <ng-container
+    *ngFor="let listing of result.results | paginate: { itemsPerPage: paginationParamsDto.page_size, currentPage: paginationParamsDto.page, totalItems: result.count }">
     <app-card [listing]="listing"></app-card>
   </ng-container>
 </div>

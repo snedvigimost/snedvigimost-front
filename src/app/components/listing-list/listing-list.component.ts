@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
+import {MatButtonToggleChange} from '@angular/material/button-toggle';
+
 import {ListingsService} from '../../rest/listings/listings.service';
 
 import {ListingsDto} from '../../rest/listings/listings.dto';
@@ -29,6 +31,11 @@ export class ListingListComponent implements OnInit {
 
   onPageChange($event: number) {
     this.paginationParamsDto.page = $event;
+    this.getListings();
+  }
+
+  onRoomCountChange($event: MatButtonToggleChange) {
+    this.paginationParamsDto.rooms_count = $event.value.join(',');
     this.getListings();
   }
 }
