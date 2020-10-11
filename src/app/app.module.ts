@@ -21,6 +21,9 @@ import {LottieModule} from 'ngx-lottie';
 import player from 'lottie-web';
 
 import {NzCascaderModule} from 'ng-zorro-antd/cascader';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -81,6 +84,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     UcWidgetModule,
     MatDialogModule,
     MatButtonModule,
+    NzSelectModule,
+    NzSliderModule,
     GalleryModule,
     LightboxModule,
     GallerizeModule,
@@ -88,6 +93,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NzCascaderModule,
     GoogleMapsModule,
     HttpClientModule,
+    NzInputNumberModule,
     NgxPaginationModule,
     MatButtonToggleModule,
     BrowserAnimationsModule,

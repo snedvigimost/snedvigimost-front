@@ -6,6 +6,10 @@ export class PaginationParamsDto {
   is_published: boolean;
   // tslint:disable-next-line:variable-name
   rooms_count: string;
+  // tslint:disable-next-line:variable-name
+  min_price = 1000;
+  // tslint:disable-next-line:variable-name
+  max_price = 30000;
 
   constructor(paginationParamsDto?: PaginationParamsDto) {
     if (paginationParamsDto) {
@@ -13,6 +17,8 @@ export class PaginationParamsDto {
       this.page_size = paginationParamsDto?.page_size;
       this.rooms_count = paginationParamsDto?.rooms_count;
       this.is_published = paginationParamsDto?.is_published;
+      this.min_price = paginationParamsDto?.min_price;
+      this.min_price = paginationParamsDto?.min_price;
     }
   }
 }
