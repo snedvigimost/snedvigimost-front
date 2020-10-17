@@ -64,11 +64,18 @@
   </div>
 </div>
 
-<div class="grid grid-cols-2 gap-4 mb-3">
+<div class="grid grid-cols-2 gap-4 mb-5">
   <ng-container
-    *ngFor="let listing of result?.results | paginate: { itemsPerPage: paginationParamsDto.page_size, currentPage: paginationParamsDto.page, totalItems: result?.count }">
+    *ngFor="let listing of result?.results">
     <app-card [listing]="listing"></app-card>
   </ng-container>
 </div>
 
-<pagination-controls class="text-center" (pageChange)="onPageChange($event)"></pagination-controls>
+<nz-pagination
+  class="text-center"
+  [nzTotal]="result?.count"
+  [nzPageSize]="paginationParamsDto.page_size"
+  [nzPageIndex]="paginationParamsDto.page"
+  (nzPageIndexChange)="onPageChange($event)"
+>
+</nz-pagination>

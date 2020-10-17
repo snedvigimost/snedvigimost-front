@@ -3,12 +3,14 @@
 @import "tailwind-styles.css";
 @import "~uppy/dist/uppy.css";
 
-@import "~ng-zorro-antd/src/ng-zorro-antd.min.css";
+@import "~ng-zorro-antd/src/ng-zorro-antd.css";
 @import "~ng-zorro-antd/resizable/style/index.min.css";
 @import "~spinkit/spinkit.min.css";
 
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+@import "ant";
 
 .ag-theme-alpine {
   @include ag-theme-alpine();

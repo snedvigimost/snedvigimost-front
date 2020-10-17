@@ -24,6 +24,7 @@ import {NzCascaderModule} from 'ng-zorro-antd/cascader';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
 
@@ -95,6 +96,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NzCascaderModule,
     GoogleMapsModule,
     HttpClientModule,
+    NzPaginationModule,
     NzInputNumberModule,
     NgxPaginationModule,
     MatButtonToggleModule,
