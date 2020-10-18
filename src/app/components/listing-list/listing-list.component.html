@@ -64,6 +64,47 @@
   </div>
 </div>
 
+
+<div class="mb-5 w-1/5">
+  <div class="flex justify-between">
+    Площадь, м²
+  </div>
+
+  <nz-slider
+    nzRange
+    [nzMin]="areaRange[0]"
+    [nzMax]="areaRange[1]"
+    (ngModelChange)="onAreaChange($event)"
+    [ngModel]="selectedArea"
+  >
+  </nz-slider>
+
+  <div class="flex justify-between">
+    <div>
+      <nz-input-number
+        class="mr-2"
+        nzPlaceHolder="Min Price"
+        [nzMin]="areaRange[0]"
+        [(ngModel)]="selectedArea[0]"
+        (ngModelChange)="onAreaInputChange()"
+      >
+      </nz-input-number>
+    </div>
+    <div class="mr-2 self-center">
+      —
+    </div>
+    <div>
+      <nz-input-number
+        nzPlaceHolder="Max Price"
+        [nzMax]="areaRange[1]"
+        [(ngModel)]="selectedArea[1]"
+        (ngModelChange)="onAreaInputChange()"
+      >
+      </nz-input-number>
+    </div>
+  </div>
+</div>
+
 <div class="grid grid-cols-2 gap-4 mb-5">
   <ng-container
     *ngFor="let listing of result?.results">

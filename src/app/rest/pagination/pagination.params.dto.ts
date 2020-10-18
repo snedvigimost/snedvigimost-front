@@ -10,6 +10,10 @@ export class PaginationParamsDto {
   min_price = 1000;
   // tslint:disable-next-line:variable-name
   max_price = 30000;
+  // tslint:disable-next-line:variable-name
+  min_area = 0;
+  // tslint:disable-next-line:variable-name
+  max_area = 100;
 
   constructor(paginationParamsDto?: PaginationParamsDto) {
     if (paginationParamsDto) {
@@ -19,6 +23,8 @@ export class PaginationParamsDto {
       this.is_published = paginationParamsDto?.is_published;
       this.min_price = paginationParamsDto?.min_price;
       this.min_price = paginationParamsDto?.min_price;
+      this.min_area = paginationParamsDto?.min_area;
+      this.max_area = paginationParamsDto?.max_area;
     }
   }
 }

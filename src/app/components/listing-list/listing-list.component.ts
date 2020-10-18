@@ -37,6 +37,8 @@ export class ListingListComponent implements OnInit {
     EUR: 0.85
   };
 
+  // TODO: create separate component for filters
+
   priceRange = this.defaultPrices.USD;
 
   selectedCurrency = this.currencyEnum.USD;
@@ -45,12 +47,22 @@ export class ListingListComponent implements OnInit {
   selectedPrice: [number, number] = this.priceRange;
   selectedPriceChanged = new Subject<[number, number]>();
 
+  selectedArea: [number, number] = [0, 100];
+  areaRange: [number, number] = [0, 100];
+  selectedAreaChanged = new Subject<[number, number]>();
+
   constructor(
     private listingsService: ListingsService,
     private rateService: RateService
   ) {
     this.paginationParamsDto.is_published = true;
     this.selectedPriceChanged.pipe(
+      debounceTime(800),
+      distinctUntilChanged())
+      .subscribe(() => {
+        this.getListings();
+      });
+    this.selectedAreaChanged.pipe(
       debounceTime(800),
       distinctUntilChanged())
       .subscribe(() => {
@@ -87,6 +99,9 @@ export class ListingListComponent implements OnInit {
     this.paginationParamsDto.min_price = Math.floor(convert(this.selectedPrice[0], convertConfig));
     this.paginationParamsDto.max_price = Math.floor(convert(this.selectedPrice[1], convertConfig));
 
+    this.paginationParamsDto.min_area = this.selectedArea[0];
+    this.paginationParamsDto.max_area = this.selectedArea[1];
+
     this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => this.result = listings);
   }
 
@@ -110,7 +125,6 @@ export class ListingListComponent implements OnInit {
   // [javascript - ngModel cannot detect array changes correctly - Stack Overflow]
   // (https://stackoverflow.com/questions/44476677/ngmodel-cannot-detect-array-changes-correctly)
   onPriceInputChange() {
-    console.log('onPriceInputChange');
     this.selectedPrice = [...this.selectedPrice];
     this.selectedPriceChanged.next(this.selectedPrice);
   }
@@ -132,5 +146,16 @@ export class ListingListComponent implements OnInit {
     ];
 
     this.priceRange = this.defaultPrices[$event];
+  }
+
+
+  onAreaChange($event: [number, number]) {
+    this.selectedArea = $event;
+    this.selectedAreaChanged.next($event);
+  }
+
+  onAreaInputChange() {
+    this.selectedArea = [...this.selectedArea];
+    this.selectedAreaChanged.next(this.selectedArea);
   }
 }
