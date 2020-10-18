@@ -39,6 +39,33 @@ export class ListingListComponent implements OnInit {
 
   // TODO: create separate component for filters
 
+  sortOptions = [
+    {
+      value: 'total_area',
+      label: 'По площади, сначала малые'
+    },
+    {
+      value: '-total_area',
+      label: 'По площади, сначала большие'
+    },
+    {
+      value: 'price',
+      label: 'По цене, сначала дешевые'
+    },
+    {
+      value: '-price',
+      label: 'По цене, сначала дорогие'
+    },
+    {
+      value: 'publication_date',
+      label: 'По дате добавления, сначала старые'
+    },
+    {
+      value: '-publication_date',
+      label: 'По дате добавления, сначала новые'
+    },
+  ];
+
   priceRange = this.defaultPrices.USD;
 
   selectedCurrency = this.currencyEnum.USD;
@@ -157,5 +184,9 @@ export class ListingListComponent implements OnInit {
   onAreaInputChange() {
     this.selectedArea = [...this.selectedArea];
     this.selectedAreaChanged.next(this.selectedArea);
+  }
+
+  onSortChange() {
+    this.getListings();
   }
 }

@@ -14,6 +14,7 @@ export class PaginationParamsDto {
   min_area = 0;
   // tslint:disable-next-line:variable-name
   max_area = 100;
+  sorting = '';
 
   constructor(paginationParamsDto?: PaginationParamsDto) {
     if (paginationParamsDto) {
@@ -25,6 +26,7 @@ export class PaginationParamsDto {
       this.min_price = paginationParamsDto?.min_price;
       this.min_area = paginationParamsDto?.min_area;
       this.max_area = paginationParamsDto?.max_area;
+      this.sorting = paginationParamsDto?.sorting;
     }
   }
 }

@@ -105,6 +105,28 @@
   </div>
 </div>
 
+<div class="mb-5 w-1/5">
+  <div class="mb-2 mr-2">
+    Сортировать
+    <i nz-icon nzType="sort-descending" nzTheme="outline"></i>
+  </div>
+  <nz-select
+    nzAllowClear
+    nzPlaceHolder="По умолчанию"
+    [nzDropdownMatchSelectWidth]="false"
+    [(ngModel)]="this.paginationParamsDto.sorting"
+    (ngModelChange)="onSortChange()"
+  >
+    <ng-container *ngFor="let option of sortOptions">
+      <nz-option
+        [nzValue]="option.value"
+        [nzLabel]="option.label"
+      >
+      </nz-option>
+    </ng-container>
+  </nz-select>
+</div>
+
 <div class="grid grid-cols-2 gap-4 mb-5">
   <ng-container
     *ngFor="let listing of result?.results">

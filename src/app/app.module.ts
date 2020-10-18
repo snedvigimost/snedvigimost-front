@@ -21,11 +21,14 @@ import {LottieModule} from 'ngx-lottie';
 import player from 'lottie-web';
 
 import {NzCascaderModule} from 'ng-zorro-antd/cascader';
-import { NzRadioModule } from 'ng-zorro-antd/radio';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzSliderModule } from 'ng-zorro-antd/slider';
-import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import {NzRadioModule} from 'ng-zorro-antd/radio';
+import {NzIconModule} from 'ng-zorro-antd/icon';
+import {NzSelectModule} from 'ng-zorro-antd/select';
+import {IconDefinition} from '@ant-design/icons-angular';
+import {SortDescendingOutline} from '@ant-design/icons-angular/icons';
+import {NzSliderModule} from 'ng-zorro-antd/slider';
+import {NzPaginationModule} from 'ng-zorro-antd/pagination';
+import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
 import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -44,7 +47,7 @@ import {LoaderComponent} from './components/loader/loader.component';
 import {SpinnerComponent} from './components/spinner/spinner.component';
 import {CascaderFilterComponent} from './components/cascader-filter/cascader-filter.component';
 import {GalleryModule} from '@ngx-gallery/core';
-import { LightboxModule } from '@ngx-gallery/lightbox';
+import {LightboxModule} from '@ngx-gallery/lightbox';
 import {GallerizeModule} from '@ngx-gallery/gallerize';
 
 registerLocaleData(ru);
@@ -54,6 +57,9 @@ registerLocaleData(ru);
 export function playerFactory() {
   return player;
 }
+
+
+const icons: IconDefinition[] = [SortDescendingOutline];
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -87,6 +93,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatDialogModule,
     MatButtonModule,
     NzSelectModule,
+    NzIconModule.forRoot(icons),
     NzSliderModule,
     GalleryModule,
     LightboxModule,
