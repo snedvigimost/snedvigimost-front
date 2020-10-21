@@ -49,6 +49,7 @@ import {CascaderFilterComponent} from './components/cascader-filter/cascader-fil
 import {GalleryModule} from '@ngx-gallery/core';
 import {LightboxModule} from '@ngx-gallery/lightbox';
 import {GallerizeModule} from '@ngx-gallery/gallerize';
+import {CreateFormComponent} from './components/create-form/create-form.component';
 
 registerLocaleData(ru);
 
@@ -80,7 +81,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     CascaderFilterComponent,
     DialogComponent,
     LoaderComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    CreateFormComponent
   ],
   imports: [
     FormsModule,

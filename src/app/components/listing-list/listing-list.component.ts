@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MatButtonToggleChange} from '@angular/material/button-toggle';
 
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {convert} from 'cashify';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 
 import {RateService} from '../../rest/rates/rate.service';
 import {ListingsService} from '../../rest/listings/listings.service';
@@ -14,6 +14,10 @@ import {PaginationParamsDto} from '../../rest/pagination/pagination.params.dto';
 
 import {CurrencyEnum} from '../../rest/rates/currency.enum';
 import {Rate} from '../../rest/rates/rate';
+import {StreetsService} from '../../rest/streets/streets.service';
+import {DistrictsService} from '../../rest/districts/districts.service';
+import {DistrictDto} from '../../rest/districts/district.dto';
+import {sortOptions} from './sotring';
 
 @Component({
   selector: 'app-listing-list',
@@ -24,6 +28,7 @@ export class ListingListComponent implements OnInit {
   result: PaginationDto<ListingsDto>;
   paginationParamsDto = new PaginationParamsDto();
   currencyEnum = CurrencyEnum;
+  sortOptions = sortOptions;
 
   defaultPrices: Record<CurrencyEnum, [number, number]> = {
     UAH: [0, 0],
@@ -38,34 +43,6 @@ export class ListingListComponent implements OnInit {
   };
 
   // TODO: create separate component for filters
-
-  sortOptions = [
-    {
-      value: 'total_area',
-      label: 'По площади, сначала малые'
-    },
-    {
-      value: '-total_area',
-      label: 'По площади, сначала большие'
-    },
-    {
-      value: 'price',
-      label: 'По цене, сначала дешевые'
-    },
-    {
-      value: '-price',
-      label: 'По цене, сначала дорогие'
-    },
-    {
-      value: 'publication_date',
-      label: 'По дате добавления, сначала старые'
-    },
-    {
-      value: '-publication_date',
-      label: 'По дате добавления, сначала новые'
-    },
-  ];
-
   priceRange = this.defaultPrices.USD;
 
   selectedCurrency = this.currencyEnum.USD;
@@ -78,9 +55,21 @@ export class ListingListComponent implements OnInit {
   areaRange: [number, number] = [0, 100];
   selectedAreaChanged = new Subject<[number, number]>();
 
+
+  searchChange$ = new BehaviorSubject('');
+  districtList: DistrictDto[] = [];
+  districtIsLoading = false;
+
+  onDistrictSearch(value: string): void {
+    this.districtIsLoading = true;
+    this.searchChange$.next(value);
+  }
+
   constructor(
+    private rateService: RateService,
+    private streetsService: StreetsService,
     private listingsService: ListingsService,
-    private rateService: RateService
+    private districtsService: DistrictsService,
   ) {
     this.paginationParamsDto.is_published = true;
     this.selectedPriceChanged.pipe(
@@ -113,6 +102,19 @@ export class ListingListComponent implements OnInit {
       this.defaultPrices.EUR = [this.defaultPrices.UAH[0] / this.rates.EUR, this.defaultPrices.UAH[1] / this.rates.EUR];
 
       this.rates.EUR = Number((this.rates.UAH / this.rates.EUR).toFixed(2));
+    });
+
+    const getDistrictList = (name: string) =>
+      this.districtsService.getDistricts()
+        .pipe(map((res: PaginationDto<DistrictDto>) => res.results));
+
+    const optionList$: Observable<DistrictDto[]> = this.searchChange$
+      .asObservable()
+      .pipe(debounceTime(500))
+      .pipe(switchMap(getDistrictList));
+    optionList$.subscribe(data => {
+      this.districtList = data;
+      this.districtIsLoading = false;
     });
   }
 
@@ -187,6 +189,10 @@ export class ListingListComponent implements OnInit {
   }
 
   onSortChange() {
+    this.getListings();
+  }
+
+  onDistrictChange() {
     this.getListings();
   }
 }

@@ -15,6 +15,7 @@ export class PaginationParamsDto {
   // tslint:disable-next-line:variable-name
   max_area = 100;
   sorting = '';
+  district = '';
 
   constructor(paginationParamsDto?: PaginationParamsDto) {
     if (paginationParamsDto) {
@@ -27,6 +28,7 @@ export class PaginationParamsDto {
       this.min_area = paginationParamsDto?.min_area;
       this.max_area = paginationParamsDto?.max_area;
       this.sorting = paginationParamsDto?.sorting;
+      this.district = paginationParamsDto?.district;
     }
   }
 }

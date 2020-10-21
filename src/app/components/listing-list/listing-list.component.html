@@ -15,116 +15,141 @@
 
 </div>
 
-<div class="mb-5 w-1/5">
-  <div class="flex justify-between">
-    <div class="mr-2">
-      Цена
+<div class="flex">
+  <div class="mb-5 w-1/5 mr-5">
+    <div class="currency-control flex justify-between">
+      <div class="mr-2">
+        Цена
+      </div>
+      <nz-radio-group [ngModel]="selectedCurrency" (ngModelChange)="onCurrencyChange($event)">
+        <label nz-radio [nzValue]="currencyEnum.UAH">₴</label>
+        <label nz-radio [nzValue]="currencyEnum.USD">$</label>
+        <label nz-radio [nzValue]="currencyEnum.EUR">€</label>
+      </nz-radio-group>
     </div>
-    <nz-radio-group [ngModel]="selectedCurrency" (ngModelChange)="onCurrencyChange($event)">
-      <label nz-radio [nzValue]="currencyEnum.UAH">₴</label>
-      <label nz-radio [nzValue]="currencyEnum.USD">$</label>
-      <label nz-radio [nzValue]="currencyEnum.EUR">€</label>
-    </nz-radio-group>
+
+    <div>
+      <nz-slider
+        nzRange
+        [nzMin]="priceRange[0]"
+        [nzMax]="priceRange[1]"
+        (ngModelChange)="onPriceChange($event)"
+        [ngModel]="selectedPrice"
+      >
+      </nz-slider>
+    </div>
+
+    <div class="flex justify-between">
+      <div>
+        <nz-input-number
+          class="mr-2"
+          nzPlaceHolder="Min Price"
+          [nzMin]="priceRange[0]"
+          [(ngModel)]="selectedPrice[0]"
+          (ngModelChange)="onPriceInputChange()"
+        >
+        </nz-input-number>
+      </div>
+      <div class="mr-2 self-center">
+        —
+      </div>
+      <div>
+        <nz-input-number
+          nzPlaceHolder="Max Price"
+          [nzMax]="priceRange[1]"
+          [(ngModel)]="selectedPrice[1]"
+          (ngModelChange)="onPriceInputChange()"
+        >
+        </nz-input-number>
+      </div>
+    </div>
   </div>
 
-  <div>
+  <div class="mb-5 w-1/5 mr-5">
+    <div class="flex justify-between">
+      Площадь, м²
+    </div>
+
     <nz-slider
       nzRange
-      [nzMin]="priceRange[0]"
-      [nzMax]="priceRange[1]"
-      (ngModelChange)="onPriceChange($event)"
-      [ngModel]="selectedPrice"
+      [nzMin]="areaRange[0]"
+      [nzMax]="areaRange[1]"
+      (ngModelChange)="onAreaChange($event)"
+      [ngModel]="selectedArea"
     >
     </nz-slider>
-  </div>
 
-  <div class="flex justify-between">
-    <div>
-      <nz-input-number
-        class="mr-2"
-        nzPlaceHolder="Min Price"
-        [nzMin]="priceRange[0]"
-        [(ngModel)]="selectedPrice[0]"
-        (ngModelChange)="onPriceInputChange()"
-      >
-      </nz-input-number>
-    </div>
-    <div class="mr-2 self-center">
-      —
-    </div>
-    <div>
-      <nz-input-number
-        nzPlaceHolder="Max Price"
-        [nzMax]="priceRange[1]"
-        [(ngModel)]="selectedPrice[1]"
-        (ngModelChange)="onPriceInputChange()"
-      >
-      </nz-input-number>
-    </div>
-  </div>
-</div>
-
-
-<div class="mb-5 w-1/5">
-  <div class="flex justify-between">
-    Площадь, м²
-  </div>
-
-  <nz-slider
-    nzRange
-    [nzMin]="areaRange[0]"
-    [nzMax]="areaRange[1]"
-    (ngModelChange)="onAreaChange($event)"
-    [ngModel]="selectedArea"
-  >
-  </nz-slider>
-
-  <div class="flex justify-between">
-    <div>
-      <nz-input-number
-        class="mr-2"
-        nzPlaceHolder="Min Price"
-        [nzMin]="areaRange[0]"
-        [(ngModel)]="selectedArea[0]"
-        (ngModelChange)="onAreaInputChange()"
-      >
-      </nz-input-number>
-    </div>
-    <div class="mr-2 self-center">
-      —
-    </div>
-    <div>
-      <nz-input-number
-        nzPlaceHolder="Max Price"
-        [nzMax]="areaRange[1]"
-        [(ngModel)]="selectedArea[1]"
-        (ngModelChange)="onAreaInputChange()"
-      >
-      </nz-input-number>
+    <div class="flex justify-between">
+      <div>
+        <nz-input-number
+          class="mr-2"
+          nzPlaceHolder="Min Price"
+          [nzMin]="areaRange[0]"
+          [(ngModel)]="selectedArea[0]"
+          (ngModelChange)="onAreaInputChange()"
+        >
+        </nz-input-number>
+      </div>
+      <div class="mr-2 self-center">
+        —
+      </div>
+      <div>
+        <nz-input-number
+          nzPlaceHolder="Max Price"
+          [nzMax]="areaRange[1]"
+          [(ngModel)]="selectedArea[1]"
+          (ngModelChange)="onAreaInputChange()"
+        >
+        </nz-input-number>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="mb-5 w-1/5">
-  <div class="mb-2 mr-2">
-    Сортировать
-    <i nz-icon nzType="sort-descending" nzTheme="outline"></i>
+  <div class="mb-5 w-1/5 mr-5">
+    <div class="mb-2 mr-2">
+      Сортировать
+      <i nz-icon nzType="sort-descending" nzTheme="outline"></i>
+    </div>
+    <nz-select
+      nzAllowClear
+      nzPlaceHolder="По умолчанию"
+      [nzDropdownMatchSelectWidth]="false"
+      [(ngModel)]="this.paginationParamsDto.sorting"
+      (ngModelChange)="onSortChange()"
+    >
+      <ng-container *ngFor="let option of sortOptions">
+        <nz-option
+          [nzValue]="option.value"
+          [nzLabel]="option.label"
+        >
+        </nz-option>
+      </ng-container>
+    </nz-select>
   </div>
-  <nz-select
-    nzAllowClear
-    nzPlaceHolder="По умолчанию"
-    [nzDropdownMatchSelectWidth]="false"
-    [(ngModel)]="this.paginationParamsDto.sorting"
-    (ngModelChange)="onSortChange()"
-  >
-    <ng-container *ngFor="let option of sortOptions">
-      <nz-option
-        [nzValue]="option.value"
-        [nzLabel]="option.label"
-      >
+
+  <div class="mb-5 w-1/5 mr-5">
+    <div class="mb-2">
+      Район
+    </div>
+
+    <nz-select
+      nzPlaceHolder="Выберите район"
+      nzAllowClear
+      nzShowSearch
+      nzServerSearch
+      [nzDropdownMatchSelectWidth]="false"
+      [(ngModel)]="paginationParamsDto.district"
+      (nzOnSearch)="onDistrictSearch($event)"
+      (ngModelChange)="onDistrictChange()"
+    >
+      <ng-container *ngFor="let district of districtList">
+        <nz-option *ngIf="!districtIsLoading" [nzValue]="district.id" [nzLabel]="district.name"></nz-option>
+      </ng-container>
+      <nz-option *ngIf="districtIsLoading" nzDisabled nzCustomContent>
+        <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
       </nz-option>
-    </ng-container>
-  </nz-select>
+    </nz-select>
+  </div>
 </div>
 
 <div class="grid grid-cols-2 gap-4 mb-5">
@@ -142,3 +167,8 @@
   (nzPageIndexChange)="onPageChange($event)"
 >
 </nz-pagination>
+
+
+<button mat-fab class="add-item" color="primary" routerLink="/new">
+  <mat-icon class="icon">add</mat-icon>
+</button>
