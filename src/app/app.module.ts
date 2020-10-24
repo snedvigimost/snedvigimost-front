@@ -53,6 +53,7 @@ import {GalleryModule} from '@ngx-gallery/core';
 import {LightboxModule} from '@ngx-gallery/lightbox';
 import {GallerizeModule} from '@ngx-gallery/gallerize';
 import {CreateFormComponent} from './components/create-form/create-form.component';
+import { ListingItemComponent } from './components/listing-item/listing-item.component';
 
 registerLocaleData(ru);
 
@@ -85,7 +86,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     DialogComponent,
     LoaderComponent,
     SpinnerComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    ListingItemComponent
   ],
   imports: [
     FormsModule,

@@ -5,6 +5,7 @@ import {AboutComponent} from './components/about/about.component';
 import {DatabaseComponent} from './components/database/database.component';
 import {ListingListComponent} from './components/listing-list/listing-list.component';
 import {CreateFormComponent} from './components/create-form/create-form.component';
+import {ListingItemComponent} from './components/listing-item/listing-item.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'database', component: DatabaseComponent},
   {path: 'new', component: CreateFormComponent},
+  {path: 'listing/:id', component: ListingItemComponent},
 ];
 
 @NgModule({
