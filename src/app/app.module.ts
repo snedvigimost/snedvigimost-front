@@ -10,6 +10,7 @@ import {GoogleMapsModule} from '@angular/google-maps';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import {SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
@@ -27,6 +28,8 @@ import {NzSelectModule} from 'ng-zorro-antd/select';
 import {IconDefinition} from '@ant-design/icons-angular';
 import {SortDescendingOutline} from '@ant-design/icons-angular/icons';
 import {NzSliderModule} from 'ng-zorro-antd/slider';
+import {NzInputModule} from 'ng-zorro-antd/input';
+import {NzButtonModule} from 'ng-zorro-antd/button';
 import {NzPaginationModule} from 'ng-zorro-antd/pagination';
 import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
 import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
@@ -100,10 +103,13 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     GalleryModule,
     LightboxModule,
     NzRadioModule,
+    NzButtonModule,
+    NzInputModule,
     GallerizeModule,
     AppRoutingModule,
     NzCascaderModule,
     GoogleMapsModule,
+    MatInputModule,
     HttpClientModule,
     NzPaginationModule,
     NzInputNumberModule,

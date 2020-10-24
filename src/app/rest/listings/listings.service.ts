@@ -20,6 +20,10 @@ export class ListingsService {
     return this.http.getAllWithPagination<ListingsDto>(`${this.apiUrl}/listings/`, params, ListingsDto);
   }
 
+  create(params): Observable<ListingsDto> {
+     return this.http.create<ListingsDto>(`${this.apiUrl}/listings/`, params);
+  }
+
   publish(id): Observable<ListingsDto> {
     return this.http.patch<ListingsDto>(`${this.apiUrl}/listings/${id}/`, {
       isPublished: true

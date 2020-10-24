@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { StreetDto } from './streets.dto';
+import { MicroDistrictDto } from './district.dto';
 import { HttpService } from '../http.service';
 import { PaginationDto } from '../pagination/pagination.dto';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StreetsService {
+export class MicroDistrictsService {
   apiUrl = 'http://127.0.0.1:4222/api/v1';
 
   constructor(private http: HttpService) { }
 
-  getStreets(params?: {name?: string, district?: number}): Observable<PaginationDto<StreetDto>> {
-    return this.http.getAllWithPagination<StreetDto>(`${this.apiUrl}/streets/`, params, StreetDto);
+  getMicroDistricts(params?: {name: string}): Observable<PaginationDto<MicroDistrictDto>> {
+    return this.http.getAllWithPagination<MicroDistrictDto>(`${this.apiUrl}/districts/`, params, MicroDistrictDto);
   }
 
 }
