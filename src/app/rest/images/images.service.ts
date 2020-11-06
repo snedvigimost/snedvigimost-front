@@ -3,17 +3,17 @@ import { Observable } from 'rxjs';
 
 import { HttpService } from '../http.service';
 import {ImagesDto} from './images.dto';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImagesService {
-  apiUrl = 'http://127.0.0.1:4222/api/v1';
 
   constructor(private http: HttpService) { }
 
   uploadImage(data): Observable<ImagesDto> {
-    return this.http.create<ImagesDto>(`${this.apiUrl}/images`, data);
+    return this.http.create<ImagesDto>(`${environment.apiUrl}/images`, data);
   }
 
 }

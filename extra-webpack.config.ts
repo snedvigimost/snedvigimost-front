@@ -14,7 +14,7 @@
 
 import * as webpack from 'webpack';
 import * as path from 'path';
-import {AntdScssThemePlugin} from '@inventium/antd-scss-theme-plugin/build/dist/lib';
+import * as AntdScssThemePlugin from '@inventium/antd-scss-theme-plugin/build/dist/lib';
 
 
 // why it doesn't works
