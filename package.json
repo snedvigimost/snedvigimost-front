@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4888 & ngtw watch",
-    "staging": "ng serve --port 4888 --configuration=production & ngtw watch",
-    "build": "ngtw build && ng build --configuration=production",
+    "start": "ng serve --port 4888",
+    "staging": "ng serve --port 4888 --configuration=production",
+    "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prestart": "ngtw build",
     "postinstall": "ngcc"
   },
   "private": true,
@@ -35,7 +34,6 @@
     "class-transformer": "^0.2.3",
     "dinero.js": "^1.8.1",
     "lottie-web": "^5.7.3",
-    "ng-tailwindcss": "^2.3.1",
     "ng-zorro-antd": "^10.0.1",
     "ngx-lottie": "^6.4.0",
     "ngx-pagination": "^5.0.0",
@@ -69,7 +67,6 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "swiper": "^6.3.3",
-    "tailwindcss": "^1.4.6",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.3"
