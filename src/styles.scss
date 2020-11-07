@@ -1,19 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@import "~uppy/dist/uppy.css";
+@import "uppy/dist/uppy.css";
 
-@import "~ng-zorro-antd/src/ng-zorro-antd.css";
-@import "~ng-zorro-antd/resizable/style/index.min.css";
-@import "~spinkit/spinkit.min.css";
+@import "ng-zorro-antd/src/ng-zorro-antd.css";
+@import "ng-zorro-antd/resizable/style/index.min.css";
 
-@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
-@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+@import "spinkit/spinkit.min.css";
 
-@import "ant";
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
 
-.ag-theme-alpine {
-  @include ag-theme-alpine();
-}
+@import "./ant";
 
 html, body {
   height: 100%;

@@ -1,8 +1,6 @@
 version: '3.7'
-
 services:
-
-  example-prod:
+  snedvigimost-prod:
     container_name: snedvigimost-front
     build:
       context: .
