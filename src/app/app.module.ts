@@ -11,6 +11,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import {SwiperConfigInterface, SwiperModule, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
@@ -54,6 +56,7 @@ import {LightboxModule} from '@ngx-gallery/lightbox';
 import {GallerizeModule} from '@ngx-gallery/gallerize';
 import {CreateFormComponent} from './components/create-form/create-form.component';
 import { ListingItemComponent } from './components/listing-item/listing-item.component';
+import { WebSpeechComponentComponent } from './components/web-speech-component/web-speech-component.component';
 
 registerLocaleData(ru);
 
@@ -87,7 +90,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     LoaderComponent,
     SpinnerComponent,
     CreateFormComponent,
-    ListingItemComponent
+    ListingItemComponent,
+    WebSpeechComponentComponent
   ],
   imports: [
     FormsModule,
@@ -118,7 +122,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NgxPaginationModule,
     MatButtonToggleModule,
     BrowserAnimationsModule,
-    LottieModule.forRoot({player: playerFactory})
+    LottieModule.forRoot({player: playerFactory}),
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [
     HttpService,

@@ -19,6 +19,10 @@ import {DistrictsService} from '../../rest/districts/districts.service';
 import {DistrictDto} from '../../rest/districts/district.dto';
 import {sortOptions} from './sotring';
 
+
+declare let annyang: any;
+declare let SpeechKITT: any;
+
 @Component({
   selector: 'app-listing-list',
   templateUrl: './listing-list.component.html',
@@ -59,6 +63,8 @@ export class ListingListComponent implements OnInit {
   searchChange$ = new BehaviorSubject('');
   districtList: DistrictDto[] = [];
   districtIsLoading = false;
+
+  message = '';
 
   onDistrictSearch(value: string): void {
     this.districtIsLoading = true;
