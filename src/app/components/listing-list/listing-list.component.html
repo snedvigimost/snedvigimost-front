@@ -4,7 +4,13 @@
   </div>
   <div class="">
     <label class="mr-3">Количество комнат</label>
-    <mat-button-toggle-group name="roomsCount" aria-label="Rooms Count" multiple (change)="onRoomCountChange($event)">
+    <mat-button-toggle-group
+      multiple
+      name="roomsCount"
+      aria-label="Rooms Count"
+      [(ngModel)]="selectedRoomCount"
+      (change)="onRoomCountChange($event.value)"
+    >
       <mat-button-toggle value="1">1</mat-button-toggle>
       <mat-button-toggle value="2">2</mat-button-toggle>
       <mat-button-toggle value="3">3</mat-button-toggle>
@@ -15,7 +21,9 @@
 
 </div>
 
-<app-web-speech-component></app-web-speech-component>
+<div class="mb-5">
+  <app-web-speech-component (finalContent)="onFinalContent($event)"></app-web-speech-component>
+</div>
 
 <div class="flex">
   <div class="mb-5 w-1/5 mr-5">
@@ -134,23 +142,41 @@
       Район
     </div>
 
+<!--    <nz-select-->
+<!--      nzPlaceHolder="Выберите район"-->
+<!--      nzAllowClear-->
+<!--      nzShowSearch-->
+<!--      nzServerSearch-->
+<!--      [nzDropdownMatchSelectWidth]="false"-->
+<!--      [(ngModel)]="paginationParamsDto.district"-->
+<!--      (nzOnSearch)="onDistrictSearch($event)"-->
+<!--      (ngModelChange)="onDistrictChange()"-->
+<!--    >-->
+<!--      <ng-container *ngFor="let district of districtList">-->
+<!--        <nz-option *ngIf="!districtIsLoading" [nzValue]="district.id" [nzLabel]="district.name"></nz-option>-->
+<!--      </ng-container>-->
+<!--      <nz-option *ngIf="districtIsLoading" nzDisabled nzCustomContent>-->
+<!--        <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...-->
+<!--      </nz-option>-->
+<!--    </nz-select>-->
+
+
     <nz-select
-      nzPlaceHolder="Выберите район"
       nzAllowClear
-      nzShowSearch
-      nzServerSearch
+      nzPlaceHolder="По умолчанию"
       [nzDropdownMatchSelectWidth]="false"
       [(ngModel)]="paginationParamsDto.district"
-      (nzOnSearch)="onDistrictSearch($event)"
-      (ngModelChange)="onDistrictChange()"
+      (ngModelChange)="onDistrictChange($event)"
     >
       <ng-container *ngFor="let district of districtList">
-        <nz-option *ngIf="!districtIsLoading" [nzValue]="district.id" [nzLabel]="district.name"></nz-option>
+        <nz-option
+          [nzValue]="district.id"
+          [nzLabel]="district.name"
+        >
+        </nz-option>
       </ng-container>
-      <nz-option *ngIf="districtIsLoading" nzDisabled nzCustomContent>
-        <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
-      </nz-option>
     </nz-select>
+
   </div>
 </div>
 

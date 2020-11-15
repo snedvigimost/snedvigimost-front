@@ -1,49 +1,56 @@
-import {Component, OnInit} from '@angular/core';
-import {merge, Observable, Subject} from 'rxjs';
-import {SpeechRecognizerService} from '../../rest/STT/speech-recognizer.service';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {merge, Observable, of, Subject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {SpeechEvent} from '../../rest/STT/enum/speech-event';
+import {defaultLanguage, languages} from '../../rest/STT/languages';
 import {SpeechError} from '../../rest/STT/enum/speech-error';
+import {SpeechEvent} from '../../rest/STT/enum/speech-event';
+import {SpeechRecognizerService} from '../../rest/STT/speech-recognizer.service';
+// import {ActionContext} from '../shared/services/actions/action-context';
+import {SpeechNotification} from '../../rest/STT/enum/speech-notification';
 
 @Component({
   selector: 'app-web-speech-component',
   templateUrl: './web-speech-component.component.html',
-  styleUrls: ['./web-speech-component.component.scss']
+  styleUrls: ['./web-speech-component.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WebSpeechComponentComponent implements OnInit {
-  languages = ['en-US', 'es-ES'];
-  defaultLanguage = this.languages[0];
-  currentLanguage: string = this.defaultLanguage; // Set the default language
-  totalTranscript: string; // The variable to accumulate all the recognized texts
+  languages: string[] = languages;
+  currentLanguage: string = defaultLanguage;
+  totalTranscript?: string;
+  @Output() finalContent = new EventEmitter<string>();
 
-  transcript$: Observable<string>; // Shows the transcript in "real-time"
-  listening$: Observable<boolean>; // Changes to 'true'/'false' when the recognizer starts/stops
-  errorMessage$: Observable<string>; // An error from the Speech Recognizer
-  defaultError$ = new Subject<undefined>(); // Clean-up of the previous errors
+  transcript$?: Observable<string>;
+  listening$?: Observable<boolean>;
+  errorMessage$?: Observable<string>;
+  defaultError$ = new Subject<string | undefined>();
 
-  constructor(private speechRecognizer: SpeechRecognizerService) {
+  constructor(
+    private speechRecognizer: SpeechRecognizerService,
+    // private actionContext: ActionContext
+  ) {
   }
 
   ngOnInit(): void {
-    // Initialize the speech recognizer with the default language
-    this.speechRecognizer.initialize(this.currentLanguage);
-    // Prepare observables to "catch" events, results and errors.
-    this.initRecognition();
+    const webSpeechReady = this.speechRecognizer.initialize(this.currentLanguage);
+    if (webSpeechReady) {
+      this.initRecognition();
+    } else {
+      this.errorMessage$ = of('Your Browser is not supported. Please try Google Chrome.');
+    }
   }
 
   start(): void {
     if (this.speechRecognizer.isListening) {
       this.stop();
-      console.log('stop');
       return;
     }
-    console.log('start');
+
     this.defaultError$.next(undefined);
     this.speechRecognizer.start();
   }
 
   stop(): void {
-    console.log('stop');
     this.speechRecognizer.stop();
   }
 
@@ -56,30 +63,18 @@ export class WebSpeechComponentComponent implements OnInit {
   }
 
   private initRecognition(): void {
-
-    // "transcript$" now will receive every text(interim result) from the Speech API.
-    // Also, for every "Final Result"(from the speech), the code will append that text to the existing Text Area component.
-    // @ts-ignore
     this.transcript$ = this.speechRecognizer.onResult().pipe(
       tap((notification) => {
-        if (notification.event === SpeechEvent.FinalContent) {
-          this.totalTranscript = this.totalTranscript
-            ? `${this.totalTranscript}\n${notification.content?.trim()}`
-            : notification.content;
-        }
+        this.processNotification(notification);
       }),
       map((notification) => notification.content || '')
     );
 
-    // "listening$" will receive 'true' when the Speech API starts and 'false' when it's finished.
     this.listening$ = merge(
       this.speechRecognizer.onStart(),
       this.speechRecognizer.onEnd()
-    ).pipe(
-      map((notification) => notification.event === SpeechEvent.Start)
-    );
+    ).pipe(map((notification) => notification.event === SpeechEvent.Start));
 
-    // "errorMessage$" will receive any error from Speech API and it will map that value to a meaningful message for the user
     this.errorMessage$ = merge(
       this.speechRecognizer.onError(),
       this.defaultError$
@@ -87,6 +82,9 @@ export class WebSpeechComponentComponent implements OnInit {
       map((data) => {
         if (data === undefined) {
           return '';
+        }
+        if (typeof data === 'string') {
+          return data;
         }
         let message;
         switch (data.error) {
@@ -108,6 +106,18 @@ export class WebSpeechComponentComponent implements OnInit {
         return message;
       })
     );
+  }
 
+  private processNotification(notification: SpeechNotification<string>): void {
+    if (notification.event === SpeechEvent.FinalContent) {
+      const message = notification.content?.trim() || '';
+      console.log(message);
+      this.finalContent.emit(message);
+      // this.actionContext.processMessage(message, this.currentLanguage);
+      // // this.actionContext.runAction(message, this.currentLanguage);
+      // this.totalTranscript = this.totalTranscript
+      //   ? `${this.totalTranscript}\n${message}`
+      //   : notification.content;
+    }
   }
 }

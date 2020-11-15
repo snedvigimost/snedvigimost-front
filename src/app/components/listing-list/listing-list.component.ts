@@ -18,10 +18,8 @@ import {StreetsService} from '../../rest/streets/streets.service';
 import {DistrictsService} from '../../rest/districts/districts.service';
 import {DistrictDto} from '../../rest/districts/district.dto';
 import {sortOptions} from './sotring';
+import {NlpSearchService} from '../../rest/nlp-search/nlp-search.service';
 
-
-declare let annyang: any;
-declare let SpeechKITT: any;
 
 @Component({
   selector: 'app-listing-list',
@@ -49,6 +47,7 @@ export class ListingListComponent implements OnInit {
   // TODO: create separate component for filters
   priceRange = this.defaultPrices.USD;
 
+  selectedRoomCount: string[];
   selectedCurrency = this.currencyEnum.USD;
   previousSelectedCurrency = this.currencyEnum.USD;
 
@@ -75,6 +74,7 @@ export class ListingListComponent implements OnInit {
     private rateService: RateService,
     private streetsService: StreetsService,
     private listingsService: ListingsService,
+    private nlpSearchService: NlpSearchService,
     private districtsService: DistrictsService,
   ) {
     this.paginationParamsDto.is_published = true;
@@ -145,8 +145,9 @@ export class ListingListComponent implements OnInit {
     this.getListings();
   }
 
-  onRoomCountChange($event: MatButtonToggleChange) {
-    this.paginationParamsDto.rooms_count = $event.value.join(',');
+  onRoomCountChange($event: string[]) {
+    this.selectedRoomCount = $event;
+    this.paginationParamsDto.rooms_count = $event.join(',');
     this.getListings();
   }
 
@@ -198,7 +199,21 @@ export class ListingListComponent implements OnInit {
     this.getListings();
   }
 
-  onDistrictChange() {
+  onDistrictChange($event?) {
+    this.getListings();
+  }
+
+  onFinalContent($event: string) {
+    console.log($event);
+    const result = this.nlpSearchService.matchSearchString($event, this.districtList);
+    console.log(result);
+    if (result.roomCount) {
+      this.selectedRoomCount = [String(result.roomCount)];
+      this.paginationParamsDto.rooms_count = [String(result.roomCount)].join(',');
+    }
+    if (result.districtID) {
+      this.paginationParamsDto.district = result.districtID;
+    }
     this.getListings();
   }
 }
