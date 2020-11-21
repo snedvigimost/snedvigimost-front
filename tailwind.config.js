@@ -8,5 +8,6 @@ module.exports = (isProd) => ({
       enabled: isProd,
       content: ['**/*.html', '**/*.ts']
     },
-    theme: {}
+    theme: {},
+    important: true,
 });

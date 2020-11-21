@@ -22,6 +22,7 @@ export class ListingsDto {
   type: HouseTypeDto;
   url: string;
   source: string;
+  location: any;
 
   constructor(data: ListingsDto) {
     this.id = data.id;
@@ -44,6 +45,7 @@ export class ListingsDto {
     this.floor = data.floor;
     this.floorInHouse = data.floorInHouse;
     this.type = new HouseTypeDto(data.type);
+    this.location = data.location;
   }
 
 }

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MatButtonToggleChange} from '@angular/material/button-toggle';
 
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {convert} from 'cashify';
@@ -19,7 +18,7 @@ import {DistrictsService} from '../../rest/districts/districts.service';
 import {DistrictDto} from '../../rest/districts/district.dto';
 import {sortOptions} from './sotring';
 import {NlpSearchService} from '../../rest/nlp-search/nlp-search.service';
-
+import plural from 'plural-ru';
 
 @Component({
   selector: 'app-listing-list',
@@ -31,6 +30,7 @@ export class ListingListComponent implements OnInit {
   paginationParamsDto = new PaginationParamsDto();
   currencyEnum = CurrencyEnum;
   sortOptions = sortOptions;
+  plural = plural;
 
   defaultPrices: Record<CurrencyEnum, [number, number]> = {
     UAH: [0, 0],
@@ -62,8 +62,11 @@ export class ListingListComponent implements OnInit {
   searchChange$ = new BehaviorSubject('');
   districtList: DistrictDto[] = [];
   districtIsLoading = false;
+  markerPositions: google.maps.LatLngLiteral[] = [];
 
   message = '';
+  markers: { lng: any; lat: any }[];
+  loading = false;
 
   onDistrictSearch(value: string): void {
     this.districtIsLoading = true;
@@ -125,6 +128,7 @@ export class ListingListComponent implements OnInit {
   }
 
   getListings() {
+    this.loading = true;
     const convertConfig = {
       from: this.selectedCurrency,
       to: this.currencyEnum.USD,
@@ -137,7 +141,13 @@ export class ListingListComponent implements OnInit {
     this.paginationParamsDto.min_area = this.selectedArea[0];
     this.paginationParamsDto.max_area = this.selectedArea[1];
 
-    this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => this.result = listings);
+    this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => {
+      this.result = listings;
+      // this.markers = listings.results.map(listing => {
+      //   return {lng: listing.location.coordinates[0], lat: listing.location.coordinates[1]};
+      // });
+      this.loading = false;
+    });
   }
 
   onPageChange($event: number) {
@@ -214,6 +224,16 @@ export class ListingListComponent implements OnInit {
     if (result.districtID) {
       this.paginationParamsDto.district = result.districtID;
     }
+    this.getListings();
+  }
+
+  onBoundsChange($event: google.maps.LatLngBounds) {
+    const west = $event.getSouthWest().toJSON();
+    const east = $event.getNorthEast().toJSON();
+    this.paginationParamsDto.in_bbox = [
+      west.lng, west.lat,
+      east.lng, east.lat,
+    ].join(',');
     this.getListings();
   }
 }

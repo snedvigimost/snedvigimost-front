@@ -1,6 +1,6 @@
 export class PaginationParamsDto {
   // tslint:disable-next-line:variable-name
-  page_size = 4;
+  page_size = 50;
   page = 1;
   // tslint:disable-next-line:variable-name
   is_published: boolean;
@@ -16,6 +16,8 @@ export class PaginationParamsDto {
   max_area = 100;
   sorting = '';
   district = '';
+  // tslint:disable-next-line:variable-name
+  in_bbox = '30.407,50.400,30.665,50.488';
 
   constructor(paginationParamsDto?: PaginationParamsDto) {
     if (paginationParamsDto) {
@@ -29,6 +31,7 @@ export class PaginationParamsDto {
       this.max_area = paginationParamsDto?.max_area;
       this.sorting = paginationParamsDto?.sorting;
       this.district = paginationParamsDto?.district;
+      this.in_bbox = paginationParamsDto?.in_bbox;
     }
   }
 }

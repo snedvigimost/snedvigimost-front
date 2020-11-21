@@ -1,0 +1,21 @@
+<google-map
+  width="50vw"
+  height="92vh"
+  [center]="center"
+  [zoom]="12"
+  (zoomChanged)="onZoomChanged()"
+  (mapMousemove)="move($event)"
+  (boundsChanged)="onBoundsChanged($event)"
+  (mapRightclick)="removeLastMarker()"
+>
+  <map-marker
+    #marker
+    *ngFor="let markerPosition of markerPositions"
+    [position]="markerPosition"
+    [options]="markerOptions"
+    (mapClick)="openInfoWindow(marker)"
+  >
+  </map-marker>
+  <map-info-window>Info Window content</map-info-window>
+</google-map>
+

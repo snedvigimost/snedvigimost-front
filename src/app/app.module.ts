@@ -57,6 +57,13 @@ import {GallerizeModule} from '@ngx-gallery/gallerize';
 import {CreateFormComponent} from './components/create-form/create-form.component';
 import { ListingItemComponent } from './components/listing-item/listing-item.component';
 import { WebSpeechComponentComponent } from './components/web-speech-component/web-speech-component.component';
+import { HttpClientJsonpModule } from '@angular/common/http';
+import { ListingsMapComponent } from './components/listings-map/listings-map.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+// @ts-ignore
+import * as OverlayscrollbarsModule from 'overlayscrollbars-ngx';
+// let OverlayscrollbarsModule = require("overlayscrollbars-ngx");
 
 registerLocaleData(ru);
 
@@ -91,7 +98,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SpinnerComponent,
     CreateFormComponent,
     ListingItemComponent,
-    WebSpeechComponentComponent
+    WebSpeechComponentComponent,
+    ListingsMapComponent
   ],
   imports: [
     FormsModule,
@@ -110,6 +118,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     LightboxModule,
     NzRadioModule,
     NzButtonModule,
+    NzSpinModule,
     NzInputModule,
     GallerizeModule,
     AppRoutingModule,
@@ -117,10 +126,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     GoogleMapsModule,
     MatInputModule,
     HttpClientModule,
+    MatExpansionModule,
     NzPaginationModule,
     NzInputNumberModule,
     NgxPaginationModule,
     MatButtonToggleModule,
+    OverlayscrollbarsModule.OverlayscrollbarsModule,
     BrowserAnimationsModule,
     LottieModule.forRoot({player: playerFactory}),
     MatCardModule,
@@ -129,6 +140,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   providers: [
     HttpService,
     HttpClientModule,
+    HttpClientJsonpModule,
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG
