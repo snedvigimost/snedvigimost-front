@@ -1,11 +1,13 @@
-<ag-grid-angular
-  class="ag-theme-alpine listing-table"
-  [animateRows]="true"
-  [rowData]="listings"
-  [accentedSort]="true"
-  [columnDefs]="columnDefs"
-  [defaultColDef]="defaultColDef"
-  (firstDataRendered)="onFirstDataRendered($event)"
-  (rowDoubleClicked)="onRowDoubleClicked($event)"
->
-</ag-grid-angular>
+<div class="mx-6">
+  <ag-grid-angular
+    class="ag-theme-alpine listing-table"
+    [animateRows]="true"
+    [rowData]="listings"
+    [accentedSort]="true"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    (firstDataRendered)="onFirstDataRendered($event)"
+    (rowDoubleClicked)="onRowDoubleClicked($event)"
+  >
+  </ag-grid-angular>
+</div>

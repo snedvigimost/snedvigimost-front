@@ -23,7 +23,7 @@ export class CardComponent implements OnInit {
   }
 
   get price() {
-    return this.dinero({amount: this.listing.price, precision: 0}).setLocale('ru-RU').toFormat('$0,0');
+    return this.dinero({amount: this.listing.price, precision: 0}).setLocale('ru-RU').toFormat('0,0');
   }
 
 }

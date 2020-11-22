@@ -1,14 +1,23 @@
-<google-map height="400px"
-            width="750px"
-            [center]="center"
-            (mapMousemove)="move($event)"
-            (boundsChanged)="onBoundsChanged($event)"
-            (mapRightclick)="removeLastMarker()">
-  <map-marker #marker
-              *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"
-              (mapClick)="openInfoWindow(marker)"></map-marker>
-  <map-info-window>Info Window content</map-info-window>
-</google-map>
+<!--<google-map height="400px"-->
+<!--            width="750px"-->
+<!--            [center]="center"-->
+<!--            (mapMousemove)="move($event)"-->
+<!--            (boundsChanged)="onBoundsChanged($event)"-->
+<!--            (mapRightclick)="removeLastMarker()">-->
+<!--  <map-marker #marker-->
+<!--              *ngFor="let markerPosition of markerPositions"-->
+<!--              [position]="markerPosition"-->
+<!--              [options]="markerOptions"-->
+<!--              (mapClick)="openInfoWindow(marker)"></map-marker>-->
+<!--  <map-info-window>Info Window content</map-info-window>-->
+<!--</google-map>-->
+
+<div class="container px-4 mx-auto">
+  <div>
+    <app-chart></app-chart>
+  </div>
+  <div>
+    <app-box></app-box>
+  </div>
+</div>
 

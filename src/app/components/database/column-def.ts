@@ -12,7 +12,20 @@ export const columnDefs: ColDef[] = [
     headerName: 'Адрес',
     field: 'address',
     checkboxSelection: true,
-    minWidth: 350
+    minWidth: 200
+  },
+  {
+    headerName: 'Подпись',
+    field: 'title',
+    minWidth: 300
+  },
+  {
+    headerName: 'Район',
+    field: 'district.name'
+  },
+  {
+    headerName: 'Источник',
+    field: 'source'
   },
   {
     headerName: 'Тип',

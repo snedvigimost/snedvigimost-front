@@ -25,6 +25,8 @@
     "@angular/platform-browser": "~10.2.2",
     "@angular/platform-browser-dynamic": "~10.2.2",
     "@angular/router": "~10.2.2",
+    "@antv/g2": "^4.0.15",
+    "@antv/g2plot": "^2.2.11",
     "@ngneat/tailwind": "^1.0.8",
     "@ngx-gallery/core": "^5.0.0-beta.0",
     "@ngx-gallery/gallerize": "^5.0.0-beta.0",

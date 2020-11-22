@@ -29,7 +29,7 @@ export class DatabaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => {
+    this.listingsService.getListings({...this.paginationParamsDto, ...{expand: 'district'}}).subscribe(listings => {
       this.listings = listings.results;
     });
   }

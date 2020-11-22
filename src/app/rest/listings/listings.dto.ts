@@ -23,6 +23,7 @@ export class ListingsDto {
   url: string;
   source: string;
   location: any;
+  district: any;
 
   constructor(data: ListingsDto) {
     this.id = data.id;
@@ -46,6 +47,7 @@ export class ListingsDto {
     this.floorInHouse = data.floorInHouse;
     this.type = new HouseTypeDto(data.type);
     this.location = data.location;
+    this.district = data.district;
   }
 
 }
