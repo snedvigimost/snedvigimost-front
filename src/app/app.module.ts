@@ -63,8 +63,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 // @ts-ignore
 import * as OverlayscrollbarsModule from 'overlayscrollbars-ngx';
-import { ChartComponent } from './components/chart/chart.component';
-import { BoxComponent } from './components/box/box.component';
+import { ChartComponent } from './components/stat/chart/chart.component';
+import { BoxComponent } from './components/stat/box/box.component';
+import { PriceStatComponent } from './components/stat/price-stat/price-stat.component';
+import { StatComponent } from './page/stat/stat.component';
 // let OverlayscrollbarsModule = require("overlayscrollbars-ngx");
 
 registerLocaleData(ru);
@@ -103,7 +105,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     WebSpeechComponentComponent,
     ListingsMapComponent,
     ChartComponent,
-    BoxComponent
+    BoxComponent,
+    PriceStatComponent,
+    StatComponent
   ],
   imports: [
     FormsModule,

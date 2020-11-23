@@ -1,114 +1,117 @@
-<h2>Адрес обекта</h2>
+<div class="container py-5 w-8/12 px-10 mx-auto">
 
-<p>Район</p>
+  <h2>Адрес обекта</h2>
 
-<nz-select
-  nzShowSearch
-  nzAllowClear
-  nzPlaceHolder="Select a person"
-  [(ngModel)]="selectedDistrict"
-  (ngModelChange)="onDistrictChange()"
->
-  <ng-container *ngFor="let district of districts.results">
-    <nz-option
-      [nzLabel]="district.name"
-      [nzValue]="district.id"
-    >
-    </nz-option>
-  </ng-container>
-</nz-select>
+  <p>Район</p>
 
-<p>Микро район</p>
+  <nz-select
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select a person"
+    [(ngModel)]="selectedDistrict"
+    (ngModelChange)="onDistrictChange()"
+  >
+    <ng-container *ngFor="let district of districts.results">
+      <nz-option
+        [nzLabel]="district.name"
+        [nzValue]="district.id"
+      >
+      </nz-option>
+    </ng-container>
+  </nz-select>
 
-<nz-select
-  nzShowSearch
-  nzAllowClear
-  nzPlaceHolder="Select a person"
-  [(ngModel)]="selectedMicroDistrict"
->
-  <ng-container *ngFor="let microDistrict of microDistricts">
-    <nz-option
-      [nzLabel]="microDistrict.name"
-      [nzValue]="microDistrict.id"
-    >
-    </nz-option>
-  </ng-container>
-</nz-select>
+  <p>Микро район</p>
 
-
-<p>Улица</p>
-
-<nz-select
-  nzShowSearch
-  nzAllowClear
-  nzPlaceHolder="Select a person"
-  [(ngModel)]="selectedStreet"
->
-  <ng-container *ngFor="let street of streets.results">
-    <nz-option
-      [nzLabel]="street.name"
-      [nzValue]="street.id"
-    >
-    </nz-option>
-  </ng-container>
-</nz-select>
-
-<p>Дом</p>
-
-<input nz-input placeholder="Basic usage" [(ngModel)]="house"/>
+  <nz-select
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select a person"
+    [(ngModel)]="selectedMicroDistrict"
+  >
+    <ng-container *ngFor="let microDistrict of microDistricts">
+      <nz-option
+        [nzLabel]="microDistrict.name"
+        [nzValue]="microDistrict.id"
+      >
+      </nz-option>
+    </ng-container>
+  </nz-select>
 
 
-<p>Планировка</p>
+  <p>Улица</p>
 
-<nz-select
-  nzShowSearch
-  nzAllowClear
-  nzPlaceHolder="Select a person"
-  [(ngModel)]="selectedLayoutId"
->
-  <ng-container *ngFor="let layout of layouts.results">
-    <nz-option
-      [nzLabel]="layout.name"
-      [nzValue]="layout.id"
-    >
-    </nz-option>
-  </ng-container>
-</nz-select>
+  <nz-select
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select a person"
+    [(ngModel)]="selectedStreet"
+  >
+    <ng-container *ngFor="let street of streets.results">
+      <nz-option
+        [nzLabel]="street.name"
+        [nzValue]="street.id"
+      >
+      </nz-option>
+    </ng-container>
+  </nz-select>
 
+  <p>Дом</p>
 
-<h2>Інформація про об'єкт</h2>
-
-<p>Число кімнат</p>
-<nz-input-number [(ngModel)]="roomsCount" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
-
-<mat-form-field class="example-full-width" appearance="outline">
-  <mat-label>Favorite food</mat-label>
-  <input matInput [(ngModel)]="roomsCount" placeholder="Ex. Pizza" value="Sushi">
-</mat-form-field>
+  <input nz-input placeholder="Basic usage" [(ngModel)]="house"/>
 
 
-<p>Поверх</p>
-<nz-input-number [(ngModel)]="floor" [nzMin]="1" [nzMax]="50" [nzStep]="1"></nz-input-number>
+  <p>Планировка</p>
 
-<p>Поверховість</p>
-<nz-input-number [(ngModel)]="floorInHouse" [nzMin]="1" [nzMax]="50" [nzStep]="1"></nz-input-number>
-
-
-<p>Загальна площа</p>
-<nz-input-number [(ngModel)]="totalArea" [nzMin]="1" [nzStep]="1"></nz-input-number>
-
-<p>Житлова площа</p>
-<nz-input-number [(ngModel)]="livingArea" [nzMin]="1" [nzStep]="1"></nz-input-number>
-
-<p>Площа кухні</p>
-<nz-input-number [(ngModel)]="kitchenArea" [nzMin]="1" [nzStep]="1"></nz-input-number>
-
-<p>Цена</p>
-<nz-input-number [(ngModel)]="price" [nzMin]="1" [nzStep]="1"></nz-input-number>
-
-<p>Описание</p>
-<textarea rows="4" nz-input [(ngModel)]="description"></textarea>
-
-<button nz-button nzType="primary" (click)="onSubmit()">Create</button>
+  <nz-select
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select a person"
+    [(ngModel)]="selectedLayoutId"
+  >
+    <ng-container *ngFor="let layout of layouts.results">
+      <nz-option
+        [nzLabel]="layout.name"
+        [nzValue]="layout.id"
+      >
+      </nz-option>
+    </ng-container>
+  </nz-select>
 
 
+  <h2>Інформація про об'єкт</h2>
+
+  <p>Число кімнат</p>
+  <nz-input-number [(ngModel)]="roomsCount" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Favorite food</mat-label>
+    <input matInput [(ngModel)]="roomsCount" placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+
+  <p>Поверх</p>
+  <nz-input-number [(ngModel)]="floor" [nzMin]="1" [nzMax]="50" [nzStep]="1"></nz-input-number>
+
+  <p>Поверховість</p>
+  <nz-input-number [(ngModel)]="floorInHouse" [nzMin]="1" [nzMax]="50" [nzStep]="1"></nz-input-number>
+
+
+  <p>Загальна площа</p>
+  <nz-input-number [(ngModel)]="totalArea" [nzMin]="1" [nzStep]="1"></nz-input-number>
+
+  <p>Житлова площа</p>
+  <nz-input-number [(ngModel)]="livingArea" [nzMin]="1" [nzStep]="1"></nz-input-number>
+
+  <p>Площа кухні</p>
+  <nz-input-number [(ngModel)]="kitchenArea" [nzMin]="1" [nzStep]="1"></nz-input-number>
+
+  <p>Цена</p>
+  <nz-input-number [(ngModel)]="price" [nzMin]="1" [nzStep]="1"></nz-input-number>
+
+  <p>Описание</p>
+  <textarea rows="4" nz-input [(ngModel)]="description"></textarea>
+
+  <button nz-button nzType="primary" (click)="onSubmit()">Create</button>
+
+
+</div>

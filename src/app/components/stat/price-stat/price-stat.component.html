@@ -1,0 +1,31 @@
+<!--https://mertjf.github.io/tailblocks/-->
+
+<section class="text-gray-700 body-font">
+  <div class="container px-3 py-3 mx-auto">
+    <div class="w-full mx-auto overflow-auto">
+      <table class="table-auto w-full text-left whitespace-no-wrap">
+        <thead>
+        <tr>
+          <th
+            class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200 rounded-tl rounded-bl">
+            Район
+          </th>
+          <th class="px-8 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-200">
+            Ціна
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <ng-container *ngFor="let district of boxData">
+          <tr>
+            <td class="border-t-2 border-gray-200 px-4 py-3">{{district.x}}</td>
+            <td class="border-t-2 border-gray-200 px-8 py-3"> {{district.median}} грн</td>
+          </tr>
+        </ng-container>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
