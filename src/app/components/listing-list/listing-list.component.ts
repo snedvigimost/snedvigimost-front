@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {convert} from 'cashify';
+import plural from 'plural-ru';
+import {TranslocoService} from '@ngneat/transloco';
 import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 
 import {RateService} from '../../rest/rates/rate.service';
@@ -16,9 +18,8 @@ import {Rate} from '../../rest/rates/rate';
 import {StreetsService} from '../../rest/streets/streets.service';
 import {DistrictsService} from '../../rest/districts/districts.service';
 import {DistrictDto} from '../../rest/districts/district.dto';
-import {sortOptions} from './sotring';
 import {NlpSearchService} from '../../rest/nlp-search/nlp-search.service';
-import plural from 'plural-ru';
+import {WebSpeechComponentComponent} from "../web-speech-component/web-speech-component.component";
 
 @Component({
   selector: 'app-listing-list',
@@ -26,10 +27,13 @@ import plural from 'plural-ru';
   styleUrls: ['./listing-list.component.scss']
 })
 export class ListingListComponent implements OnInit {
+  @ViewChild(WebSpeechComponentComponent) child: WebSpeechComponentComponent;
+
+  sortOptions = [];
   result: PaginationDto<ListingsDto>;
-  paginationParamsDto = new PaginationParamsDto();
   currencyEnum = CurrencyEnum;
-  sortOptions = sortOptions;
+  paginationParamsDto = new PaginationParamsDto();
+
   plural = plural;
 
   defaultPrices: Record<CurrencyEnum, [number, number]> = {
@@ -68,6 +72,8 @@ export class ListingListComponent implements OnInit {
   markers: { lng: any; lat: any }[];
   loading = false;
 
+  lang: string;
+
   onDistrictSearch(value: string): void {
     this.districtIsLoading = true;
     this.searchChange$.next(value);
@@ -79,6 +85,7 @@ export class ListingListComponent implements OnInit {
     private listingsService: ListingsService,
     private nlpSearchService: NlpSearchService,
     private districtsService: DistrictsService,
+    public translocoService: TranslocoService,
   ) {
     this.paginationParamsDto.is_published = true;
     this.selectedPriceChanged.pipe(
@@ -125,6 +132,41 @@ export class ListingListComponent implements OnInit {
       this.districtList = data;
       this.districtIsLoading = false;
     });
+
+
+    this.translocoService.selectTranslate('roomsCount').subscribe(title => {
+      this.sortOptions = [
+        {
+          value: 'total_area',
+          label: this.translocoService.translate('sort.areaAsc')
+        },
+        {
+          value: '-total_area',
+          label: this.translocoService.translate('sort.areaDesc')
+        },
+        {
+          value: 'price',
+          label: this.translocoService.translate('sort.priceAsc')
+        },
+        {
+          value: '-price',
+          label: this.translocoService.translate('sort.priceDesc')
+        },
+        {
+          value: 'publication_date',
+          label: this.translocoService.translate('sort.dateAsc')
+        },
+        {
+          value: '-publication_date',
+          label: this.translocoService.translate('sort.dateDesc')
+        },
+      ];
+    });
+
+    this.child.transcript$.subscribe(transcript => {
+      console.log(transcript);
+    });
+
   }
 
   getListings() {

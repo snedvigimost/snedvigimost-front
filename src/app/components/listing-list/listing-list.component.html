@@ -3,7 +3,11 @@
     <div style="padding: 0 12px">
       <div class="flex">
         <div class="flex flex-col mr-5">
-          <label class="mr-3">Количество комнат</label>
+          <label class="mr-3">
+            <ng-container *transloco="let t;">
+              {{ t('roomsCount') }}
+            </ng-container>
+          </label>
           <mat-button-toggle-group
             multiple
             name="roomsCount"
@@ -22,7 +26,9 @@
         <div class="mb-5 w-1/4 mr-5">
           <div class="currency-control flex justify-between">
             <div class="mr-2">
-              Цена
+              <ng-container *transloco="let t;">
+                {{ t('price') }}
+              </ng-container>
             </div>
             <nz-radio-group [ngModel]="selectedCurrency" (ngModelChange)="onCurrencyChange($event)">
               <label nz-radio [nzValue]="currencyEnum.UAH">₴</label>
@@ -81,12 +87,18 @@
 
       </div>
 
+      <div *ngIf="child?.transcript$ | async">
+        <mat-card class="notification mat-elevation-z4">{{child.transcript$ | async}}</mat-card>
+      </div>
+
       <div class="mb-5 mr-4">
         <mat-accordion>
           <mat-expansion-panel hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                Больше фильтров
+                <ng-container *transloco="let t;">
+                  {{ t('moreFilters') }}
+                </ng-container>
               </mat-panel-title>
               <!--          <mat-panel-description>-->
               <!--            This is a summary of the content-->
@@ -101,7 +113,9 @@
 
               <div class="mb-5 w-1/4 mr-5">
                 <div class="flex justify-between">
-                  Площадь, м²
+                  <ng-container *transloco="let t;">
+                    {{ t('area') }}
+                  </ng-container>
                 </div>
 
                 <nz-slider
@@ -141,7 +155,9 @@
 
               <div class="mb-5 w-1/4 mr-5">
                 <div class="mb-8 mr-2">
-                  Сортировать
+                  <ng-container *transloco="let t; read: 'sort'">
+                    {{ t('title') }}
+                  </ng-container>
                   <i nz-icon nzType="sort-descending" nzTheme="outline"></i>
                 </div>
                 <nz-select
@@ -184,7 +200,6 @@
                 <!--      </nz-option>-->
                 <!--    </nz-select>-->
 
-
                 <nz-select
                   nzAllowClear
                   nzPlaceHolder="По умолчанию"
@@ -195,7 +210,7 @@
                   <ng-container *ngFor="let district of districtList">
                     <nz-option
                       [nzValue]="district.id"
-                      [nzLabel]="district.translations['uk'].name"
+                      [nzLabel]="district.translations[translocoService.getActiveLang()].name"
                     >
                     </nz-option>
                   </ng-container>
@@ -210,7 +225,7 @@
     </div>
 
 
-    <div class="grid gap-4" style=" height: 75vh; overflow-y: auto;">
+    <div class="grid gap-4" style=" height: 73vh; overflow-y: auto;">
       <!--      TODO: fix this do for using auto width-->
       <overlay-scrollbars [options]="{sizeAutoCapable: false}">
         <div style="padding-right: 18px; padding-top: 6px;">

@@ -1,0 +1,19 @@
+{
+  "title": "Capital real estate",
+  "db": "Database",
+  "stat": "Statistics",
+  "selectLang": "Choose language",
+  "price": "Price",
+  "roomsCount": "Room count",
+  "moreFilters": "More filters",
+  "area": "Area",
+  "sort": {
+    "title": "Sort",
+    "areaAsc": "By area, small at first",
+    "areaDesc": "By area, large at first",
+    "priceAsc": "For the price, cheap first",
+    "priceDesc": "For the price, expensive first",
+    "dateAsc": "By date added, old first",
+    "dateDesc": "By date added, newest first"
+  }
+}

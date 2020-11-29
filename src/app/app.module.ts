@@ -67,6 +67,7 @@ import { ChartComponent } from './components/stat/chart/chart.component';
 import { BoxComponent } from './components/stat/box/box.component';
 import { PriceStatComponent } from './components/stat/price-stat/price-stat.component';
 import { StatComponent } from './page/stat/stat.component';
+import { TranslocoRootModule } from './transloco/transloco-root.module';
 // let OverlayscrollbarsModule = require("overlayscrollbars-ngx");
 
 registerLocaleData(ru);
@@ -143,7 +144,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     BrowserAnimationsModule,
     LottieModule.forRoot({player: playerFactory}),
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    TranslocoRootModule
   ],
   providers: [
     HttpService,
