@@ -1,5 +1,5 @@
 <div class="flex">
-  <div style="width: 49vw; min-width: 500px;">
+  <div class="listing" style="min-width: 500px;">
     <div style="padding: 0 12px">
       <div class="flex">
         <div class="flex flex-col mr-5">
@@ -23,7 +23,7 @@
           </mat-button-toggle-group>
         </div>
 
-        <div class="mb-5 w-1/4 mr-5">
+        <div class="mb-5 w-2/6 mr-5">
           <div class="currency-control flex justify-between">
             <div class="mr-2">
               <ng-container *transloco="let t;">
@@ -260,11 +260,46 @@
     <!--    </nz-pagination>-->
   </div>
 
-  <div>
+  <div id="map">
     <app-listings-map
       (bounds)="onBoundsChange($event)">
     </app-listings-map>
   </div>
+
+  <nav class="bottom-nav">
+    <a class="bottom-nav__destination bottom-nav__destination--active" href="#">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>list</mat-icon>
+      </button>
+      <span class="bottom-nav__label">
+          <ng-container *transloco="let t;">
+            {{ t('list') }}
+          </ng-container>
+      </span>
+    </a>
+
+    <a class="bottom-nav__destination" href="#">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>map</mat-icon>
+      </button>
+      <span class="bottom-nav__label">
+        <ng-container *transloco="let t;">
+          {{ t('map') }}
+        </ng-container>
+      </span>
+    </a>
+
+    <a class="bottom-nav__destination" href="#">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>face</mat-icon>
+      </button>
+      <span class="bottom-nav__label">
+         <ng-container *transloco="let t;">
+          {{ t('profile') }}
+        </ng-container>
+      </span>
+    </a>
+  </nav>
 </div>
 
 

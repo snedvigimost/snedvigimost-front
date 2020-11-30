@@ -1,29 +1,29 @@
 <div class="flex flex-row py-3 px-3">
   <a class="flex flex-row mr-5 items-center" routerLink="/" routerLinkActive="active">
     <div class="mr-4">
-      <img class="h-10" src="assets/icon.png" alt="">
+      <img class="w-10" src="assets/icon.png" alt="">
     </div>
-    <div class="self-center text-xl">
+    <div class="self-center text-base">
       <ng-container *transloco="let t;">
         {{ t('title') }}
       </ng-container>
     </div>
   </a>
   <a class="flex flex-row mr-5" routerLink="/database" routerLinkActive="active">
-    <div class="self-center text-xl">
+    <div class="self-center text-base">
       <ng-container *transloco="let t;">
         {{ t('db') }}
       </ng-container>
     </div>
   </a>
-  <a class="flex flex-row" routerLink="/stat" routerLinkActive="active">
-    <div class="self-center text-xl">
+  <a class="flex flex-row mr-5" routerLink="/stat" routerLinkActive="active">
+    <div class="self-center text-base">
       <ng-container *transloco="let t;">
         {{ t('stat') }}
       </ng-container>
     </div>
   </a>
-  <div class="flex self-center ml-auto">
+  <div class="flex self-center">
     <div class="mr-4">
       <mat-form-field appearance="fill">
         <mat-label>
@@ -42,8 +42,8 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="text-xl">
-      067 234 8877
-    </div>
+<!--    <div class="text-xl">-->
+<!--      067 234 8877-->
+<!--    </div>-->
   </div>
 </div>

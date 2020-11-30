@@ -15,5 +15,8 @@
     "priceDesc": "For the price, expensive first",
     "dateAsc": "By date added, old first",
     "dateDesc": "By date added, newest first"
-  }
+  },
+  "list": "List",
+  "map": "Map",
+  "profile": "Profile"
 }
