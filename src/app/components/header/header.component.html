@@ -24,26 +24,34 @@
     </div>
   </a>
   <div class="flex self-center">
-    <div class="mr-4">
-      <mat-form-field appearance="fill">
-        <mat-label>
-          <ng-container *transloco="let t;">
-            {{ t('selectLang') }}
-          </ng-container>
-        </mat-label>
-        <mat-select (selectionChange)="onSelectionChange($event)" [value]="selectedLanguage">
-          <mat-option
-            *ngFor="let language of languages"
-            [value]="language.value"
-          >
-            <span class="flag-icon" [ngClass]="['flag-icon-' + language.flag]"></span>
-            {{language.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div>
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        [nzDropdownMatchSelectWidth]="false"
+        [(ngModel)]="selectedLanguage"
+        [nzCustomTemplate]="defaultTemplate"
+        (ngModelChange)="onSelectionChange($event)">
+        <nz-option
+          nzCustomContent
+          *ngFor="let language of languages"
+          [nzLabel]="language.viewValue"
+          [nzValue]="language"
+          nzLabel="Windows" nzValue="windows">
+          <span class="flag-icon" [ngClass]="['flag-icon-' + language.flag]"></span>
+          {{language.viewValue}}
+        </nz-option>
+      </nz-select>
+      <ng-template
+        #defaultTemplate
+        let-selected>
+        <span class="flag-icon" [ngClass]="['flag-icon-' + selected.nzValue.flag]"></span>
+        {{selected.nzValue.value}}
+      </ng-template>
     </div>
-<!--    <div class="text-xl">-->
-<!--      067 234 8877-->
-<!--    </div>-->
+
+    <!--    <div class="text-xl">-->
+    <!--      067 234 8877-->
+    <!--    </div>-->
   </div>
 </div>

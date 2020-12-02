@@ -1,67 +1,68 @@
-<div *ngIf="listing" class="flex">
-  <div class="w-8/12 mr-6">
-    <gallery
-      [id]="listing.id"
-      class="mb-5"
-      gallerize
-      thumbPosition="left"
-      [thumb]="false"
-      [items]="cameraImages"
-      [imageSize]="contain"
-      [loadingStrategy]="'lazy'"
-    >
-    </gallery>
-    <p>{{listing.description}}</p>
-  </div>
-  <div class="w-4/12">
-    <div class="mb-3 text-lg">
-      {{listing.title}}
+<div class="container py-5 w-8/12 px-10 mx-auto">
+  <div *ngIf="listing" class="flex">
+    <div class="w-8/12 mr-6">
+      <gallery
+        [id]="listing.id"
+        class="mb-5"
+        gallerize
+        thumbPosition="left"
+        [thumb]="false"
+        [items]="cameraImages"
+        [imageSize]="contain"
+        [loadingStrategy]="'lazy'"
+      >
+      </gallery>
+      <p>{{listing.description}}</p>
     </div>
+    <div class="w-4/12">
+      <div class="mb-3 text-lg">
+        {{listing.title}}
+      </div>
 
-    <div class="mb-3">
-      {{listing.address}}
+      <div class="mb-3">
+        {{listing.address}}
+      </div>
+
+      <div class="mb-3 text-3xl">
+        {{price}}
+      </div>
+
+      <div class="flex mb-3">
+        <div class="flex-1 text-gray-600">
+          Поверх
+        </div>
+        <div class="flex-1">
+          {{listing.floor}}
+        </div>
+      </div>
+
+      <div class="flex mb-3">
+        <div class="flex-1 text-gray-600">
+          Поверхов в дому
+        </div>
+        <div class="flex-1">
+          {{listing.floorInHouse}}
+        </div>
+      </div>
+
+      <div class="flex mb-3">
+        <div class="flex-1 text-gray-600">
+          Площа
+        </div>
+        <div class="flex-1">
+          {{listing.totalArea}} / {{listing.livingArea}} / {{listing.kitchenArea}} м<sup>2</sup>
+        </div>
+      </div>
+
+      <div class="flex mb-3">
+        <div class="flex-1 text-gray-600">
+          Комнат
+        </div>
+        <div class="flex-1">
+          {{listing.roomsCount}}
+        </div>
+      </div>
+
     </div>
-
-    <div class="mb-3 text-3xl">
-      {{price}}
-    </div>
-
-    <div class="flex mb-3">
-      <div class="flex-1 text-gray-600">
-        Поверх
-      </div>
-      <div class="flex-1">
-        {{listing.floor}}
-      </div>
-    </div>
-
-    <div class="flex mb-3">
-      <div class="flex-1 text-gray-600">
-        Поверхов в дому
-      </div>
-      <div class="flex-1">
-        {{listing.floorInHouse}}
-      </div>
-    </div>
-
-    <div class="flex mb-3">
-      <div class="flex-1 text-gray-600">
-        Площа
-      </div>
-      <div class="flex-1">
-        {{listing.totalArea}} / {{listing.livingArea}} / {{listing.kitchenArea}} м<sup>2</sup>
-      </div>
-    </div>
-
-    <div class="flex mb-3">
-      <div class="flex-1 text-gray-600">
-        Комнат
-      </div>
-      <div class="flex-1">
-        {{listing.roomsCount}}
-      </div>
-    </div>
-
   </div>
 </div>
-

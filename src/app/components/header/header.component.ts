@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {TranslocoService} from '@ngneat/transloco';
-import {MatSelectChange} from '@angular/material/select';
 
 @Component({
   selector: 'app-header',
@@ -13,15 +12,15 @@ export class HeaderComponent {
     {value: 'ru', viewValue: 'Русский', flag: 'ru'},
     {value: 'en', viewValue: 'English', flag: 'us'}
   ];
-  lang: string;
-  selectedLanguage = this.languages[0].value;
 
-  constructor(
-    private translocoService: TranslocoService
-  ) {
+  lang: string;
+  selectedLanguage = this.languages[0];
+
+  constructor(private translocoService: TranslocoService) {
   }
 
-  onSelectionChange($event: MatSelectChange) {
+  onSelectionChange($event: any) {
+    console.log($event);
     this.translocoService.setActiveLang($event.value);
   }
 }

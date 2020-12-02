@@ -33,7 +33,7 @@ export class ListingsMapComponent implements OnInit {
 
   ngOnInit() {
     // @ts-ignore
-    this.listingsService.getListings({page_size: 50, in_bbox: '30.407,50.400,30.665,50.488'}).subscribe(listings => {
+    this.listingsService.getListings({ is_published: true, page_size: 50, in_bbox: '30.407,50.400,30.665,50.488'}).subscribe(listings => {
       console.log(listings);
       const markers = listings.results.map(listing => {
         return {lng: listing.location.coordinates[0], lat: listing.location.coordinates[1]};
