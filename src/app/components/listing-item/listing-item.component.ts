@@ -11,6 +11,7 @@ import * as Dinero from 'dinero.js/build/amd/dinero';
   templateUrl: './listing-item.component.html',
   styleUrls: ['./listing-item.component.scss']
 })
+
 export class ListingItemComponent implements OnInit {
  dinero = Dinero;
   listing: ListingsDto;

@@ -6,20 +6,20 @@ import plural from 'plural-ru';
 import {TranslocoService} from '@ngneat/transloco';
 import {debounceTime, distinctUntilChanged, map, switchMap} from 'rxjs/operators';
 
-import {RateService} from '../../rest/rates/rate.service';
-import {ListingsService} from '../../rest/listings/listings.service';
+import {RateService} from '../../../rest/rates/rate.service';
+import {ListingsService} from '../../../rest/listings/listings.service';
 
-import {ListingsDto} from '../../rest/listings/listings.dto';
-import {PaginationDto} from '../../rest/pagination/pagination.dto';
-import {PaginationParamsDto} from '../../rest/pagination/pagination.params.dto';
+import {ListingsDto} from '../../../rest/listings/listings.dto';
+import {PaginationDto} from '../../../rest/pagination/pagination.dto';
+import {PaginationParamsDto} from '../../../rest/pagination/pagination.params.dto';
 
-import {CurrencyEnum} from '../../rest/rates/currency.enum';
-import {Rate} from '../../rest/rates/rate';
-import {StreetsService} from '../../rest/streets/streets.service';
-import {DistrictsService} from '../../rest/districts/districts.service';
-import {DistrictDto} from '../../rest/districts/district.dto';
-import {NlpSearchService} from '../../rest/nlp-search/nlp-search.service';
-import {WebSpeechComponentComponent} from "../web-speech-component/web-speech-component.component";
+import {CurrencyEnum} from '../../../rest/rates/currency.enum';
+import {Rate} from '../../../rest/rates/rate';
+import {StreetsService} from '../../../rest/streets/streets.service';
+import {DistrictsService} from '../../../rest/districts/districts.service';
+import {DistrictDto} from '../../../rest/districts/district.dto';
+import {NlpSearchService} from '../../../rest/nlp-search/nlp-search.service';
+import {WebSpeechComponentComponent} from "../../../components/main/web-speech-component/web-speech-component.component";
 
 @Component({
   selector: 'app-listing-list',

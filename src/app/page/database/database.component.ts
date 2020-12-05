@@ -7,7 +7,7 @@ import {ListingsDto} from '../../rest/listings/listings.dto';
 import {ListingsService} from '../../rest/listings/listings.service';
 
 import {defaultColDef, columnDefs} from './column-def';
-import {DialogComponent} from './dialog/dialog.component';
+import {DialogComponent} from '../../components/database/dialog/dialog.component';
 import {PaginationParamsDto} from '../../rest/pagination/pagination.params.dto';
 
 @Component({

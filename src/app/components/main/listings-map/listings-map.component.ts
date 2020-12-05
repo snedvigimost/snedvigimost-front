@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 
-import {ListingsService} from '../../rest/listings/listings.service';
+import {ListingsService} from '../../../rest/listings/listings.service';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 
@@ -27,9 +27,7 @@ export class ListingsMapComponent implements OnInit {
   display?: google.maps.LatLngLiteral;
   initial = true;
 
-  constructor(private listingsService: ListingsService) {
-
-  }
+  constructor(private listingsService: ListingsService) {}
 
   ngOnInit() {
     // @ts-ignore

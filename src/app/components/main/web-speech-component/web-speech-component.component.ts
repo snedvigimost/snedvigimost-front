@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {merge, Observable, of, Subject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {defaultLanguage, languages} from '../../rest/STT/languages';
-import {SpeechError} from '../../rest/STT/enum/speech-error';
-import {SpeechEvent} from '../../rest/STT/enum/speech-event';
-import {SpeechRecognizerService} from '../../rest/STT/speech-recognizer.service';
+import {defaultLanguage, languages} from '../../../rest/STT/languages';
+import {SpeechError} from '../../../rest/STT/enum/speech-error';
+import {SpeechEvent} from '../../../rest/STT/enum/speech-event';
+import {SpeechRecognizerService} from '../../../rest/STT/speech-recognizer.service';
 // import {ActionContext} from '../shared/services/actions/action-context';
-import {SpeechNotification} from '../../rest/STT/enum/speech-notification';
+import {SpeechNotification} from '../../../rest/STT/enum/speech-notification';
 
 @Component({
   selector: 'app-web-speech-component',

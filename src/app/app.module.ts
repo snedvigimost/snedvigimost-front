@@ -39,38 +39,39 @@ import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpService} from './rest/http.service';
-import {ListingListComponent} from './components/listing-list/listing-list.component';
 import {UploaderComponent} from './components/uploader/uploader.component';
-import {CardComponent} from './components/card/card.component';
+import {CardComponent} from './components/main/card/card.component';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {AboutComponent} from './components/about/about.component';
-import {MapComponent} from './components/map/map.component';
-import {DatabaseComponent} from './components/database/database.component';
+import {AboutComponent} from './page/about/about.component';
+import {MapComponent} from './components/about/map/map.component';
+import {DatabaseComponent} from './page/database/database.component';
 import {DialogComponent} from './components/database/dialog/dialog.component';
-import {LoaderComponent} from './components/loader/loader.component';
-import {SpinnerComponent} from './components/spinner/spinner.component';
-import {CascaderFilterComponent} from './components/cascader-filter/cascader-filter.component';
+import {LoaderComponent} from './components/_loader/loader.component';
+import {SpinnerComponent} from './components/_spinner/spinner.component';
+import {CascaderFilterComponent} from './components/main/_cascader-filter/cascader-filter.component';
 import {GalleryModule} from '@ngx-gallery/core';
 import {LightboxModule} from '@ngx-gallery/lightbox';
 import {GallerizeModule} from '@ngx-gallery/gallerize';
 import {CreateFormComponent} from './components/create-form/create-form.component';
-import { ListingItemComponent } from './components/listing-item/listing-item.component';
-import { WebSpeechComponentComponent } from './components/web-speech-component/web-speech-component.component';
-import { HttpClientJsonpModule } from '@angular/common/http';
-import { ListingsMapComponent } from './components/listings-map/listings-map.component';
+import {ListingItemComponent} from './components/listing-item/listing-item.component';
+import {WebSpeechComponentComponent} from './components/main/web-speech-component/web-speech-component.component';
+import {HttpClientJsonpModule} from '@angular/common/http';
+import {ListingsMapComponent} from './components/main/listings-map/listings-map.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { NzSpinModule } from 'ng-zorro-antd/spin';
+import {NzSpinModule} from 'ng-zorro-antd/spin';
 // @ts-ignore
-import * as OverlayscrollbarsModule from 'overlayscrollbars-ngx';
-import { ChartComponent } from './components/stat/chart/chart.component';
-import { BoxComponent } from './components/stat/box/box.component';
-import { PriceStatComponent } from './components/stat/price-stat/price-stat.component';
-import { StatComponent } from './page/stat/stat.component';
-import { TranslocoRootModule } from './transloco/transloco-root.module';
+
+import {ChartComponent} from './components/stat/chart/chart.component';
+import {BoxComponent} from './components/stat/box/box.component';
+import {PriceStatComponent} from './components/stat/price-stat/price-stat.component';
+import {StatComponent} from './page/stat/stat.component';
+import {TranslocoRootModule} from './transloco/transloco-root.module';
+import {StatModule} from "./page/stat/stat.module";
 // let OverlayscrollbarsModule = require("overlayscrollbars-ngx");
 
 registerLocaleData(ru);
+
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -90,61 +91,29 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   declarations: [
     AppComponent,
     MapComponent,
-    CardComponent,
     AboutComponent,
     HeaderComponent,
     FooterComponent,
-    DatabaseComponent,
     UploaderComponent,
-    ListingListComponent,
     CascaderFilterComponent,
-    DialogComponent,
     LoaderComponent,
-    SpinnerComponent,
     CreateFormComponent,
-    ListingItemComponent,
-    WebSpeechComponentComponent,
-    ListingsMapComponent,
-    ChartComponent,
-    BoxComponent,
-    PriceStatComponent,
-    StatComponent
   ],
   imports: [
     FormsModule,
-    SwiperModule,
-    AgGridModule.withComponents([]),
     CommonModule,
     BrowserModule,
-    MatIconModule,
-    UcWidgetModule,
-    MatDialogModule,
-    MatButtonModule,
     NzSelectModule,
     NzIconModule.forRoot(icons),
-    NzSliderModule,
-    GalleryModule,
-    LightboxModule,
-    NzRadioModule,
-    NzButtonModule,
-    NzSpinModule,
-    NzInputModule,
-    GallerizeModule,
+    MatIconModule,
     AppRoutingModule,
-    NzCascaderModule,
     GoogleMapsModule,
     MatInputModule,
     HttpClientModule,
     MatExpansionModule,
-    NzPaginationModule,
     NzInputNumberModule,
-    NgxPaginationModule,
-    MatButtonToggleModule,
-    OverlayscrollbarsModule.OverlayscrollbarsModule,
     BrowserAnimationsModule,
-    LottieModule.forRoot({player: playerFactory}),
-    MatCardModule,
-    MatSelectModule,
+    NzCascaderModule,
     TranslocoRootModule
   ],
   providers: [

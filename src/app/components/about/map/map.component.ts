@@ -3,7 +3,7 @@ import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
-import {ListingsService} from '../../rest/listings/listings.service';
+import {ListingsService} from '../../../rest/listings/listings.service';
 
 @Component({
   selector: 'app-map',
