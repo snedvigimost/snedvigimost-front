@@ -39,4 +39,11 @@ docker push registry.digitalocean.com/snedvigemost/snedvigimost-front_snedvigimo
 ```
 docker pull registry.digitalocean.com/snedvigemost/snedvigimost-front_snedvigimost-prod
 docker run --name snedvigimost-front -d -p 80:80 registry.digitalocean.com/snedvigemost/snedvigimost-front_snedvigimost-prod:latest
+docker run --name snedvigimost-front -d -p 80:80 -p 443:443 -p 2019:2019 registry.digitalocean.com/snedvigemost/snedvigimost-front_snedvigimost-prod:latest
 ```
+
+localhost {
+  root dist/real-estate
+  file_server
+  reverse_proxy /api/* 188.166.80.5:4222
+}
