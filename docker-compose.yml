@@ -7,3 +7,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - '80:80'
+      - '443:443'
+      - '2015:2015'
+      - '2019:2019'

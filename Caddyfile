@@ -1,0 +1,5 @@
+sn.kiev.ua {
+  root dist/real-estate
+  file_server
+  reverse_proxy /api/* 188.166.80.5:4222
+}
