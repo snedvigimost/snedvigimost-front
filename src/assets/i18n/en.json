@@ -4,6 +4,8 @@
   "stat": "Statistics",
   "selectLang": "Choose language",
   "price": "Price",
+  "floor": "on top of",
+  "room": "room",
   "roomsCount": "Room count",
   "moreFilters": "More filters",
   "area": "Area",
@@ -18,5 +20,6 @@
   },
   "list": "List",
   "map": "Map",
-  "profile": "Profile"
+  "profile": "Profile",
+  "myPluralRule": "{myCount, plural, =0 {no results} one {1 result} other {# results}}"
 }

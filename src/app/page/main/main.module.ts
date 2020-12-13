@@ -7,7 +7,7 @@ import {GoogleMapsModule} from '@angular/google-maps';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
-import {ScrollingModule} from "@angular/cdk/scrolling";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import * as OverlayscrollbarsModule from 'overlayscrollbars-ngx';

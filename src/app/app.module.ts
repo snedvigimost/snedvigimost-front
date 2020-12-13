@@ -68,6 +68,7 @@ import {PriceStatComponent} from './components/stat/price-stat/price-stat.compon
 import {StatComponent} from './page/stat/stat.component';
 import {TranslocoRootModule} from './transloco/transloco-root.module';
 import {StatModule} from "./page/stat/stat.module";
+import {TranslocoMessageFormatModule} from "@ngneat/transloco-messageformat";
 // let OverlayscrollbarsModule = require("overlayscrollbars-ngx");
 
 registerLocaleData(ru);
@@ -114,6 +115,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NzInputNumberModule,
     BrowserAnimationsModule,
     NzCascaderModule,
+    TranslocoMessageFormatModule.init(),
     TranslocoRootModule
   ],
   providers: [

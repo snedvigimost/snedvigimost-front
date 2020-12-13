@@ -29,7 +29,11 @@
         {{listing.totalArea}} / {{listing.livingArea}} / {{listing.kitchenArea}} м<sup>2</sup>
       </div>
       <div>
-        {{listing.floor}} поверх з {{listing.floorInHouse}}
+        {{listing.floor}}
+        <ng-container *transloco="let t;">
+          {{ t('floor') }}
+        </ng-container>
+        {{listing.floorInHouse}}
       </div>
       <div>
         {{listing.type.type}}
@@ -39,6 +43,9 @@
       </div>
       <div>
         {{listing.roomsCount}}
+         <ng-container *transloco="let t;">
+          {{ t('room') }}
+        </ng-container>
       </div>
     </div>
     <p class="truncate-text-multiline">

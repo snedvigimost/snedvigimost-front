@@ -4,6 +4,8 @@
   "stat": "Статистика",
   "selectLang": "Выберите язык",
   "price": "Цена",
+  "floor": "этаж из",
+  "room": "комнатная",
   "roomsCount": "Количество комнат",
   "moreFilters": "Больше фильтров",
   "area": "Площадь",
@@ -18,5 +20,6 @@
   },
   "list": "Список",
   "map": "Карта",
-  "profile": "Профиль"
+  "profile": "Профиль",
+  "myPluralRule": "{myCount, plural, =0 {no results} one {1 result} other {# results}}"
 }
