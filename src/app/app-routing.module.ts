@@ -2,11 +2,9 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 import {AboutComponent} from './page/about/about.component';
-import {DatabaseComponent} from './page/database/database.component';
-import {ListingListComponent} from './page/main/listing-list/listing-list.component';
 import {CreateFormComponent} from './components/create-form/create-form.component';
 import {ListingItemComponent} from './components/listing-item/listing-item.component';
-import {StatComponent} from './page/stat/stat.component';
+
 
 
 const routes: Routes = [
@@ -16,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'stat',
-    loadChildren: () => import('./page/stat/stat-routing.module').then(m => m.StatRoutingModule)
+    loadChildren: () => import('./page/stat/stat.module').then(m => m.StatModule)
   },
   {
     path: 'database',

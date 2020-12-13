@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Chart} from '@antv/g2';
 import {Box} from '@antv/g2plot';
-import {boxData} from "../data";
+import {boxData} from '../data';
 
 @Component({
   selector: 'app-box',

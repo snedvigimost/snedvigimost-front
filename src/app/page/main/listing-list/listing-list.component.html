@@ -227,10 +227,12 @@
 
     <div class="grid gap-4" style="overflow-y: auto;">
       <!--      TODO: fix this do for using auto width-->
-<!--      <overlay-scrollbars [options]="{sizeAutoCapable: false}">-->
-        <div style="padding-right: 18px; padding-top: 6px;">
-          <div>{{result?.results.length}} {{plural(result?.results.length, 'результат', 'результата', 'результатов')}}</div>
+      <!--      <overlay-scrollbars [options]="{sizeAutoCapable: false}">-->
+      <div style="padding-right: 18px; padding-top: 6px;">
+        <div>{{result?.results.length}} {{plural(result?.results.length, 'результат', 'результата', 'результатов')}}</div>
 
+
+        <cdk-virtual-scroll-viewport class="example-viewport" [itemSize]="280">
           <nz-spin
             nzSimple
             *ngIf="loading"
@@ -239,18 +241,17 @@
           >
           </nz-spin>
 
-          <cdk-virtual-scroll-viewport class="example-viewport" [itemSize]="280">
-            <ng-container *cdkVirtualFor="let listing of result?.results" class="example-item">
-              <app-card style="padding: 0 12px" [listing]="listing"></app-card>
-            </ng-container>
-          </cdk-virtual-scroll-viewport>
+          <ng-container *cdkVirtualFor="let listing of result?.results" class="example-item">
+            <app-card style="padding: 0 12px" [listing]="listing"></app-card>
+          </ng-container>
+        </cdk-virtual-scroll-viewport>
 
-<!--          <ng-container-->
-<!--            *ngFor="let listing of result?.results">-->
-<!--            <app-card style="padding: 0 12px" [listing]="listing"></app-card>-->
-<!--          </ng-container>-->
-        </div>
-<!--      </overlay-scrollbars>-->
+        <!--          <ng-container-->
+        <!--            *ngFor="let listing of result?.results">-->
+        <!--            <app-card style="padding: 0 12px" [listing]="listing"></app-card>-->
+        <!--          </ng-container>-->
+      </div>
+      <!--      </overlay-scrollbars>-->
     </div>
 
 

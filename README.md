@@ -47,5 +47,3 @@ localhost {
   file_server
   reverse_proxy /api/* 188.166.80.5:4222
 }
-
-test local git user change

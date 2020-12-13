@@ -78,6 +78,7 @@ import {SpinnerComponent} from '../../components/_spinner/spinner.component';
     MatButtonToggleModule,
     LottieModule.forRoot({player: playerFactory}),
     MatCardModule,
+    CardModule,
     MatSelectModule,
     TranslocoRootModule
   ]

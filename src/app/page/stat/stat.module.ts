@@ -4,23 +4,21 @@ import {MatCardModule} from '@angular/material/card';
 
 import {StatComponent} from './stat.component';
 import {StatRoutingModule} from './stat-routing.module';
-import {ChartComponent} from '../../components/stat/chart/chart.component';
-import {BoxComponent} from '../../components/stat/box/box.component';
-import {PriceStatComponent} from '../../components/stat/price-stat/price-stat.component';
+import {StatCompModule} from '../../components/stat/stat-comp.module';
+import {CardModule} from '../../components/main/card/card.module';
 
 
 @NgModule({
   declarations: [
     StatComponent,
-    BoxComponent,
-    ChartComponent,
-    PriceStatComponent,
   ],
   imports: [
     CommonModule,
     MatCardModule,
+    StatCompModule,
+    CardModule,
     StatRoutingModule,
-  ],
+  ]
 })
 export class StatModule {
 }

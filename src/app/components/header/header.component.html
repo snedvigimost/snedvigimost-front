@@ -1,4 +1,4 @@
-<div class="flex flex-row py-3 px-3">
+<div class="header flex flex-row py-3 px-3">
   <a class="flex flex-row mr-5 items-center" routerLink="/" routerLinkActive="active">
     <div class="mr-4">
       <img class="w-10" src="assets/icon.png" alt="">
@@ -24,7 +24,11 @@
     </div>
   </a>
   <div class="flex self-center">
-    <div>
+
+  </div>
+
+  <div class="flex ml-auto">
+    <div class="mr-12">
       <nz-select
         nzShowSearch
         nzAllowClear
@@ -50,8 +54,34 @@
       </ng-template>
     </div>
 
-    <!--    <div class="text-xl">-->
-    <!--      067 234 8877-->
-    <!--    </div>-->
+    <div class="mr-5">
+      <div nz-dropdown [nzDropdownMenu]="menu">
+        <i nz-icon nzType="user" nzTheme="outline" style="font-size: 26px; color: #08c;"></i>
+      </div>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item>
+            <ng-container *transloco="let t;">
+              {{ t('profile') }}
+            </ng-container>
+          </li>
+          <li nz-menu-item>
+            <ng-container *transloco="let t;">
+              {{ t('favorites') }}
+            </ng-container>
+          </li>
+          <li nz-menu-item nzDanger>
+            <ng-container *transloco="let t;">
+              {{ t('signOut') }}
+            </ng-container>
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+
+    <!--    <img class="w-32 h-32 rounded-full mx-auto" src="" alt="">-->
   </div>
+  <!--    <div class="text-xl">-->
+  <!--      067 234 8877-->
+  <!--    </div>-->
 </div>
