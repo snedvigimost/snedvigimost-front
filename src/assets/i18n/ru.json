@@ -23,5 +23,7 @@
   "profile": "Профиль",
   "favorites": "Избранные",
   "signOut": "Выйти",
+  "about": "О нас",
+  "news": "Новости",
   "myPluralRule": "{myCount, plural, =0 {no results} one {1 result} other {# results}}"
 }

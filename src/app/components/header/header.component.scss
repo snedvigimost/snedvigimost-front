@@ -3,3 +3,29 @@
 //    max-width: 910px;
 //  }
 //}
+
+.header a {
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1.4px;
+  font-weight: 500;
+  display: inline-block;
+  position: relative;
+}
+
+.header a:after {
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #feda00;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.header a:hover:after {
+  width: 100%;
+  left: 0;
+}

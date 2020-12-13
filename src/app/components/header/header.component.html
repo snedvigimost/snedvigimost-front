@@ -1,21 +1,15 @@
 <div class="header flex flex-row py-3 px-3">
+  <div class="mr-4">
+    <img class="w-10" src="assets/icon.png" alt="">
+  </div>
   <a class="flex flex-row mr-5 items-center" routerLink="/" routerLinkActive="active">
-    <div class="mr-4">
-      <img class="w-10" src="assets/icon.png" alt="">
-    </div>
     <div class="self-center text-base">
       <ng-container *transloco="let t;">
         {{ t('title') }}
       </ng-container>
     </div>
   </a>
-  <a class="flex flex-row mr-5" routerLink="/database" routerLinkActive="active">
-    <div class="self-center text-base">
-      <ng-container *transloco="let t;">
-        {{ t('db') }}
-      </ng-container>
-    </div>
-  </a>
+
   <a class="flex flex-row mr-5" routerLink="/stat" routerLinkActive="active">
     <div class="self-center text-base">
       <ng-container *transloco="let t;">
@@ -23,9 +17,23 @@
       </ng-container>
     </div>
   </a>
-  <div class="flex self-center">
 
-  </div>
+  <a class="flex flex-row mr-5" routerLink="/news" routerLinkActive="active">
+    <div class="self-center text-base">
+      <ng-container *transloco="let t;">
+        {{ t('news') }}
+      </ng-container>
+    </div>
+  </a>
+
+  <a class="flex flex-row mr-5" routerLink="/about" routerLinkActive="active">
+    <div class="self-center text-base">
+      <ng-container *transloco="let t;">
+        {{ t('about') }}
+      </ng-container>
+    </div>
+  </a>
+
 
   <div class="flex ml-auto">
     <div class="mr-12">
@@ -61,19 +69,32 @@
       <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
           <li nz-menu-item>
-            <ng-container *transloco="let t;">
-              {{ t('profile') }}
-            </ng-container>
+            <a class="text-base px-4 py-2" routerLink="/database" routerLinkActive="active">
+              <ng-container *transloco="let t;">
+                {{ t('profile') }}
+              </ng-container>
+            </a>
           </li>
           <li nz-menu-item>
-            <ng-container *transloco="let t;">
-              {{ t('favorites') }}
-            </ng-container>
+            <a class="text-base px-4 py-2" routerLink="/database" routerLinkActive="active">
+              <ng-container *transloco="let t;">
+                {{ t('db') }}
+              </ng-container>
+            </a>
+          </li>
+          <li nz-menu-item>
+            <a class="text-base px-4 py-2" routerLink="/database" routerLinkActive="active">
+              <ng-container *transloco="let t;">
+                {{ t('favorites') }}
+              </ng-container>
+            </a>
           </li>
           <li nz-menu-item nzDanger>
-            <ng-container *transloco="let t;">
-              {{ t('signOut') }}
-            </ng-container>
+            <a class="text-base px-4 py-2" routerLink="/database" routerLinkActive="active">
+              <ng-container *transloco="let t;">
+                {{ t('signOut') }}
+              </ng-container>
+            </a>
           </li>
         </ul>
       </nz-dropdown-menu>

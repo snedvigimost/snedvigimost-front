@@ -23,5 +23,7 @@
   "profile": "Profile",
   "favorites": "Favorites",
   "signOut": "Sign out",
+  "about": "About",
+  "news": "News",
   "myPluralRule": "{myCount, plural, =0 {no results} one {1 result} other {# results}}"
 }
