@@ -241,8 +241,14 @@
           >
           </nz-spin>
 
-          <ng-container *cdkVirtualFor="let listing of result?.results" class="example-item">
-            <app-card style="padding: 0 12px" [listing]="listing"></app-card>
+          <ng-container *cdkVirtualFor="let listing of result?.results; let i = index" class="example-item">
+            <app-card
+                [listing]="listing"
+                (mouseleave)="onMouseleave(listing, i)"
+              (mouseenter)="onMouseenter(listing, i)"
+              style="padding: 0 12px"
+            >
+            </app-card>
           </ng-container>
         </cdk-virtual-scroll-viewport>
 
@@ -267,6 +273,8 @@
 
   <div id="map">
     <app-listings-map
+      [hoveredIndex]="hoveredIndex"
+      [markers]="markers"
       (bounds)="onBoundsChange($event)">
     </app-listings-map>
   </div>

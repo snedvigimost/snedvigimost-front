@@ -19,7 +19,7 @@ import {StreetsService} from '../../../rest/streets/streets.service';
 import {DistrictsService} from '../../../rest/districts/districts.service';
 import {DistrictDto} from '../../../rest/districts/district.dto';
 import {NlpSearchService} from '../../../rest/nlp-search/nlp-search.service';
-import {WebSpeechComponentComponent} from "../../../components/main/web-speech-component/web-speech-component.component";
+import {WebSpeechComponentComponent} from '../../../components/main/web-speech-component/web-speech-component.component';
 
 @Component({
   selector: 'app-listing-list',
@@ -69,10 +69,14 @@ export class ListingListComponent implements OnInit {
   markerPositions: google.maps.LatLngLiteral[] = [];
 
   message = '';
-  markers: { lng: any; lat: any }[];
+  // markers: Record<number, { lng: any; lat: any;  hovered: boolean}>;
+  markers: any;
   loading = false;
+  initial = true;
 
   lang: string;
+
+  hoveredIndex;
 
   onDistrictSearch(value: string): void {
     this.districtIsLoading = true;
@@ -185,10 +189,18 @@ export class ListingListComponent implements OnInit {
 
     this.listingsService.getListings(this.paginationParamsDto).subscribe(listings => {
       this.result = listings;
-      // this.markers = listings.results.map(listing => {
-      //   return {lng: listing.location.coordinates[0], lat: listing.location.coordinates[1]};
-      // });
+      if (this.initial) {
+        this.markers = listings.results.map(listing => {
+          return {
+            lng: listing.location.coordinates[0],
+            lat: listing.location.coordinates[1],
+            hovered: false,
+            id: listing.id
+          };
+        });
+      }
       this.loading = false;
+      this.initial = false;
     });
   }
 
@@ -278,4 +290,19 @@ export class ListingListComponent implements OnInit {
     ].join(',');
     this.getListings();
   }
+
+  onMouseenter(listing: ListingsDto, index: number) {
+    const listingIndex = this.markers.findIndex(marker => marker.id === listing.id);
+    const newMarker = {...this.markers[listingIndex]};
+    newMarker.hovered = true;
+    this.markers[listingIndex] = newMarker;
+  }
+
+  onMouseleave(listing: ListingsDto, index: number) {
+    const listingIndex = this.markers.findIndex(marker => marker.id === listing.id);
+    const newMarker = {...this.markers[listingIndex]};
+    newMarker.hovered = false;
+    this.markers[listingIndex] = newMarker;
+  }
+
 }

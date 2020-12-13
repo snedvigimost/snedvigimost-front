@@ -14,7 +14,9 @@ export class ListingsMapComponent implements OnInit {
   @ViewChild(MapInfoWindow, {static: false}) infoWindow: MapInfoWindow;
   @ViewChild(GoogleMap, {static: false}) map: GoogleMap;
   @Output() bounds = new EventEmitter<google.maps.LatLngBounds | null>();
-  @Input() markers: google.maps.LatLngLiteral[] = [];
+  // @Input() markers: google.maps.LatLngLiteral[] = [];
+  @Input() markers: any[] = [];
+  @Input() hoveredIndex: number;
   actualBounds = new Subject<google.maps.LatLngBounds | null>();
 
   center: google.maps.LatLngLiteral = {
@@ -22,7 +24,15 @@ export class ListingsMapComponent implements OnInit {
     lng: 30.5205651
   };
 
-  markerOptions = {draggable: false};
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: false,
+  };
+
+  currentMarkerOption: google.maps.MarkerOptions = {
+    draggable: false,
+    icon: 'assets/icons8-marker-storm-48.png',
+  };
+
   markerPositions: google.maps.LatLngLiteral[] = [];
   display?: google.maps.LatLngLiteral;
   initial = true;
@@ -31,15 +41,12 @@ export class ListingsMapComponent implements OnInit {
 
   ngOnInit() {
     // @ts-ignore
-    this.listingsService.getListings({ is_published: true, page_size: 50, in_bbox: '30.407,50.400,30.665,50.488'}).subscribe(listings => {
-      console.log(listings);
-      const markers = listings.results.map(listing => {
-        return {lng: listing.location.coordinates[0], lat: listing.location.coordinates[1]};
-      });
-      this.markerPositions = this.markerPositions.concat(markers);
-      console.log(this.markerPositions);
-      console.log(markers);
-    });
+    // this.listingsService.getListings({ is_published: true, page_size: 50, in_bbox: '30.407,50.400,30.665,50.488'}).subscribe(listings => {
+    //   const markers = listings.results.map(listing => {
+    //     return {lng: listing.location.coordinates[0], lat: listing.location.coordinates[1]};
+    //   });
+    //   this.markerPositions = this.markerPositions.concat(markers);
+    // });
     this.actualBounds.pipe(
       debounceTime(300))
       .subscribe((bounds) => {
@@ -56,6 +63,7 @@ export class ListingsMapComponent implements OnInit {
   }
 
   openInfoWindow(marker: MapMarker) {
+    console.log(marker);
     this.infoWindow.open(marker);
   }
 

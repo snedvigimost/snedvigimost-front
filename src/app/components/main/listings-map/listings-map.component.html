@@ -10,9 +10,9 @@
 >
   <map-marker
     #marker
-    *ngFor="let markerPosition of markerPositions"
+    *ngFor="let markerPosition of markers; let i = index"
     [position]="markerPosition"
-    [options]="markerOptions"
+    [options]="markerPosition.hovered ? currentMarkerOption : markerOptions"
     (mapClick)="openInfoWindow(marker)"
   >
   </map-marker>
