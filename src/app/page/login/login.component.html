@@ -1,0 +1,79 @@
+<div class="login flex flex-col">
+  <div class="login-box place-self-center">
+    <nz-tabset class="tabs">
+      <nz-tab nzTitle="Увійти">
+        <div class="login-form">
+          <div class="flex justify-around">
+            <div>
+              <button mat-raised-button>
+                <i nz-icon nzType="facebook" nzTheme="fill"></i>
+                Facebook
+              </button>
+            </div>
+
+            <div>
+              <button mat-raised-button>
+                <i nz-icon nzType="google-circle" nzTheme="fill"></i>
+                Google
+              </button>
+            </div>
+
+          </div>
+
+          <span class="login-form__or"><span>або</span></span>
+
+          <div class="flex flex-col">
+            <mat-form-field class="flex-1" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <mat-form-field class="flex-1" appearance="outline">
+              <mat-label>Пароль</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">
+              Увійти
+            </button>
+          </div>
+
+        </div>
+      </nz-tab>
+      <nz-tab nzTitle="Реєстрація">
+        <div class="login-form">
+          <div class="flex justify-around">
+            <div>
+              <button mat-raised-button>
+                <i nz-icon nzType="facebook" nzTheme="fill"></i>
+                Facebook
+              </button>
+            </div>
+
+            <div>
+              <button mat-raised-button>
+                <i nz-icon nzType="google-circle" nzTheme="fill"></i>
+                Google
+              </button>
+            </div>
+
+          </div>
+
+          <span class="login-form__or"><span>або</span></span>
+
+          <div class="flex flex-col">
+            <mat-form-field class="flex-1" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">
+              Реєстрація
+            </button>
+          </div>
+
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div>

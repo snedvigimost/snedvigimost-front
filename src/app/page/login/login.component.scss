@@ -1,0 +1,40 @@
+.login {
+  background-image: url("https://address.ua/Content/Images/hero-bg.png");
+  background-position: center;
+  height: 1041px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.login-box {
+  width: 400px;
+  margin-top: 100px;
+  background: #fff;
+  color: #71848d;
+  border-radius: 4px;
+}
+
+.login-form__or {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 27px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.8px;
+  height: 1px;
+  background: #d8dfe0;
+  text-transform: uppercase;
+  color: #002f34;
+}
+
+.login-form__or span {
+  background: #fff;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.login-form {
+  padding: 30px;
+}

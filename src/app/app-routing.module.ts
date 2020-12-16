@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {AboutComponent} from './page/about/about.component';
 import {CreateFormComponent} from './components/create-form/create-form.component';
 import {ListingItemComponent} from './components/listing-item/listing-item.component';
-
+import {LoginComponent} from "./page/login/login.component";
 
 
 const routes: Routes = [
@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'new',
     component: CreateFormComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'listing/:id',

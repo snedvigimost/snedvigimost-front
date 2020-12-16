@@ -9,7 +9,6 @@
 
 @import "spinkit/spinkit.min.css";
 
-
 @import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
 @import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
 @import 'overlayscrollbars/css/OverlayScrollbars.css';
@@ -31,4 +30,9 @@ body {
 
 .mat-button-toggle-checked {
   background-color: #feda00;
+}
+
+.ant-tabs-nav-list {
+  flex: 1;
+  justify-content: space-around;
 }
