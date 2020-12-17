@@ -1,12 +1,12 @@
 <div class="container py-5 w-8/12 px-10 mx-auto">
-  <div *ngIf="listing" class="flex">
+  <div *ngIf="listing" class="flex mb-10">
     <div class="w-8/12 mr-6">
       <gallery
         [id]="listing.id"
         class="mb-5"
         gallerize
+        [thumb]="true"
         thumbPosition="left"
-        [thumb]="false"
         [items]="cameraImages"
         [imageSize]="contain"
         [loadingStrategy]="'lazy'"
@@ -29,25 +29,24 @@
 
       <div class="flex mb-3">
         <div class="flex-1 text-gray-600">
-          Поверх
+          <ng-container *transloco="let t;">
+            {{ t('floor') }}
+          </ng-container>
         </div>
         <div class="flex-1">
           {{listing.floor}}
-        </div>
-      </div>
-
-      <div class="flex mb-3">
-        <div class="flex-1 text-gray-600">
-          Поверхов в дому
-        </div>
-        <div class="flex-1">
+          <ng-container *transloco="let t;">
+            {{ t('from') }}
+          </ng-container>
           {{listing.floorInHouse}}
         </div>
       </div>
 
       <div class="flex mb-3">
         <div class="flex-1 text-gray-600">
-          Площа
+          <ng-container *transloco="let t;">
+            {{ t('area') }}
+          </ng-container>
         </div>
         <div class="flex-1">
           {{listing.totalArea}} / {{listing.livingArea}} / {{listing.kitchenArea}} м<sup>2</sup>
@@ -56,7 +55,9 @@
 
       <div class="flex mb-3">
         <div class="flex-1 text-gray-600">
-          Комнат
+          <ng-container *transloco="let t;">
+            {{ t('rooms') }}
+          </ng-container>
         </div>
         <div class="flex-1">
           {{listing.roomsCount}}
@@ -64,5 +65,26 @@
       </div>
 
     </div>
+  </div>
+
+  <div class="mb-10">
+    <google-map height="400px"
+                width="900px"
+                [center]="location"
+                [zoom]="14"
+    >
+      <map-marker
+        [position]="location"
+      >
+      </map-marker>
+    </google-map>
+  </div>
+
+  <div class="mb-10 text-3xl">
+    Динаміка цін
+  </div>
+
+  <div class="mb-10">
+    <app-chart-stat></app-chart-stat>
   </div>
 </div>

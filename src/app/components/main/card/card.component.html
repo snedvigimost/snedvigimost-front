@@ -15,7 +15,7 @@
   </div>
 
   <div class="w-3/5 m-4">
-    <div class="mb-1 text-lg text-gray-900" [routerLink]="['/listing', listing.id]">
+    <div class="mb-1 text-lg text-gray-900 cursor-pointer" [routerLink]="['/listing', listing.id]">
       {{listing.title}}
     </div>
     <div class="mb-2 text-gray-600">
@@ -31,7 +31,7 @@
       <div>
         {{listing.floor}}
         <ng-container *transloco="let t;">
-          {{ t('floor') }}
+          {{ t('floorOf') }}
         </ng-container>
         {{listing.floorInHouse}}
       </div>

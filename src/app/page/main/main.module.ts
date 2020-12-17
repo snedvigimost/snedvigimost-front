@@ -32,6 +32,7 @@ import {ListingListComponent} from './listing-list/listing-list.component';
 import {MainRoutingModule} from './main-routing.module';
 import {ListingItemComponent} from '../../components/listing-item/listing-item.component';
 import {ListingsMapComponent} from '../../components/main/listings-map/listings-map.component';
+import {ChartStatComponent} from "../../components/listing-item/chart/chart.component";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {ListingsMapComponent} from '../../components/main/listings-map/listings-
     ListingItemComponent,
     ListingListComponent,
     ListingsMapComponent,
+    ChartStatComponent,
     WebSpeechComponentComponent,
   ],
   imports: [

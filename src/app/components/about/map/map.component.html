@@ -1,15 +1,14 @@
 <google-map height="400px"
             width="750px"
             [center]="center"
-            (mapMousemove)="move($event)"
-            (boundsChanged)="onBoundsChanged($event)"
-            (mapRightclick)="removeLastMarker()">
-  <map-marker #marker
-              *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"
-              (mapClick)="openInfoWindow(marker)"></map-marker>
-  <map-info-window>Info Window content</map-info-window>
+>
+  <map-marker
+    [position]="{
+    lat: 50.437665,
+    lng: 30.5205651
+    }"
+  >
+  </map-marker>
 </google-map>
 
 <div class="text-xl">

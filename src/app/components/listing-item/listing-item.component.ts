@@ -13,7 +13,7 @@ import * as Dinero from 'dinero.js/build/amd/dinero';
 })
 
 export class ListingItemComponent implements OnInit {
- dinero = Dinero;
+  dinero = Dinero;
   listing: ListingsDto;
   contain = ImageSize.Cover;
   cameraImages: GalleryItem[] = [];
@@ -24,16 +24,25 @@ export class ListingItemComponent implements OnInit {
   ) {
   }
 
+  location: google.maps.LatLngLiteral;
+
+
   ngOnInit(): void {
     const listingId = this.route.snapshot.paramMap.get('id');
     this.listingsService.getById(listingId).subscribe(listing => {
       console.log(listing);
       this.listing = listing;
-      this.cameraImages = [...this.listing.images.map(image => new ImageItem({src: image.photo}))];
+      this.location = {
+        lat: this.listing.location.coordinates[1],
+        lng: this.listing.location.coordinates[0]
+      };
+      this.cameraImages = [...this.listing.images.map(image => new ImageItem(
+        {src: image.photo, thumb: image.photo}
+      ))];
     });
   }
 
-   get price() {
+  get price() {
     return this.dinero({amount: this.listing.price, precision: 0}).setLocale('ru-RU').toFormat('$0,0');
   }
 

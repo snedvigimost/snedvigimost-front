@@ -31,11 +31,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  },
-  {
-    path: 'listing/:id',
-    component: ListingItemComponent
-  },
+  }
 ];
 
 @NgModule({
