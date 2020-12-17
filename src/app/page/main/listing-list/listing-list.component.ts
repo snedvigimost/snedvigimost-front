@@ -31,6 +31,7 @@ export class ListingListComponent implements OnInit {
 
   sortOptions = [];
   result: PaginationDto<ListingsDto>;
+  selectedListing: ListingsDto | null;
   currencyEnum = CurrencyEnum;
   paginationParamsDto = new PaginationParamsDto();
 
@@ -291,18 +292,25 @@ export class ListingListComponent implements OnInit {
     this.getListings();
   }
 
-  onMouseenter(listing: ListingsDto, index: number) {
+  onMouseenter(listing: ListingsDto) {
     const listingIndex = this.markers.findIndex(marker => marker.id === listing.id);
     const newMarker = {...this.markers[listingIndex]};
     newMarker.hovered = true;
     this.markers[listingIndex] = newMarker;
   }
 
-  onMouseleave(listing: ListingsDto, index: number) {
+  onMouseleave(listing: ListingsDto) {
     const listingIndex = this.markers.findIndex(marker => marker.id === listing.id);
     const newMarker = {...this.markers[listingIndex]};
     newMarker.hovered = false;
     this.markers[listingIndex] = newMarker;
   }
 
+  onMarkerSelect(markerId?: any) {
+    if (markerId) {
+     this.selectedListing = this.result.results.find(listing => listing.id === markerId);
+    } else {
+      this.selectedListing = null;
+    }
+  }
 }

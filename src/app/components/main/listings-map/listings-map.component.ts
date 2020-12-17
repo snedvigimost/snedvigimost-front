@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {GoogleMap, MapInfoWindow, MapMarker} from '@angular/google-maps';
 
-import {ListingsService} from '../../../rest/listings/listings.service';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
+
+import {ListingsService} from '../../../rest/listings/listings.service';
 
 @Component({
   selector: 'app-listings-map',
@@ -14,6 +15,7 @@ export class ListingsMapComponent implements OnInit {
   @ViewChild(MapInfoWindow, {static: false}) infoWindow: MapInfoWindow;
   @ViewChild(GoogleMap, {static: false}) map: GoogleMap;
   @Output() bounds = new EventEmitter<google.maps.LatLngBounds | null>();
+  @Output() selectedMarkerId = new EventEmitter<number | null>();
   // @Input() markers: google.maps.LatLngLiteral[] = [];
   @Input() markers: any[] = [];
   @Input() hoveredIndex: number;
@@ -62,9 +64,9 @@ export class ListingsMapComponent implements OnInit {
     this.display = event.latLng.toJSON();
   }
 
-  openInfoWindow(marker: MapMarker) {
-    console.log(marker);
-    this.infoWindow.open(marker);
+  openInfoWindow(marker: MapMarker, markerPosition) {
+    this.selectedMarkerId.emit(markerPosition.id);
+    // this.infoWindow.open(marker);
   }
 
   removeLastMarker() {
@@ -72,10 +74,6 @@ export class ListingsMapComponent implements OnInit {
   }
 
   onBoundsChanged($event) {
-    // console.log(this.map.getBounds());
-    // console.log(this.map.getBounds().getNorthEast().toJSON());
-    // console.log(this.map.getBounds().getSouthWest().toJSON());
-    console.log('onBoundsChanged');
     // TODO: use lifecycle or other subject?
     if (!this.initial) {
       this.actualBounds.next(this.map.getBounds());
@@ -86,5 +84,10 @@ export class ListingsMapComponent implements OnInit {
 
   onZoomChanged() {
     console.log(this.map.getZoom());
+  }
+
+  onMapClick() {
+    console.log('onMapClick');
+    this.selectedMarkerId.emit();
   }
 }

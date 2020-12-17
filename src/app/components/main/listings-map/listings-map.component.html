@@ -7,13 +7,14 @@
   (mapMousemove)="move($event)"
   (boundsChanged)="onBoundsChanged($event)"
   (mapRightclick)="removeLastMarker()"
+  (mapClick)="onMapClick()"
 >
   <map-marker
     #marker
     *ngFor="let markerPosition of markers; let i = index"
     [position]="markerPosition"
     [options]="markerPosition.hovered ? currentMarkerOption : markerOptions"
-    (mapClick)="openInfoWindow(marker)"
+    (mapClick)="openInfoWindow(marker, markerPosition)"
   >
   </map-marker>
   <map-info-window>Info Window content</map-info-window>

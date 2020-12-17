@@ -225,38 +225,47 @@
     </div>
 
 
-    <div class="grid gap-4" style="overflow-y: auto;">
+    <div class="pl-4 grid gap-4" style="overflow-y: auto;">
       <!--      TODO: fix this do for using auto width-->
       <!--      <overlay-scrollbars [options]="{sizeAutoCapable: false}">-->
-      <div style="padding-right: 18px; padding-top: 6px;">
-        <div>{{result?.results.length}} {{plural(result?.results.length, 'результат', 'результата', 'результатов')}}</div>
 
-
-        <cdk-virtual-scroll-viewport class="example-viewport" [itemSize]="280">
-          <nz-spin
-            nzSimple
-            *ngIf="loading"
-            [nzSize]="'large'"
-            style="justify-self: center; text-align: center"
-          >
-          </nz-spin>
-
-          <ng-container *cdkVirtualFor="let listing of result?.results; let i = index" class="example-item">
-            <app-card
-                [listing]="listing"
-                (mouseleave)="onMouseleave(listing, i)"
-              (mouseenter)="onMouseenter(listing, i)"
-              style="padding: 0 12px"
-            >
-            </app-card>
-          </ng-container>
-        </cdk-virtual-scroll-viewport>
-
-        <!--          <ng-container-->
-        <!--            *ngFor="let listing of result?.results">-->
-        <!--            <app-card style="padding: 0 12px" [listing]="listing"></app-card>-->
-        <!--          </ng-container>-->
+      <div *ngIf="selectedListing; else elseBlock">
+        <app-card
+          [listing]="selectedListing"
+          style="padding: 0 12px"
+        >
+        </app-card>
       </div>
+
+      <ng-template #elseBlock>
+        <div style="padding-right: 18px; padding-top: 6px;">
+          <div>{{result?.results.length}} {{plural(result?.results.length, 'результат', 'результата', 'результатов')}}</div>
+          <cdk-virtual-scroll-viewport class="example-viewport" [itemSize]="280">
+            <nz-spin
+              nzSimple
+              *ngIf="loading"
+              [nzSize]="'large'"
+              style="justify-self: center; text-align: center"
+            >
+            </nz-spin>
+
+            <ng-container *cdkVirtualFor="let listing of result?.results" class="example-item">
+              <app-card
+                [listing]="listing"
+                (mouseleave)="onMouseleave(listing)"
+                (mouseenter)="onMouseenter(listing)"
+                style="padding: 0 12px"
+              >
+              </app-card>
+            </ng-container>
+          </cdk-virtual-scroll-viewport>
+
+          <!--          <ng-container-->
+          <!--            *ngFor="let listing of result?.results">-->
+          <!--            <app-card style="padding: 0 12px" [listing]="listing"></app-card>-->
+          <!--          </ng-container>-->
+        </div>
+      </ng-template>
       <!--      </overlay-scrollbars>-->
     </div>
 
@@ -275,7 +284,9 @@
     <app-listings-map
       [hoveredIndex]="hoveredIndex"
       [markers]="markers"
-      (bounds)="onBoundsChange($event)">
+      (bounds)="onBoundsChange($event)"
+      (selectedMarkerId)="onMarkerSelect($event)"
+    >
     </app-listings-map>
   </div>
 
