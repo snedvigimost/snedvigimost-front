@@ -15,7 +15,8 @@ module.exports = (config) => {
               ident: 'postcss',
               syntax: 'postcss-scss',
               plugins: [
-                require('postcss-import'),
+                // https://github.com/ngneat/tailwind/issues/15
+                // require('postcss-import'),
                 require('tailwindcss')(tailwindConfig),
                 require('autoprefixer'),
               ]

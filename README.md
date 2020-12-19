@@ -47,3 +47,5 @@ localhost {
   file_server
   reverse_proxy /api/* 188.166.80.5:4222
 }
+
+[Angular CLI, Angular, Node.js and TypeScript compatibility.](https://gist.github.com/LayZeeDK/c822cc812f75bb07b7c55d07ba2719b3)

@@ -1,90 +1,106 @@
-<div class="container py-5 w-8/12 px-10 mx-auto">
-  <div *ngIf="listing" class="flex mb-10">
-    <div class="w-8/12 mr-6">
-      <gallery
-        [id]="listing.id"
-        class="mb-5"
-        gallerize
-        [thumb]="true"
-        thumbPosition="left"
-        [items]="cameraImages"
-        [imageSize]="contain"
-        [loadingStrategy]="'lazy'"
-      >
-      </gallery>
-      <p>{{listing.description}}</p>
-    </div>
-    <div class="w-4/12">
-      <div class="mb-3 text-lg">
-        {{listing.title}}
-      </div>
-
-      <div class="mb-3">
-        {{listing.address}}
-      </div>
-
-      <div class="mb-3 text-3xl">
-        {{price}}
-      </div>
-
-      <div class="flex mb-3">
-        <div class="flex-1 text-gray-600">
-          <ng-container *transloco="let t;">
-            {{ t('floor') }}
-          </ng-container>
-        </div>
-        <div class="flex-1">
-          {{listing.floor}}
-          <ng-container *transloco="let t;">
-            {{ t('from') }}
-          </ng-container>
-          {{listing.floorInHouse}}
-        </div>
-      </div>
-
-      <div class="flex mb-3">
-        <div class="flex-1 text-gray-600">
-          <ng-container *transloco="let t;">
-            {{ t('area') }}
-          </ng-container>
-        </div>
-        <div class="flex-1">
-          {{listing.totalArea}} / {{listing.livingArea}} / {{listing.kitchenArea}} м<sup>2</sup>
-        </div>
-      </div>
-
-      <div class="flex mb-3">
-        <div class="flex-1 text-gray-600">
-          <ng-container *transloco="let t;">
-            {{ t('rooms') }}
-          </ng-container>
-        </div>
-        <div class="flex-1">
-          {{listing.roomsCount}}
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="mb-10">
-    <google-map height="400px"
-                width="900px"
-                [center]="location"
-                [zoom]="14"
+<div class="container flex py-5 w-8/12 px-10 mx-auto">
+  <div class="mr-5">
+    <share-buttons
+      [theme]="'circles-dark'"
+      [include]="['facebook','twitter','viber','telegram','messenger','whatsapp','email','copy']"
+      [show]="15"
+      [size]="-4"
+      [title]="listing.title"
+      [description]="listing.title"
+      show="11"
     >
-      <map-marker
-        [position]="location"
+    </share-buttons>
+  </div>
+
+  <div>
+    <div *ngIf="listing" class="flex mb-10">
+      <div class="w-8/12 mr-6">
+        <gallery
+          [id]="listing.id"
+          class="mb-5"
+          gallerize
+          [thumb]="true"
+          thumbPosition="left"
+          [items]="cameraImages"
+          [imageSize]="contain"
+          [loadingStrategy]="'lazy'"
+        >
+        </gallery>
+        <p>{{listing.description}}</p>
+      </div>
+      <div class="w-4/12">
+        <div class="mb-3 text-lg">
+          {{listing.title}}
+        </div>
+
+        <div class="mb-3">
+          {{listing.address}}
+        </div>
+
+        <div class="mb-3 text-3xl">
+          {{price}}
+        </div>
+
+        <div class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            <ng-container *transloco="let t;">
+              {{ t('floor') }}
+            </ng-container>
+          </div>
+          <div class="flex-1">
+            {{listing.floor}}
+            <ng-container *transloco="let t;">
+              {{ t('from') }}
+            </ng-container>
+            {{listing.floorInHouse}}
+          </div>
+        </div>
+
+        <div class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            <ng-container *transloco="let t;">
+              {{ t('area') }}
+            </ng-container>
+          </div>
+          <div class="flex-1">
+            {{listing.totalArea}} / {{listing.livingArea}} / {{listing.kitchenArea}} м<sup>2</sup>
+          </div>
+        </div>
+
+        <div class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            <ng-container *transloco="let t;">
+              {{ t('rooms') }}
+            </ng-container>
+          </div>
+          <div class="flex-1">
+            {{listing.roomsCount}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mb-10">
+      <google-map height="400px"
+                  width="900px"
+                  [center]="location"
+                  [zoom]="14"
       >
-      </map-marker>
-    </google-map>
+        <map-marker
+          [position]="location"
+        >
+        </map-marker>
+      </google-map>
+    </div>
+
+    <div class="mb-10 text-3xl">
+      Динаміка цін
+    </div>
+
+    <div class="mb-10">
+      <app-chart-stat></app-chart-stat>
+    </div>
   </div>
 
-  <div class="mb-10 text-3xl">
-    Динаміка цін
-  </div>
-
-  <div class="mb-10">
-    <app-chart-stat></app-chart-stat>
-  </div>
 </div>

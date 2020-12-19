@@ -12,6 +12,7 @@
 @import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
 @import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
 @import 'overlayscrollbars/css/OverlayScrollbars.css';
+@import '~ngx-sharebuttons/themes/circles/circles-dark-theme';
 
 @import "./ant.scss";
 
@@ -35,4 +36,8 @@ body {
 .ant-tabs-nav-list {
   flex: 1;
   justify-content: space-around;
+}
+
+.sb-group {
+  flex-direction: column;
 }

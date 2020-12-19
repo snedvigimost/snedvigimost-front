@@ -11,12 +11,14 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import * as OverlayscrollbarsModule from 'overlayscrollbars-ngx';
-import {NzSelectModule} from 'ng-zorro-antd/select';
+import {ShareButtonsModule} from 'ngx-sharebuttons/buttons';
+import {ShareIconsModule} from 'ngx-sharebuttons/icons';
 
 import {GalleryModule} from '@ngx-gallery/core';
 import {GallerizeModule} from '@ngx-gallery/gallerize';
 import {LightboxModule} from '@ngx-gallery/lightbox';
 
+import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzSpinModule} from 'ng-zorro-antd/spin';
 import {NzSliderModule} from 'ng-zorro-antd/slider';
 import {NzRadioModule} from 'ng-zorro-antd/radio';
@@ -32,7 +34,7 @@ import {ListingListComponent} from './listing-list/listing-list.component';
 import {MainRoutingModule} from './main-routing.module';
 import {ListingItemComponent} from '../../components/listing-item/listing-item.component';
 import {ListingsMapComponent} from '../../components/main/listings-map/listings-map.component';
-import {ChartStatComponent} from "../../components/listing-item/chart/chart.component";
+import {ChartStatComponent} from '../../components/listing-item/chart/chart.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import {ChartStatComponent} from "../../components/listing-item/chart/chart.comp
     CommonModule,
     MainRoutingModule,
     MatIconModule,
+     ShareButtonsModule,
+    ShareIconsModule,
     ScrollingModule,
     GoogleMapsModule,
     NzSpinModule,
