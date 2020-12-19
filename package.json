@@ -11,8 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc",
-    "build:prod": "NODE_ENV=production ng build --prod"
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -91,8 +90,6 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "ngx-build-plus": "^10.1.1",
-    "ngx-tailwind": "^1.1.0",
     "postcss": "8.1.6",
     "postcss-import": "13.0.0",
     "postcss-loader": "4.0.4",
