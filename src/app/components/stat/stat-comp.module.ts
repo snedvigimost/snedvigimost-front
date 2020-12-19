@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {BoxComponent} from './box/box.component';
 import {ChartComponent} from './chart/chart.component';
 import {PriceStatComponent} from './price-stat/price-stat.component';
+import { StackedBarChartComponent } from './stacked-bar-chart/stacked-bar-chart.component';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import {PriceStatComponent} from './price-stat/price-stat.component';
     BoxComponent,
     ChartComponent,
     PriceStatComponent,
+    StackedBarChartComponent,
   ],
   imports: [
     CommonModule
@@ -19,6 +21,7 @@ import {PriceStatComponent} from './price-stat/price-stat.component';
      BoxComponent,
     ChartComponent,
     PriceStatComponent,
+    StackedBarChartComponent
   ]
 })
 export class StatCompModule { }

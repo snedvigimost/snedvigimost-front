@@ -26,6 +26,7 @@
     "@angular/platform-browser": "~10.2.2",
     "@angular/platform-browser-dynamic": "~10.2.2",
     "@angular/router": "~10.2.2",
+    "@antv/data-set": "^0.11.7",
     "@antv/g2": "^4.0.15",
     "@antv/g2plot": "^2.2.11",
     "@fortawesome/angular-fontawesome": "^0.8.1",
