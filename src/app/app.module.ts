@@ -57,10 +57,6 @@ export function playerFactory() {
 
 const icons: IconDefinition[] = [SortDescendingOutline, UserOutline, FacebookOutline, FacebookFill, GoogleCircleFill];
 
-const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
-  direction: 'horizontal',
-  slidesPerView: 'auto'
-};
 
 @NgModule({
   declarations: [
