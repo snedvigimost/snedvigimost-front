@@ -56,11 +56,11 @@ export class ListingsMapComponent implements OnInit {
       });
   }
 
-  addMarker(event: google.maps.MouseEvent) {
+  addMarker(event: google.maps.MapMouseEvent) {
     this.markerPositions.push(event.latLng.toJSON());
   }
 
-  move(event: google.maps.MouseEvent) {
+  move(event: google.maps.MapMouseEvent) {
     this.display = event.latLng.toJSON();
   }
 

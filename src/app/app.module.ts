@@ -10,7 +10,7 @@ import {GoogleMapsModule} from '@angular/google-maps';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 
-import {SwiperConfigInterface, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
+// import {SwiperConfigInterface, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 import player from 'lottie-web';
 
 import {NzCascaderModule} from 'ng-zorro-antd/cascader';
@@ -42,7 +42,7 @@ import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 import { LoginComponent } from './page/login/login.component';
-import {MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from '@angular/material/button';
 
 
 registerLocaleData(ru);
@@ -101,10 +101,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     HttpService,
     HttpClientModule,
     HttpClientJsonpModule,
-    {
-      provide: SWIPER_CONFIG,
-      useValue: DEFAULT_SWIPER_CONFIG
-    },
+    // {
+    //   provide: SWIPER_CONFIG,
+    //   useValue: DEFAULT_SWIPER_CONFIG
+    // },
     {
       provide: NZ_I18N,
       useValue: ru_RU
