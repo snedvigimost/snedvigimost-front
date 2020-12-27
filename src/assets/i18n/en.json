@@ -12,6 +12,7 @@
   "roomsCount": "Room count",
   "moreFilters": "More filters",
   "area": "Area",
+  "district": "District",
   "sort": {
     "title": "Sort",
     "areaAsc": "By area, small at first",

@@ -17,7 +17,14 @@ import {NzCascaderModule} from 'ng-zorro-antd/cascader';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {IconDefinition} from '@ant-design/icons-angular';
-import {SortDescendingOutline, UserOutline, FacebookOutline, FacebookFill, GoogleCircleFill} from '@ant-design/icons-angular/icons';
+import {
+  SortDescendingOutline,
+  UserOutline,
+  FacebookOutline,
+  FacebookFill,
+  GoogleCircleFill,
+  CheckOutline
+} from '@ant-design/icons-angular/icons';
 import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
 import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
 
@@ -39,9 +46,9 @@ import {TranslocoRootModule} from './transloco/transloco-root.module';
 
 import {TranslocoMessageFormatModule} from '@ngneat/transloco-messageformat';
 import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import {NzTabsModule} from 'ng-zorro-antd/tabs';
 
-import { LoginComponent } from './page/login/login.component';
+import {LoginComponent} from './page/login/login.component';
 import {MatButtonModule} from '@angular/material/button';
 
 
@@ -55,7 +62,14 @@ export function playerFactory() {
 }
 
 
-const icons: IconDefinition[] = [SortDescendingOutline, UserOutline, FacebookOutline, FacebookFill, GoogleCircleFill];
+const icons: IconDefinition[] = [
+  SortDescendingOutline,
+  UserOutline,
+  FacebookOutline,
+  FacebookFill,
+  GoogleCircleFill,
+  CheckOutline
+];
 
 
 @NgModule({

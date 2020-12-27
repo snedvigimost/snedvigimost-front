@@ -38,8 +38,22 @@
         </div>
 
         <div class="mb-3 text-3xl">
-          {{price}}
+          {{listing.price}} ₴
+          <!--          {{price}}-->
         </div>
+
+
+        <div *ngIf="listing.verified" class="mb-3 bg-blue-500 rounded-lg text-white">
+          <div class="flex px-3 py-2">
+            <div class="flex-1">
+              Перевірена квартира
+            </div>
+            <div class="flex-1">
+              <i nz-icon nzType="check" nzTheme="outline"></i>
+            </div>
+          </div>
+        </div>
+
 
         <div class="flex mb-3">
           <div class="flex-1 text-gray-600">
@@ -77,6 +91,44 @@
             {{listing.roomsCount}}
           </div>
         </div>
+
+
+        <div *ngIf="listing?.heatingType?.title" class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            Опалення
+          </div>
+          <div class="flex-1">
+            {{listing.heatingType.title}}
+          </div>
+        </div>
+
+        <div *ngIf="listing?.bathroomType?.title" class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            Санвузол
+          </div>
+          <div class="flex-1">
+            {{listing.bathroomType.title}}
+          </div>
+        </div>
+
+        <div *ngIf="listing?.apartmentCondition?.title" class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            Стан
+          </div>
+          <div class="flex-1">
+            {{listing.apartmentCondition.title}}
+          </div>
+        </div>
+
+        <div class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            Кількість переглядів
+          </div>
+          <div class="flex-1">
+            {{listing.viewCount}}
+          </div>
+        </div>
+
 
       </div>
     </div>

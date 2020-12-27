@@ -18,8 +18,13 @@ export class ListingsDto {
   phoneNumber: string;
   publicationDate: string;
   isPublished: boolean;
+  verified: boolean;
   images: ImagesDto[];
   type: HouseTypeDto;
+  heatingType: any;
+  bathroomType: any;
+  apartmentCondition: any;
+  viewCount: number;
   url: string;
   source: string;
   location: any;
@@ -48,6 +53,11 @@ export class ListingsDto {
     this.type = new HouseTypeDto(data.type);
     this.location = data.location;
     this.district = data.district;
+    this.heatingType = data.heatingType;
+    this.bathroomType = data.bathroomType;
+    this.apartmentCondition = data.apartmentCondition;
+    this.viewCount = data.viewCount;
+    this.verified = data.verified;
   }
 
 }

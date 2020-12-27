@@ -35,7 +35,26 @@ import {MainRoutingModule} from './main-routing.module';
 import {ListingItemComponent} from '../../components/listing-item/listing-item.component';
 import {ListingsMapComponent} from '../../components/main/listings-map/listings-map.component';
 import {ChartStatComponent} from '../../components/listing-item/chart/chart.component';
+import {NzIconModule} from 'ng-zorro-antd/icon';
+import {IconDefinition} from '@ant-design/icons-angular';
+import {
+  CheckOutline,
+  FacebookFill,
+  FacebookOutline,
+  GoogleCircleFill,
+  SortDescendingOutline,
+  UserOutline
+} from '@ant-design/icons-angular/icons';
 
+
+const icons: IconDefinition[] = [
+  SortDescendingOutline,
+  UserOutline,
+  FacebookOutline,
+  FacebookFill,
+  GoogleCircleFill,
+  CheckOutline
+];
 
 @NgModule({
   declarations: [
@@ -49,11 +68,13 @@ import {ChartStatComponent} from '../../components/listing-item/chart/chart.comp
     CommonModule,
     MainRoutingModule,
     MatIconModule,
-     ShareButtonsModule,
+    NzIconModule,
+    ShareButtonsModule,
     ShareIconsModule,
     ScrollingModule,
     GoogleMapsModule,
     NzSpinModule,
+    NzIconModule.forRoot(icons),
     LightboxModule,
     GalleryModule,
     GallerizeModule,
