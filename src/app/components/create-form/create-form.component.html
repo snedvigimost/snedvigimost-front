@@ -14,20 +14,22 @@
           </div>
 
           <nz-select
-            nzShowSearch
             nzAllowClear
-            nzPlaceHolder="Оберіть район"
+            nzPlaceHolder="По умолчанию"
+            [nzDropdownMatchSelectWidth]="false"
             [(ngModel)]="selectedDistrict"
             (ngModelChange)="onDistrictChange()"
           >
             <ng-container *ngFor="let district of districts.results">
               <nz-option
-                [nzLabel]="district.name"
                 [nzValue]="district.id"
+                [nzLabel]="district.translations[translocoService.getActiveLang()].name"
               >
               </nz-option>
             </ng-container>
           </nz-select>
+
+
         </div>
 
         <div class="mb-4">
@@ -74,7 +76,7 @@
 
         <div class="mb-4">
           <div class="mb-2">Дім</div>
-          <input nz-input placeholder="Дом" [(ngModel)]="house"/>
+          <input nz-input placeholder="Дім" [(ngModel)]="house"/>
         </div>
       </div>
     </div>
@@ -162,7 +164,7 @@
           >
             <ng-container *ngFor="let layout of layouts.results">
               <nz-option
-                [nzLabel]="layout.name"
+                [nzLabel]="layout.title"
                 [nzValue]="layout.id"
               >
               </nz-option>
@@ -277,8 +279,12 @@
         height="400px"
         width="1150px"
         [center]="location"
+        (mapClick)="addMarker($event)"
         [zoom]="14"
       >
+        <map-marker *ngFor="let markerPosition of markerPositions"
+                    [position]="markerPosition"
+                    [options]="markerOptions"></map-marker>
       </google-map>
     </div>
 

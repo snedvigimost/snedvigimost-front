@@ -1,10 +1,10 @@
 export class LayoutDto {
   id: number;
-  name: string;
+  title: string;
 
   constructor(data: LayoutDto) {
     this.id = data.id;
-    this.name = data.name;
+    this.title = data.title;
   }
 
 }

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TranslocoService} from '@ngneat/transloco';
 
 import {DistrictsService} from '../../rest/districts/districts.service';
 import {PaginationDto} from '../../rest/pagination/pagination.dto';
@@ -14,8 +15,9 @@ import {HeatService} from '../../rest/heat/heat.service';
 import {Heat} from '../../rest/heat/heat.dto';
 import {ApartmentService} from '../../rest/condition/apartment.service';
 import {Apartment} from '../../rest/condition/apartment.dto';
-import {BathroomTypeDto} from "../../rest/bathroom-type/bathroom-type.dto";
-import {BathroomTypeService} from "../../rest/bathroom-type/bathroom-type.service";
+import {BathroomTypeDto} from '../../rest/bathroom-type/bathroom-type.dto';
+import {BathroomTypeService} from '../../rest/bathroom-type/bathroom-type.service';
+
 
 @Component({
   selector: 'app-create-form',
@@ -46,6 +48,8 @@ export class CreateFormComponent implements OnInit {
   house: string;
   description: string;
   microDistricts: MicroDistrictDto[] = [];
+  markerPositions: google.maps.LatLngLiteral[] = [];
+  markerOptions: google.maps.MarkerOptions = {draggable: false};
   location: google.maps.LatLngLiteral = {
     lat: 50.437665,
     lng: 30.5205651
@@ -61,6 +65,7 @@ export class CreateFormComponent implements OnInit {
     private heatService: HeatService,
     private apartmentService: ApartmentService,
     private bathroomTypeService: BathroomTypeService,
+    public translocoService: TranslocoService,
   ) {
   }
 
@@ -114,4 +119,9 @@ export class CreateFormComponent implements OnInit {
       console.log(created);
     });
   }
+
+  addMarker(event: google.maps.MouseEvent) {
+    this.markerPositions.push(event.latLng.toJSON());
+  }
+
 }
