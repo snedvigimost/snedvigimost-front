@@ -10,6 +10,12 @@ import {StreetDto} from '../../rest/streets/streets.dto';
 import {LayoutService} from '../../rest/layout/layout.service';
 import {LayoutDto} from '../../rest/layout/layout.dto';
 import {ListingsService} from '../../rest/listings/listings.service';
+import {HeatService} from '../../rest/heat/heat.service';
+import {Heat} from '../../rest/heat/heat.dto';
+import {ApartmentService} from '../../rest/condition/apartment.service';
+import {Apartment} from '../../rest/condition/apartment.dto';
+import {BathroomTypeDto} from "../../rest/bathroom-type/bathroom-type.dto";
+import {BathroomTypeService} from "../../rest/bathroom-type/bathroom-type.service";
 
 @Component({
   selector: 'app-create-form',
@@ -20,6 +26,9 @@ export class CreateFormComponent implements OnInit {
   districts: PaginationDto<DistrictDto>;
   streets: PaginationDto<StreetDto>;
   layouts: PaginationDto<LayoutDto>;
+  heating: PaginationDto<Heat>;
+  apartments: PaginationDto<Apartment>;
+  bathroomTypes: PaginationDto<BathroomTypeDto>;
   selectedDistrict: number;
   roomsCount: number;
   floor: number;
@@ -30,10 +39,17 @@ export class CreateFormComponent implements OnInit {
   kitchenArea: number;
   selectedStreet: number;
   selectedLayoutId: number;
+  selectedHeatingId: number;
+  selectedApartmentId: number;
+  selectedBathroomTypeId: number;
   selectedMicroDistrict: number;
   house: string;
   description: string;
   microDistricts: MicroDistrictDto[] = [];
+  location: google.maps.LatLngLiteral = {
+    lat: 50.437665,
+    lng: 30.5205651
+  };
 
 
   constructor(
@@ -42,6 +58,9 @@ export class CreateFormComponent implements OnInit {
     private streetsService: StreetsService,
     private layoutService: LayoutService,
     private listingsService: ListingsService,
+    private heatService: HeatService,
+    private apartmentService: ApartmentService,
+    private bathroomTypeService: BathroomTypeService,
   ) {
   }
 
@@ -54,6 +73,15 @@ export class CreateFormComponent implements OnInit {
     });
     this.layoutService.getLayouts().subscribe(layouts => {
       this.layouts = layouts;
+    });
+    this.heatService.getHeatingType().subscribe(heating => {
+      this.heating = heating;
+    });
+    this.apartmentService.getApartmentCondition().subscribe(apartments => {
+      this.apartments = apartments;
+    });
+    this.bathroomTypeService.getBathroomType().subscribe(bathroomTypes => {
+      this.bathroomTypes = bathroomTypes;
     });
   }
 

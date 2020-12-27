@@ -122,6 +122,33 @@
 
         <div class="flex mb-3">
           <div class="flex-1 text-gray-600">
+            Рік побудови
+          </div>
+          <div class="flex-1">
+            {{listing.year}}
+          </div>
+        </div>
+
+        <div class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            Номер телефону
+          </div>
+          <div class="flex-1">
+            {{listing.phoneNumber}}
+          </div>
+        </div>
+
+        <div class="flex mb-3">
+          <div class="flex-1 text-gray-600">
+            Оголошення створене
+          </div>
+          <div class="flex-1">
+            {{listing.publicationDate | date:'YYYY-MM-dd'}}
+          </div>
+        </div>
+
+        <div class="flex mb-3">
+          <div class="flex-1 text-gray-600">
             Кількість переглядів
           </div>
           <div class="flex-1">
@@ -134,10 +161,11 @@
     </div>
 
     <div class="mb-10">
-      <google-map height="400px"
-                  width="900px"
-                  [center]="location"
-                  [zoom]="14"
+      <google-map
+        height="400px"
+        width="900px"
+        [center]="location"
+        [zoom]="14"
       >
         <map-marker
           [position]="location"

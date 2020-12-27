@@ -168,7 +168,7 @@ export class ListingListComponent implements OnInit {
       ];
     });
 
-    this.child.transcript$.subscribe(transcript => {
+    this.child?.transcript$?.subscribe(transcript => {
       console.log(transcript);
     });
 

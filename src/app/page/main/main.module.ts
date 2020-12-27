@@ -45,6 +45,8 @@ import {
   SortDescendingOutline,
   UserOutline
 } from '@ant-design/icons-angular/icons';
+import {CreateFormComponent} from "../../components/create-form/create-form.component";
+import {NzDividerModule} from "ng-zorro-antd/divider";
 
 
 const icons: IconDefinition[] = [
@@ -62,6 +64,7 @@ const icons: IconDefinition[] = [
     ListingListComponent,
     ListingsMapComponent,
     ChartStatComponent,
+    CreateFormComponent,
     WebSpeechComponentComponent,
   ],
   imports: [
@@ -74,6 +77,7 @@ const icons: IconDefinition[] = [
     ScrollingModule,
     GoogleMapsModule,
     NzSpinModule,
+    NzDividerModule,
     NzIconModule.forRoot(icons),
     LightboxModule,
     GalleryModule,

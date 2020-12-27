@@ -12,6 +12,10 @@
   "roomsCount": "Количество комнат",
   "moreFilters": "Больше фильтров",
   "area": "Площадь",
+  "street": "Улица",
+  "totalArea": "Общая площадь",
+  "livingArea": "Жилая площадь",
+  "kitchenArea": "Площадь кухни",
   "district": "Район",
   "sort": {
     "title": "Сортировать",
@@ -29,5 +33,7 @@
   "signOut": "Выйти",
   "about": "О нас",
   "news": "Новости",
+  "description": "Описание",
+   "save": "Сохранить",
   "myPluralRule": "{myCount, plural, =0 {no results} one {1 result} other {# results}}"
 }

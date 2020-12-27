@@ -50,6 +50,7 @@ import {NzTabsModule} from 'ng-zorro-antd/tabs';
 
 import {LoginComponent} from './page/login/login.component';
 import {MatButtonModule} from '@angular/material/button';
+import {FacebookModule} from "ngx-facebook";
 
 
 registerLocaleData(ru);
@@ -82,7 +83,6 @@ const icons: IconDefinition[] = [
     UploaderComponent,
     CascaderFilterComponent,
     LoaderComponent,
-    CreateFormComponent,
     LoginComponent,
   ],
   imports: [
@@ -97,6 +97,7 @@ const icons: IconDefinition[] = [
     NzDropDownModule,
     GoogleMapsModule,
     MatButtonModule,
+     FacebookModule.forRoot(),
     MatIconModule,
     MatInputModule,
     HttpClientModule,

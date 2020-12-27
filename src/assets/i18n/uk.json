@@ -12,6 +12,10 @@
   "roomsCount": "Кількість кімнат",
   "moreFilters": "Більше фільтрів",
   "area": "Площа",
+  "street": "Вулиця",
+  "totalArea": "Загальна площа",
+  "livingArea": "Житлова площа",
+  "kitchenArea": "Площа кухні",
   "district": "Район",
   "sort": {
     "title": "Сортувати",
@@ -29,5 +33,7 @@
   "signOut": "Вийти",
   "about": "Про нас",
   "news": "Новини",
+  "description": "Опис",
+   "save": "Зберегти",
   "myPluralRule": "{myCount, plural, =0 {no results} one {1 result} other {# results}}"
 }

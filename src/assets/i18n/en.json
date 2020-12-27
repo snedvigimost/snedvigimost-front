@@ -12,6 +12,10 @@
   "roomsCount": "Room count",
   "moreFilters": "More filters",
   "area": "Area",
+  "street": "Street",
+  "totalArea": "Total area",
+  "livingArea": "Living area",
+  "kitchenArea": "Kitchen area",
   "district": "District",
   "sort": {
     "title": "Sort",
@@ -29,5 +33,7 @@
   "signOut": "Sign out",
   "about": "About",
   "news": "News",
+  "save": "Save",
+  "description": "Description",
   "myPluralRule": "{myCount, plural, =0 {no results} one {1 result} other {# results}}"
 }

@@ -82,10 +82,6 @@ export class ListingsMapComponent implements OnInit {
     }
   }
 
-  onZoomChanged() {
-    console.log(this.map.getZoom());
-  }
-
   onMapClick() {
     console.log('onMapClick');
     this.selectedMarkerId.emit();
