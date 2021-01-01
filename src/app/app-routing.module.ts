@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'news',
+    loadChildren: () => import('./page/news/news.module').then(m => m.NewsModule)
   }
 ];
 

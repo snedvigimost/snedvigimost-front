@@ -1,0 +1,37 @@
+<div style="background-color: #f5f6fa">
+  <div class="container py-5 px-10 mx-auto">
+
+    <div class="grid grid-cols-3 gap-4">
+      <div *ngFor="let news of result.results" class="bg-white rounded-md">
+        <div class="">
+          <img class="rounded-t-md w-full" [src]="news.imageUrl" alt="">
+        </div>
+        <div class="flex h-64 flex-col p-5">
+          <div>
+            <div class="mb-2 text-gray-500">
+              Дом и уют
+            </div>
+            <div class="mb-3 font-semibold text-xl">
+              {{news.title}}
+            </div>
+            <div>
+              {{news.subtitle}}
+            </div>
+          </div>
+          <div class="mt-auto">
+            {{news.createdAt | date}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <button mat-fab class="add-item" color="primary" routerLink="/news/create">
+    <mat-icon class="icon">add</mat-icon>
+  </button>
+
+
+</div>
