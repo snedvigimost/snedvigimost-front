@@ -10,7 +10,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-// import {SwiperConfigInterface, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 import player from 'lottie-web';
 
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
@@ -39,7 +38,6 @@ import { AboutComponent } from './page/about/about.component';
 import { MapComponent } from './components/about/map/map.component';
 import { LoaderComponent } from './components/_loader/loader.component';
 import { CascaderFilterComponent } from './components/main/_cascader-filter/cascader-filter.component';
-import { CreateFormComponent } from './components/create-form/create-form.component';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -52,11 +50,8 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { LoginComponent } from './page/login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FacebookModule } from "ngx-facebook";
-import { InstallmentCalculatorComponent } from './components/listing-item/installment-calculator/installment-calculator.component';
-
 
 registerLocaleData(ru);
-
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -115,10 +110,6 @@ const icons: IconDefinition[] = [
     HttpService,
     HttpClientModule,
     HttpClientJsonpModule,
-    // {
-    //   provide: SWIPER_CONFIG,
-    //   useValue: DEFAULT_SWIPER_CONFIG
-    // },
     {
       provide: NZ_I18N,
       useValue: ru_RU

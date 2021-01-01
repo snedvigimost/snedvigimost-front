@@ -38,8 +38,7 @@
         </div>
 
         <div class="mb-3 text-3xl">
-          {{listing.price}} ₴
-          <!--          {{price}}-->
+          {{listing.price | currency:"UAH":'symbol-narrow':'4.0'}}
         </div>
 
 
@@ -162,7 +161,7 @@
             </button>
           </div>
           <div>
-            <button nz-button nzType="primary"><i nz-icon nzType="calculator"></i>Окупність</button>
+            <button (click)="showPaybackModal()" nz-button nzType="primary"><i nz-icon nzType="calculator"></i>Окупність</button>
           </div>
         </div>
 
@@ -171,6 +170,14 @@
                   (nzOnOk)="handleOk()">
           <ng-container *nzModalContent>
             <app-installment-calculator></app-installment-calculator>
+          </ng-container>
+        </nz-modal>
+
+        <nz-modal [(nzVisible)]="isPaybackVisible" [nzWidth]="800" nzTitle="Калькулятор окупності"
+                  (nzOnCancel)="handlePaybackCancel()"
+                  (nzOnOk)="handlePaybackOk()">
+          <ng-container *nzModalContent>
+            <app-payback-calculator></app-payback-calculator>
           </ng-container>
         </nz-modal>
 

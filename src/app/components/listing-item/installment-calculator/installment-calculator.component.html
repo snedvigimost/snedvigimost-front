@@ -9,7 +9,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Планування</mat-label>
             <mat-select [(ngModel)]="selectedValue" (ngModelChange)="onPriceChange()" name="food">
-              <mat-option *ngFor="let food of panings" [value]="food.price">
+              <mat-option *ngFor="let food of plannings" [value]="food.price">
                 {{food.rooms}}-к, {{food.area}} m2 - {{food.price}} грн
               </mat-option>
             </mat-select>
@@ -19,8 +19,7 @@
         <div class="mr-3">
           <mat-form-field appearance="outline">
             <mat-label>Сума до розрахунку:</mat-label>
-            <input matInput placeholder="Placeholder" [(ngModel)]="selectedValue">
-            <span matSuffix>грн</span>
+            <input currencyMask matInput placeholder="Placeholder" [(ngModel)]="selectedValue">
           </mat-form-field>
         </div>
       </div>
@@ -35,8 +34,7 @@
 
       <div class="flex justify-end">
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Placeholder" [(ngModel)]="first">
-          <span matSuffix>грн</span>
+          <input matInput placeholder="Placeholder" currencyMask [(ngModel)]="first">
         </mat-form-field>
       </div>
 

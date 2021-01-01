@@ -19,7 +19,7 @@ export class ListingItemComponent implements OnInit {
   contain = ImageSize.Cover;
   cameraImages: GalleryItem[] = [];
   isVisible = false;
-  toppings = new FormControl();
+  isPaybackVisible = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,23 +49,28 @@ export class ListingItemComponent implements OnInit {
     return this.dinero({ amount: this.listing.price, precision: 0 }).setLocale('ru-RU').toFormat('$0,0');
   }
 
-  // get getPlaningString() {
-  //   return
-  // }
-
   showModal(): void {
     this.isVisible = true;
   }
 
   handleOk(): void {
-    console.log('Button ok clicked!');
     this.isVisible = false;
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
     this.isVisible = false;
   }
 
 
+  showPaybackModal() {
+    this.isPaybackVisible = true;
+  }
+
+  handlePaybackCancel() {
+    this.isPaybackVisible = false;
+  }
+
+  handlePaybackOk() {
+    this.isPaybackVisible = false;
+  }
 }

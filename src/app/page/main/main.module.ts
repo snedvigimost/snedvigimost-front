@@ -52,6 +52,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { InstallmentCalculatorComponent } from '../../components/listing-item/installment-calculator/installment-calculator.component';
+import { PaybackCalculatorComponent } from '../../components/listing-item/payback-calculator/payback-calculator.component';
+import { NgxMaskModule } from 'ngx-mask/lib/ngx-mask.module';
+import { IMaskModule } from 'angular-imask';
+import { CurrencyMaskInputMode, NgxCurrencyModule } from 'ngx-currency';
 
 
 const icons: IconDefinition[] = [
@@ -63,6 +67,21 @@ const icons: IconDefinition[] = [
   CheckOutline
 ];
 
+export const customCurrencyMaskConfig = {
+  align: "right",
+  allowNegative: true,
+  allowZero: true,
+  decimal: ",",
+  precision: 0,
+  prefix: "",
+  suffix: " грн",
+  thousands: " ",
+  nullable: true,
+  min: null,
+  max: null,
+  inputMode: CurrencyMaskInputMode.FINANCIAL
+};
+
 @NgModule({
   declarations: [
     ListingItemComponent,
@@ -70,6 +89,7 @@ const icons: IconDefinition[] = [
     ListingsMapComponent,
     ChartStatComponent,
     InstallmentCalculatorComponent,
+    PaybackCalculatorComponent,
     CreateFormComponent,
     WebSpeechComponentComponent,
   ],
@@ -77,6 +97,9 @@ const icons: IconDefinition[] = [
     CommonModule,
     MainRoutingModule,
     MatIconModule,
+    // NgxMaskModule.forRoot(),
+    IMaskModule,
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
     NzIconModule,
     ShareButtonsModule,
     ShareIconsModule,

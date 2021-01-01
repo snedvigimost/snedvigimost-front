@@ -1,0 +1,95 @@
+<div>
+  <div class="flex justify-between">
+    <div>
+      <div class="mb-2 font-semibold">
+        1. Повна вартість
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Планування</mat-label>
+        <mat-select [(ngModel)]="selectedValue" (ngModelChange)="onPlanningChange()" name="food">
+          <mat-option *ngFor="let food of plannings" [value]="food">
+            {{food.rooms}}-к, {{food.area}} m2 - {{food.price}} грн
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="mr-3">
+      <div class="mb-2 font-semibold">
+        2. Витрати на ремонт
+      </div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Placeholder"
+               currencyMask
+               [(ngModel)]="repairCosts"
+        >
+        <mat-hint>Витрати на ремонт</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="mr-3">
+      <div class="mb-2 font-semibold">
+        3. Площа
+      </div>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Placeholder" [(ngModel)]="selectedValue.area">
+        <span matSuffix>м2</span>
+        <mat-hint>Вкажіть площа обраного об'єкта</mat-hint>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <div class="mb-5 font-semibold">
+      4. Амортизація
+    </div>
+    <div class="mb-2">
+      <ngx-slider
+        [(value)]="depreciationPercent"
+        (valueChange)="depreciationPercentChange()"
+        [options]="depreciationPercentOptions"
+      >
+      </ngx-slider>
+    </div>
+    <div class="text-xs text-gray-400">
+      Природний знос ремонту, в рік
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <nz-divider></nz-divider>
+  </div>
+
+  <div class="flex justify-between">
+    <div class="w-36 mr-3 text-xs self-center">
+      * Інформація надана в ознайомлювальних цілях
+    </div>
+
+    <div class="">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Placeholder" [(ngModel)]="rentPrice">
+        <span matSuffix>м2</span>
+      </mat-form-field>
+      <div class="mb-1 font-semibold">
+        Медіанна ціна оренди
+      </div>
+      <div class="text-xs text-gray-400">
+        Медіана цін на оренду в радіусі 1 км
+      </div>
+    </div>
+
+    <div class="">
+      <div class="font-bold text-2xl text-blue-500 mb-5">
+        {{paybackPeriodString}}
+      </div>
+      <div class="mb-1 font-semibold">
+        Термін окупності
+      </div>
+      <div class="text-xs text-gray-400">
+        Амортизація - {{depreciationPercent}}% в рік
+      </div>
+    </div>
+  </div>
+
+</div>
+
