@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {ListingsService} from '../../rest/listings/listings.service';
-import {ListingsDto} from '../../rest/listings/listings.dto';
-import {GalleryItem} from '@ngx-gallery/core/lib/models/gallery.model';
-import {ImageItem, ImageSize} from '@ngx-gallery/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ListingsService } from '../../rest/listings/listings.service';
+import { ListingsDto } from '../../rest/listings/listings.dto';
+import { GalleryItem } from '@ngx-gallery/core/lib/models/gallery.model';
+import { ImageItem, ImageSize } from '@ngx-gallery/core';
 import * as Dinero from 'dinero.js/build/amd/dinero';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-listing-item',
   templateUrl: './listing-item.component.html',
-  styleUrls: ['./listing-item.component.scss']
+  styleUrls: [ './listing-item.component.scss' ]
 })
 
 export class ListingItemComponent implements OnInit {
@@ -17,6 +18,8 @@ export class ListingItemComponent implements OnInit {
   listing: ListingsDto;
   contain = ImageSize.Cover;
   cameraImages: GalleryItem[] = [];
+  isVisible = false;
+  toppings = new FormControl();
 
   constructor(
     private route: ActivatedRoute,
@@ -33,17 +36,36 @@ export class ListingItemComponent implements OnInit {
       console.log(listing);
       this.listing = listing;
       this.location = {
-        lat: this.listing.location.coordinates[1],
-        lng: this.listing.location.coordinates[0]
+        lat: this.listing.location.coordinates[ 1 ],
+        lng: this.listing.location.coordinates[ 0 ]
       };
-      this.cameraImages = [...this.listing.images.map(image => new ImageItem(
-        {src: image.photo, thumb: image.photo}
-      ))];
+      this.cameraImages = [ ...this.listing.images.map(image => new ImageItem(
+        { src: image.photo, thumb: image.photo }
+      )) ];
     });
   }
 
   get price() {
-    return this.dinero({amount: this.listing.price, precision: 0}).setLocale('ru-RU').toFormat('$0,0');
+    return this.dinero({ amount: this.listing.price, precision: 0 }).setLocale('ru-RU').toFormat('$0,0');
   }
+
+  // get getPlaningString() {
+  //   return
+  // }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+
 
 }

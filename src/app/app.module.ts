@@ -1,56 +1,58 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import ru from '@angular/common/locales/ru';
-import {FormsModule} from '@angular/forms';
-import {CommonModule, registerLocaleData} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, registerLocaleData } from '@angular/common';
 
-import {GoogleMapsModule} from '@angular/google-maps';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 // import {SwiperConfigInterface, SWIPER_CONFIG} from 'ngx-swiper-wrapper';
 import player from 'lottie-web';
 
-import {NzCascaderModule} from 'ng-zorro-antd/cascader';
-import {NzIconModule} from 'ng-zorro-antd/icon';
-import {NzSelectModule} from 'ng-zorro-antd/select';
-import {IconDefinition} from '@ant-design/icons-angular';
+import { NzCascaderModule } from 'ng-zorro-antd/cascader';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { IconDefinition } from '@ant-design/icons-angular';
 import {
   SortDescendingOutline,
   UserOutline,
   FacebookOutline,
   FacebookFill,
   GoogleCircleFill,
-  CheckOutline
+  CheckOutline,
+  CalculatorOutline
 } from '@ant-design/icons-angular/icons';
-import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
-import {NZ_I18N, ru_RU} from 'ng-zorro-antd/i18n';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {HttpService} from './rest/http.service';
-import {UploaderComponent} from './components/uploader/uploader.component';
-import {HeaderComponent} from './components/header/header.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {AboutComponent} from './page/about/about.component';
-import {MapComponent} from './components/about/map/map.component';
-import {LoaderComponent} from './components/_loader/loader.component';
-import {CascaderFilterComponent} from './components/main/_cascader-filter/cascader-filter.component';
-import {CreateFormComponent} from './components/create-form/create-form.component';
-import {HttpClientJsonpModule} from '@angular/common/http';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HttpService } from './rest/http.service';
+import { UploaderComponent } from './components/uploader/uploader.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './page/about/about.component';
+import { MapComponent } from './components/about/map/map.component';
+import { LoaderComponent } from './components/_loader/loader.component';
+import { CascaderFilterComponent } from './components/main/_cascader-filter/cascader-filter.component';
+import { CreateFormComponent } from './components/create-form/create-form.component';
+import { HttpClientJsonpModule } from '@angular/common/http';
+import { MatExpansionModule } from '@angular/material/expansion';
 
-import {TranslocoRootModule} from './transloco/transloco-root.module';
+import { TranslocoRootModule } from './transloco/transloco-root.module';
 
-import {TranslocoMessageFormatModule} from '@ngneat/transloco-messageformat';
-import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
-import {NzTabsModule} from 'ng-zorro-antd/tabs';
+import { TranslocoMessageFormatModule } from '@ngneat/transloco-messageformat';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
-import {LoginComponent} from './page/login/login.component';
-import {MatButtonModule} from '@angular/material/button';
-import {FacebookModule} from "ngx-facebook";
+import { LoginComponent } from './page/login/login.component';
+import { MatButtonModule } from '@angular/material/button';
+import { FacebookModule } from "ngx-facebook";
+import { InstallmentCalculatorComponent } from './components/listing-item/installment-calculator/installment-calculator.component';
 
 
 registerLocaleData(ru);
@@ -69,7 +71,8 @@ const icons: IconDefinition[] = [
   FacebookOutline,
   FacebookFill,
   GoogleCircleFill,
-  CheckOutline
+  CheckOutline,
+  CalculatorOutline
 ];
 
 
@@ -97,7 +100,7 @@ const icons: IconDefinition[] = [
     NzDropDownModule,
     GoogleMapsModule,
     MatButtonModule,
-     FacebookModule.forRoot(),
+    FacebookModule.forRoot(),
     MatIconModule,
     MatInputModule,
     HttpClientModule,
@@ -121,7 +124,7 @@ const icons: IconDefinition[] = [
       useValue: ru_RU
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {
 }

@@ -1,0 +1,83 @@
+<div class="flex">
+  <div>
+    <div>
+      <div class="mb-5 font-semibold">
+        1. Повна вартість
+      </div>
+      <div class="flex">
+        <div class="mr-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Планування</mat-label>
+            <mat-select [(ngModel)]="selectedValue" (ngModelChange)="onPriceChange()" name="food">
+              <mat-option *ngFor="let food of panings" [value]="food.price">
+                {{food.rooms}}-к, {{food.area}} m2 - {{food.price}} грн
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="mr-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Сума до розрахунку:</mat-label>
+            <input matInput placeholder="Placeholder" [(ngModel)]="selectedValue">
+            <span matSuffix>грн</span>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <nz-divider></nz-divider>
+
+    <div>
+      <div class="mb-5 font-semibold">
+        2. Перший внесок
+      </div>
+
+      <div class="flex justify-end">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Placeholder" [(ngModel)]="first">
+          <span matSuffix>грн</span>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <ngx-slider
+          [(value)]="sliderValue"
+          (valueChange)="percentChange()"
+          [options]="options"
+        >
+        </ngx-slider>
+      </div>
+    </div>
+
+    <nz-divider></nz-divider>
+
+    <div>
+      <div class="mb-5 font-semibold">
+        3. Термін
+      </div>
+
+      <div>
+        <ngx-slider
+          [(value)]="monthsValue"
+          (valueChange)="onMonthsChange()"
+          [options]="monthsOptions"></ngx-slider>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="flex flex-col p-4">
+    <div class="flex flex-col flex-1 justify-center text-center">
+      <div class="font-bold">
+        Щомісяця до оплати:
+      </div>
+      <div class="font-bold text-3xl text-blue-500">
+        {{monthlyBill}} грн
+      </div>
+    </div>
+    <div class="text-center text-xs">
+      * Вартість орієнтовна. Уточнюйте ціни в Офіційних відділах продажів.
+    </div>
+  </div>
+</div>
