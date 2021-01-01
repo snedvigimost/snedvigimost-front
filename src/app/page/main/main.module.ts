@@ -43,7 +43,9 @@ import {
   FacebookOutline,
   GoogleCircleFill,
   SortDescendingOutline,
-  UserOutline
+  UserOutline,
+  HeartOutline,
+  HeartFill
 } from '@ant-design/icons-angular/icons';
 import { CreateFormComponent } from "../../components/create-form/create-form.component";
 import { NzDividerModule } from "ng-zorro-antd/divider";
@@ -53,7 +55,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { InstallmentCalculatorComponent } from '../../components/listing-item/installment-calculator/installment-calculator.component';
 import { PaybackCalculatorComponent } from '../../components/listing-item/payback-calculator/payback-calculator.component';
-import { NgxMaskModule } from 'ngx-mask/lib/ngx-mask.module';
 import { IMaskModule } from 'angular-imask';
 import { CurrencyMaskInputMode, NgxCurrencyModule } from 'ngx-currency';
 
@@ -64,7 +65,9 @@ const icons: IconDefinition[] = [
   FacebookOutline,
   FacebookFill,
   GoogleCircleFill,
-  CheckOutline
+  CheckOutline,
+  HeartOutline,
+  HeartFill
 ];
 
 export const customCurrencyMaskConfig = {

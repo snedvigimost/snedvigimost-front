@@ -1,6 +1,6 @@
 <div
   class="card flex flex-row bg-blue-100 border-2 border-blue-200 border-solid rounded-lg">
-  <div class="picture m-4 mr-1">
+  <div class="picture w-2/5 m-4 mr-1">
     <gallery
       [id]="listing.id"
       class="gallery"
@@ -15,8 +15,16 @@
   </div>
 
   <div class="w-3/5 m-4">
-    <div class="mb-1 text-lg text-gray-900 cursor-pointer" [routerLink]="['/listing', listing.id]">
-      {{listing.title}}
+    <div class="flex">
+      <div class="mb-1 text-lg text-gray-900 cursor-pointer" [routerLink]="['/listing', listing.id]">
+        {{listing.title}}
+      </div>
+      <div class="ml-auto">
+        <i class="cursor-pointer" *ngIf="!liked" (click)="onLike()" style="font-size: 20px" nz-icon nzType="heart"
+           nzTheme="outline"></i>
+        <i class="cursor-pointer" *ngIf="liked" (click)="onDisLike()" style="font-size: 20px" nz-icon nzType="heart"
+           nzTheme="fill"></i>
+      </div>
     </div>
     <div class="mb-2 text-gray-600">
       {{listing.address}}
@@ -43,7 +51,7 @@
       </div>
       <div>
         {{listing.roomsCount}}
-         <ng-container *transloco="let t;">
+        <ng-container *transloco="let t;">
           {{ t('room') }}
         </ng-container>
       </div>

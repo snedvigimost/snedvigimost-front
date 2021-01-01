@@ -23,7 +23,7 @@ import {
   FacebookFill,
   GoogleCircleFill,
   CheckOutline,
-  CalculatorOutline
+  CalculatorOutline, HeartOutline, HeartFill
 } from '@ant-design/icons-angular/icons';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
@@ -67,7 +67,9 @@ const icons: IconDefinition[] = [
   FacebookFill,
   GoogleCircleFill,
   CheckOutline,
-  CalculatorOutline
+  CalculatorOutline,
+  HeartOutline,
+  HeartFill
 ];
 
 
