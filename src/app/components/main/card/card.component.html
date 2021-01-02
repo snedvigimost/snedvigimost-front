@@ -65,7 +65,7 @@
         <a [href]="listing.url">{{listing.source}}</a>
       </p>
       <p class="">
-        Дата публикации: {{listing.publicationDate}}
+        Дата публикации: {{listing.publicationDate | date:"YYYY-MM-dd"}}
       </p>
     </ng-container>
   </div>

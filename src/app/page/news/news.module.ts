@@ -11,6 +11,9 @@ import { CreateNewsComponent } from './create-news/create-news.component';
 import { NewsItemComponent } from './news-item/news-item.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     MatButtonModule,
     MatFormFieldModule,
     FormsModule,
+    CKEditorModule,
+    MatSelectModule,
     MatIconModule,
+    MatCardModule,
     ShareButtonsModule,
     ShareIconsModule,
     ReactiveFormsModule,

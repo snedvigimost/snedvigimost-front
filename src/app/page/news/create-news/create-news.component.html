@@ -1,40 +1,57 @@
 <div class="flex flex-col container py-5 px-10 mx-auto">
   <div class="place-self-center w-2/4">
-    <div>
-      <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Заголовок</mat-label>
-        <input matInput [(ngModel)]="title">
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Підзаголовок</mat-label>
-        <input matInput [(ngModel)]="subtitle">
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Image URL</mat-label>
-        <input matInput [(ngModel)]="imageUrl">
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Textarea</mat-label>
-        <textarea [(ngModel)]="body" matInput></textarea>
-      </mat-form-field>
-    </div>
-
-    <div class="flex">
-      <div class="ml-auto">
-        <button (click)="onSave()" mat-raised-button color="primary">
-          <mat-icon class="mr-2">save</mat-icon>
-          Зберегти
-        </button>
+    <mat-card>
+      <div>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Заголовок</mat-label>
+          <input matInput [(ngModel)]="title">
+        </mat-form-field>
       </div>
-    </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Підзаголовок</mat-label>
+          <textarea [(ngModel)]="subtitle" matInput></textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Image URL</mat-label>
+          <input matInput [(ngModel)]="imageUrl">
+        </mat-form-field>
+      </div>
+
+      <div class="mb-6">
+        <ckeditor [editor]="Editor" [(ngModel)]="body"></ckeditor>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Теги</mat-label>
+          <mat-select [formControl]="toppings" multiple>
+            <mat-select-trigger>
+              {{toppings.value ? toppings.value[0] : ''}}
+              <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+        (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="flex">
+        <div class="ml-auto">
+          <button (click)="onSave()" mat-raised-button color="primary">
+            <mat-icon class="mr-2">save</mat-icon>
+            Зберегти
+          </button>
+        </div>
+      </div>
+
+    </mat-card>
+
   </div>
 </div>

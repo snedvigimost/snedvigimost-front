@@ -11,6 +11,7 @@ import { NewsDto } from '../../../rest/news/news.dto';
 })
 export class NewsItemComponent implements OnInit {
   news: NewsDto;
+  commentText = '';
 
   constructor(
     private route: ActivatedRoute,

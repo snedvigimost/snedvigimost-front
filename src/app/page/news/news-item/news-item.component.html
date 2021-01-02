@@ -1,33 +1,55 @@
 <div class="container py-5 w-8/12 px-10 mx-auto">
-  <div
-    class="news-cover flex pl-24 pb-12 mb-12"
-    [ngStyle]="{backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0.105) 0%, rgba(0,0,0,0.7) 100%), ' + 'url(' + news.imageUrl + ')'}">
-    <div class="flex flex-col text-white self-end">
-      <div class="mb-6">
-        Дом и уют
-      </div>
-      <div class="text-3xl font-extrabold mb-3">
-        {{news.title}}
-      </div>
-      <div>
-        {{news.createdAt | date:'YYYY-MM-dd'}}
+  <mat-card>
+    <div
+      class="news-cover flex pl-24 pr-48 pb-12 mb-12"
+      [ngStyle]="{backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0.105) 0%, rgba(0,0,0,0.7) 100%), ' + 'url(' + news.imageUrl + ')'}">
+      <div class="flex flex-col text-white self-end">
+        <div class="mb-6">
+          Нерухомість
+        </div>
+        <div class="text-3xl font-extrabold mb-3">
+          {{news.title}}
+        </div>
+        <div>
+          {{news.createdAt | date:'YYYY-MM-dd'}}
+        </div>
       </div>
     </div>
-  </div>
-  <div class="flex">
-    <div class="p-6">
-      <share-buttons
-        [theme]="'circles-dark'"
-        [include]="['facebook','twitter','viber','telegram','messenger','whatsapp','email','copy']"
-        [show]="15"
-        [size]="-4"
-        [title]="news.title"
-        [description]="news.title"
-        show="11"
-      >
-      </share-buttons>
+    <div class="flex">
+      <div class="p-6">
+        <share-buttons
+          [theme]="'circles-dark'"
+          [include]="['facebook','twitter','viber','telegram','messenger','whatsapp','email','copy']"
+          [show]="15"
+          [size]="-4"
+          [title]="news.title"
+          [description]="news.title"
+          show="11"
+        >
+        </share-buttons>
+      </div>
+      <div class="w-3/5">
+        <div class="text-lg mb-12" [innerHtml]="news.body">
+        </div>
+        <div>
+          <div class="mb-6 text-lg font-bold">
+            Коментарі
+          </div>
+          <div class="mb-3">
+            <mat-form-field appearance="outline" class="w-full">
+              <textarea [(ngModel)]="commentText" matInput placeholder="Ваше повідомлення"></textarea>
+            </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary">
+            <mat-icon class="mr-2">send</mat-icon>
+            Відправити
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="w-3/5 text-lg" [innerText]="news.body">
-    </div>
-  </div>
+
+    <button mat-fab class="edit-item" color="primary" routerLink="/news/create">
+      <mat-icon class="icon">edit</mat-icon>
+    </button>
+  </mat-card>
 </div>
