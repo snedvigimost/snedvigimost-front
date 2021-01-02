@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import { NewsComponent } from './news.component';
 import { CreateNewsComponent } from './create-news/create-news.component';
+import { NewsItemComponent } from './news-item/news-item.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateNewsComponent
+  },
+  {
+    path: ':slug',
+    component: NewsItemComponent
   },
 ];
 

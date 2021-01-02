@@ -1,8 +1,12 @@
-<div style="background-color: #f5f6fa">
+<div>
   <div class="container py-5 px-10 mx-auto">
 
     <div class="grid grid-cols-3 gap-4">
-      <div *ngFor="let news of result.results" class="bg-white rounded-md">
+      <a *ngFor="let news of result.results"
+         class="bg-white rounded-md"
+         [routerLink]="['/news', news.slug]"
+         routerLinkActive="active"
+      >
         <div class="">
           <img class="rounded-t-md w-full" [src]="news.imageUrl" alt="">
         </div>
@@ -18,20 +22,18 @@
               {{news.subtitle}}
             </div>
           </div>
-          <div class="mt-auto">
-            {{news.createdAt | date}}
+          <div class="mt-auto text-gray-500">
+            {{news.createdAt | date:'YYYY-MM-dd'}}
           </div>
         </div>
-      </div>
+      </a>
 
     </div>
-
 
   </div>
 
   <button mat-fab class="add-item" color="primary" routerLink="/news/create">
     <mat-icon class="icon">add</mat-icon>
   </button>
-
 
 </div>

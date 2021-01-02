@@ -19,7 +19,7 @@
         2. Витрати на ремонт
       </div>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Placeholder"
+        <input matInput
                currencyMask
                [(ngModel)]="repairCosts"
         >
@@ -32,7 +32,7 @@
         3. Площа
       </div>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Placeholder" [(ngModel)]="selectedValue.area">
+        <input matInput [(ngModel)]="selectedValue.area">
         <span matSuffix>м2</span>
         <mat-hint>Вкажіть площа обраного об'єкта</mat-hint>
       </mat-form-field>
@@ -67,7 +67,7 @@
 
     <div class="">
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Placeholder" [(ngModel)]="rentPrice">
+        <input matInput [(ngModel)]="rentPrice">
         <span matSuffix>м2</span>
       </mat-form-field>
       <div class="mb-1 font-semibold">

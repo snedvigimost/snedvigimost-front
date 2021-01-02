@@ -13,7 +13,7 @@ export class NewsDto {
     this.subtitle = data.subtitle;
     this.imageUrl = data.imageUrl;
     this.body = data.body;
-    this.body = data.body;
+    this.slug = data.slug;
     this.createdAt = data.createdAt;
   }
 

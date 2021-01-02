@@ -19,7 +19,7 @@
         <div class="mr-3">
           <mat-form-field appearance="outline">
             <mat-label>Сума до розрахунку:</mat-label>
-            <input currencyMask matInput placeholder="Placeholder" [(ngModel)]="selectedValue">
+            <input currencyMask matInput [(ngModel)]="selectedValue">
           </mat-form-field>
         </div>
       </div>
@@ -34,7 +34,7 @@
 
       <div class="flex justify-end">
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Placeholder" currencyMask [(ngModel)]="first">
+          <input matInput currencyMask [(ngModel)]="first">
         </mat-form-field>
       </div>
 

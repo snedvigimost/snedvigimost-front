@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import slugify from '@sindresorhus/slugify';
-import { NewsService } from '../../rest/news/heat.service';
+
+import { NewsService } from '../../rest/news/news.service';
 import { PaginationDto } from '../../rest/pagination/pagination.dto';
-import { ListingsDto } from '../../rest/listings/listings.dto';
 import { NewsDto } from '../../rest/news/news.dto';
 
 @Component({

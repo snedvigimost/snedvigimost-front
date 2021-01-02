@@ -8,12 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateNewsComponent } from './create-news/create-news.component';
+import { NewsItemComponent } from './news-item/news-item.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 @NgModule({
   declarations: [
     NewsComponent,
     CreateNewsComponent,
+    NewsItemComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +26,8 @@ import { CreateNewsComponent } from './create-news/create-news.component';
     MatFormFieldModule,
     FormsModule,
     MatIconModule,
+    ShareButtonsModule,
+    ShareIconsModule,
     ReactiveFormsModule,
     NewsRoutingModule
   ]
