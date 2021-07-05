@@ -32,7 +32,7 @@ export class NlpSearchService {
     if (isContainDistrict) {
       const withSimilarity = districtList.map(district => ({
         ...district,
-        similarity: stringSimilarity.compareTwoStrings(district.name.toLocaleLowerCase(), isContainDistrict[0])
+        similarity: stringSimilarity.compareTwoStrings(district.translations.uk.name.toLocaleLowerCase(), isContainDistrict[0])
       }));
       result.districtID = withSimilarity.reduce((prev, current) => (prev.similarity > current.similarity) ? prev : current).id;
     }
