@@ -58,7 +58,7 @@ export class UploaderComponent implements OnInit {
       console.log('failed files:', result.failed);
     });
 
-    const isServiceWorkerControllerReady = new Promise((resolve) => {
+    const isServiceWorkerControllerReady = new Promise<void>((resolve) => {
       if (navigator.serviceWorker.controller) {
         return resolve();
       }
