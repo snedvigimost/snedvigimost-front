@@ -1,5 +1,14 @@
 <div class="container py-5 w-8/12 px-10 mx-auto">
 
+  <div class="flex mb-4">
+    <div class="w-2/5 text-2xl">Title</div>
+
+    <div class="w-3/5">
+      <div class="grid grid-cols-2">
+        <input nz-input placeholder="Title" [(ngModel)]="title"/>
+      </div>
+    </div>
+  </div>
 
   <div class="flex">
     <div class="w-2/5 text-2xl">Адрес обекта</div>
@@ -20,7 +29,7 @@
             [(ngModel)]="selectedDistrict"
             (ngModelChange)="onDistrictChange()"
           >
-            <ng-container *ngFor="let district of districts.results">
+            <ng-container *ngFor="let district of districts?.results">
               <nz-option
                 [nzValue]="district.id"
                 [nzLabel]="district.translations[translocoService.getActiveLang()].name"
@@ -64,7 +73,7 @@
             nzPlaceHolder="Оберіть вулицю"
             [(ngModel)]="selectedStreet"
           >
-            <ng-container *ngFor="let street of streets.results">
+            <ng-container *ngFor="let street of streets?.results">
               <nz-option
                 [nzLabel]="street.name"
                 [nzValue]="street.id"
@@ -162,7 +171,7 @@
             nzPlaceHolder="Оберіть планування"
             [(ngModel)]="selectedLayoutId"
           >
-            <ng-container *ngFor="let layout of layouts.results">
+            <ng-container *ngFor="let layout of layouts?.results">
               <nz-option
                 [nzLabel]="layout.title"
                 [nzValue]="layout.id"
@@ -198,7 +207,7 @@
             nzPlaceHolder="Оберіть тип опалення"
             [(ngModel)]="selectedHeatingId"
           >
-            <ng-container *ngFor="let heat of heating.results">
+            <ng-container *ngFor="let heat of heating?.results">
               <nz-option
                 [nzLabel]="heat.title"
                 [nzValue]="heat.id"
@@ -218,7 +227,7 @@
             nzPlaceHolder="Оберіть стан побудови"
             [(ngModel)]="selectedApartmentId"
           >
-            <ng-container *ngFor="let apartment of apartments.results">
+            <ng-container *ngFor="let apartment of apartments?.results">
               <nz-option
                 [nzLabel]="apartment.title"
                 [nzValue]="apartment.id"
@@ -238,7 +247,7 @@
             nzPlaceHolder="Оберіть тип сан узлу"
             [(ngModel)]="selectedBathroomTypeId"
           >
-            <ng-container *ngFor="let bathroomType of bathroomTypes.results">
+            <ng-container *ngFor="let bathroomType of bathroomTypes?.results">
               <nz-option
                 [nzLabel]="bathroomType.title"
                 [nzValue]="bathroomType.id"
@@ -282,7 +291,7 @@
         (mapClick)="addMarker($event)"
         [zoom]="14"
       >
-        <map-marker *ngFor="let markerPosition of markerPositions"
+        <map-marker
                     [position]="markerPosition"
                     [options]="markerOptions"></map-marker>
       </google-map>
@@ -294,17 +303,42 @@
         <div class="mb-2">
           Номер телефона
         </div>
-        <input nz-input placeholder="Номер телефона"/>
+        <input nz-input placeholder="Номер телефона" [(ngModel)]="phoneNumber"/>
       </div>
 
-      <div class="mb-4">
-        <div class="mb-2">
-          Email-адрес
-        </div>
-        <input nz-input placeholder="Email-адрес"/>
-      </div>
+<!--      <div class="mb-4">-->
+<!--        <div class="mb-2">-->
+<!--          Email-адрес-->
+<!--        </div>-->
+<!--        <input nz-input placeholder="Email-адрес"/>-->
+<!--      </div>-->
     </div>
   </div>
+
+  <nz-upload
+        nzAction="http://127.0.0.1:4222/api/images/"
+        nzListType="picture-card"
+        [(nzFileList)]="fileList"
+        [nzShowButton]="fileList.length < 8"
+        nzName="photo"
+        [nzPreview]="handlePreview"
+      >
+        <div>
+          <i nz-icon nzType="plus"></i>
+          <div style="margin-top: 8px">Upload</div>
+        </div>
+      </nz-upload>
+      <nz-modal
+        [nzVisible]="previewVisible"
+        [nzContent]="modalContent"
+        [nzFooter]="null"
+        (nzOnCancel)="previewVisible = false"
+      >
+        <ng-template #modalContent>
+          <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+        </ng-template>
+      </nz-modal>
+
 
   <button nz-button nzSize="large" nzType="primary" (click)="onSubmit()">
     <ng-container *transloco="let t;">

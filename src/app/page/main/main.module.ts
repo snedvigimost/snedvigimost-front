@@ -26,6 +26,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 import { TranslocoRootModule } from '../../transloco/transloco-root.module';
 import { WebSpeechComponentComponent } from '../../components/main/web-speech-component/web-speech-component.component';
@@ -47,8 +48,8 @@ import {
   HeartOutline,
   HeartFill
 } from '@ant-design/icons-angular/icons';
-import { CreateFormComponent } from "../../components/create-form/create-form.component";
-import { NzDividerModule } from "ng-zorro-antd/divider";
+import { CreateFormComponent } from '../../components/create-form/create-form.component';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -57,6 +58,7 @@ import { InstallmentCalculatorComponent } from '../../components/listing-item/in
 import { PaybackCalculatorComponent } from '../../components/listing-item/payback-calculator/payback-calculator.component';
 import { IMaskModule } from 'angular-imask';
 import { CurrencyMaskInputMode, NgxCurrencyModule } from 'ngx-currency';
+import {NzMessageService} from 'ng-zorro-antd/message';
 
 
 const icons: IconDefinition[] = [
@@ -96,9 +98,11 @@ export const customCurrencyMaskConfig = {
     CreateFormComponent,
     WebSpeechComponentComponent,
   ],
+  providers: [],
   imports: [
     CommonModule,
     MainRoutingModule,
+    NzUploadModule,
     MatIconModule,
     // NgxMaskModule.forRoot(),
     IMaskModule,

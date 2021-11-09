@@ -192,9 +192,10 @@ export class ListingListComponent implements OnInit {
       this.result = listings;
       if (this.initial) {
         this.markers = listings.results.map(listing => {
+          // seems like order can be changed
           return {
-            lng: listing.location.coordinates[0],
-            lat: listing.location.coordinates[1],
+            lng: listing.location.coordinates[1],
+            lat: listing.location.coordinates[0],
             hovered: false,
             id: listing.id
           };

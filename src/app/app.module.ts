@@ -23,7 +23,7 @@ import {
   FacebookFill,
   GoogleCircleFill,
   CheckOutline,
-  CalculatorOutline, HeartOutline, HeartFill
+  CalculatorOutline, HeartOutline, HeartFill, PlusOutline, DeleteOutline
 } from '@ant-design/icons-angular/icons';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
@@ -49,7 +49,9 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 import { LoginComponent } from './page/login/login.component';
 import { MatButtonModule } from '@angular/material/button';
-import { FacebookModule } from "ngx-facebook";
+import { FacebookModule } from 'ngx-facebook';
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {NzModalService} from 'ng-zorro-antd/modal';
 
 registerLocaleData(ru);
 
@@ -69,7 +71,9 @@ const icons: IconDefinition[] = [
   CheckOutline,
   CalculatorOutline,
   HeartOutline,
-  HeartFill
+  HeartFill,
+  PlusOutline,
+  DeleteOutline
 ];
 
 
@@ -109,6 +113,8 @@ const icons: IconDefinition[] = [
     TranslocoRootModule
   ],
   providers: [
+    NzMessageService,
+    NzModalService,
     HttpService,
     HttpClientModule,
     HttpClientJsonpModule,
