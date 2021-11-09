@@ -1,38 +1,37 @@
-import {Component, OnInit} from '@angular/core';
-import {TranslocoService} from '@ngneat/transloco';
+import { Component, OnInit } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
-import {DistrictsService} from '../../rest/districts/districts.service';
-import {PaginationDto} from '../../rest/pagination/pagination.dto';
-import {DistrictDto} from '../../rest/districts/district.dto';
-import {MicroDistrictsService} from '../../rest/micro-districts/districts.service';
-import {MicroDistrictDto} from '../../rest/micro-districts/district.dto';
-import {StreetsService} from '../../rest/streets/streets.service';
-import {StreetDto} from '../../rest/streets/streets.dto';
-import {LayoutService} from '../../rest/layout/layout.service';
-import {LayoutDto} from '../../rest/layout/layout.dto';
-import {ListingsService} from '../../rest/listings/listings.service';
-import {HeatService} from '../../rest/heat/heat.service';
-import {Heat} from '../../rest/heat/heat.dto';
-import {ApartmentService} from '../../rest/condition/apartment.service';
-import {Apartment} from '../../rest/condition/apartment.dto';
-import {BathroomTypeDto} from '../../rest/bathroom-type/bathroom-type.dto';
-import {BathroomTypeService} from '../../rest/bathroom-type/bathroom-type.service';
-import {NzMessageService} from 'ng-zorro-antd/message';
-import {NzUploadFile} from 'ng-zorro-antd/upload';
-
+import { DistrictsService } from '../../rest/districts/districts.service';
+import { PaginationDto } from '../../rest/pagination/pagination.dto';
+import { DistrictDto } from '../../rest/districts/district.dto';
+import { MicroDistrictsService } from '../../rest/micro-districts/districts.service';
+import { MicroDistrictDto } from '../../rest/micro-districts/district.dto';
+import { StreetsService } from '../../rest/streets/streets.service';
+import { StreetDto } from '../../rest/streets/streets.dto';
+import { LayoutService } from '../../rest/layout/layout.service';
+import { LayoutDto } from '../../rest/layout/layout.dto';
+import { ListingsService } from '../../rest/listings/listings.service';
+import { HeatService } from '../../rest/heat/heat.service';
+import { Heat } from '../../rest/heat/heat.dto';
+import { ApartmentService } from '../../rest/condition/apartment.service';
+import { Apartment } from '../../rest/condition/apartment.dto';
+import { BathroomTypeDto } from '../../rest/bathroom-type/bathroom-type.dto';
+import { BathroomTypeService } from '../../rest/bathroom-type/bathroom-type.service';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
+    reader.onerror = (error) => reject(error);
   });
 
 @Component({
   selector: 'app-create-form',
   templateUrl: './create-form.component.html',
-  styleUrls: ['./create-form.component.scss']
+  styleUrls: ['./create-form.component.scss'],
 })
 export class CreateFormComponent implements OnInit {
   districts: PaginationDto<DistrictDto>;
@@ -61,10 +60,10 @@ export class CreateFormComponent implements OnInit {
   imageIds: string;
   microDistricts: MicroDistrictDto[] = [];
   markerPosition: google.maps.LatLngLiteral;
-  markerOptions: google.maps.MarkerOptions = {draggable: false};
+  markerOptions: google.maps.MarkerOptions = { draggable: false };
   location: google.maps.LatLngLiteral = {
     lat: 50.437665,
-    lng: 30.5205651
+    lng: 30.5205651,
   };
 
   loading = false;
@@ -74,7 +73,6 @@ export class CreateFormComponent implements OnInit {
   previewImage: string | undefined = '';
   previewVisible = false;
   phoneNumber: string;
-
 
   constructor(
     private districtsService: DistrictsService,
@@ -87,26 +85,25 @@ export class CreateFormComponent implements OnInit {
     private bathroomTypeService: BathroomTypeService,
     public translocoService: TranslocoService,
     private msg: NzMessageService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.districtsService.getDistricts().subscribe(districts => {
+    this.districtsService.getDistricts().subscribe((districts) => {
       this.districts = districts;
     });
-    this.streetsService.getStreets().subscribe(streets => {
+    this.streetsService.getStreets().subscribe((streets) => {
       this.streets = streets;
     });
-    this.layoutService.getLayouts().subscribe(layouts => {
+    this.layoutService.getLayouts().subscribe((layouts) => {
       this.layouts = layouts;
     });
-    this.heatService.getHeatingType().subscribe(heating => {
+    this.heatService.getHeatingType().subscribe((heating) => {
       this.heating = heating;
     });
-    this.apartmentService.getApartmentCondition().subscribe(apartments => {
+    this.apartmentService.getApartmentCondition().subscribe((apartments) => {
       this.apartments = apartments;
     });
-    this.bathroomTypeService.getBathroomType().subscribe(bathroomTypes => {
+    this.bathroomTypeService.getBathroomType().subscribe((bathroomTypes) => {
       this.bathroomTypes = bathroomTypes;
     });
   }
@@ -116,52 +113,51 @@ export class CreateFormComponent implements OnInit {
       file.preview = await getBase64(file.originFileObj!);
     }
     this.previewImage = file.url || file.preview;
-    this.previewVisible = true;
-  }
 
+    this.previewVisible = true;
+  };
 
   onDistrictChange() {
     console.log(this.selectedDistrict);
-    this.microDistricts = this.districts.results.find(district => district.id === this.selectedDistrict).microDistricts;
-    console.log(this.microDistricts);
-    this.streetsService.getStreets({district: this.selectedDistrict}).subscribe(streets => {
+    this.microDistricts = this.districts.results.find(
+      (district) => district.id === this.selectedDistrict
+    ).microDistricts;
+    this.streetsService.getStreets({ district: this.selectedDistrict }).subscribe((streets) => {
       this.streets = streets;
     });
   }
 
   onSubmit() {
     console.log(this.fileList);
-    this.listingsService.create({
-      title: this.title,
-      is_published: true,
-      totalArea: this.totalArea,
-      livingArea: this.livingArea,
-      kitchenArea: this.kitchenArea,
-      floor: this.floor,
-      floorInHouse: this.floorInHouse,
-      roomsCount: this.roomsCount,
-      price: this.price,
-      phoneNumber: this.phoneNumber,
-      description: this.description,
-      district: this.selectedDistrict,
-      microDistrict: this.selectedMicroDistrict,
-      street: this.selectedStreet,
-      layout: this.selectedLayoutId,
-      location:  {
-        type: 'Point',
-        coordinates: [
-          this.markerPosition.lng,
-          this.markerPosition.lat
-        ],
-    },
-      images: this.fileList.map(file => file.response.id)
-    }).subscribe(created => {
-      console.log(created);
-    });
+    this.listingsService
+      .create({
+        title: this.title,
+        is_published: true,
+        totalArea: this.totalArea,
+        livingArea: this.livingArea,
+        kitchenArea: this.kitchenArea,
+        floor: this.floor,
+        floorInHouse: this.floorInHouse,
+        roomsCount: this.roomsCount,
+        price: this.price,
+        phoneNumber: this.phoneNumber,
+        description: this.description,
+        district: this.selectedDistrict,
+        microDistrict: this.selectedMicroDistrict,
+        street: this.selectedStreet,
+        layout: this.selectedLayoutId,
+        location: {
+          type: 'Point',
+          coordinates: [this.markerPosition.lng, this.markerPosition.lat],
+        },
+        images: this.fileList.map((file) => file.response.id),
+      })
+      .subscribe((created) => {
+        console.log(created);
+      });
   }
 
   addMarker(event: google.maps.MouseEvent) {
     this.markerPosition = event.latLng.toJSON();
   }
-
 }
